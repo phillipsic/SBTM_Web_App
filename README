@@ -1,0 +1,9 @@
+Aim of this project is to produce a web application to manage SBTM.
+
+The first release will be a combination of the Web application and the ruby framework.
+
+In Release 1
+-------------
+ * Project/Release management
+ * User/access management
+ * Simple session management
