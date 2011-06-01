@@ -9,18 +9,21 @@
  * @property string $username
  * @property string $password
  * @property string $email
- * @property string $status
+ * @property string $role
+ * @property string $islocked
  * 
  * @method string getName()     Returns the current record's "name" value
  * @method string getUsername() Returns the current record's "username" value
  * @method string getPassword() Returns the current record's "password" value
  * @method string getEmail()    Returns the current record's "email" value
- * @method string getStatus()   Returns the current record's "status" value
+ * @method string getRole()     Returns the current record's "role" value
+ * @method string getIslocked() Returns the current record's "islocked" value
  * @method Logins setName()     Sets the current record's "name" value
  * @method Logins setUsername() Sets the current record's "username" value
  * @method Logins setPassword() Sets the current record's "password" value
  * @method Logins setEmail()    Sets the current record's "email" value
- * @method Logins setStatus()   Sets the current record's "status" value
+ * @method Logins setRole()     Sets the current record's "role" value
+ * @method Logins setIslocked() Sets the current record's "islocked" value
  * 
  * @package    PQASBTM
  * @subpackage model
@@ -40,6 +43,7 @@ abstract class BaseLogins extends sfDoctrineRecord
         $this->hasColumn('username', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
+             'unique' => true,
              'length' => 255,
              ));
         $this->hasColumn('password', 'string', 255, array(
@@ -52,7 +56,12 @@ abstract class BaseLogins extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('status', 'string', 255, array(
+        $this->hasColumn('role', 'string', 255, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 255,
+             ));
+        $this->hasColumn('islocked', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
              'length' => 255,

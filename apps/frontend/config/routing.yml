@@ -2,55 +2,21 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 # default rules
-project_category:
-  class: sfDoctrineRouteCollection
-  options:
-    model:                ProjectCategory
-    module:               category
-    prefix_path:          category
-    column:               id
-    with_wildcard_routes: true
+
     
 show_home:
-  url:   /job/username/password
+  url:   /sbtm/username/password
   class:   sfDoctrineRoute
   options: { model: login, type: object }
-  param: { module: job, action: home }
-  sf_method: [get]
-  
-show_admin:
-  url:   /job/username/password
-  class:   sfDoctrineRoute
-  options: { model: login, type: object }
-  param: { module: job, action: admin }
-  sf_method: [get]
-  
-show_user:
-  url:   /job/username/password
-  class:   sfDoctrineRoute
-  options: { model: login, type: object }
-  param: { module: job, action: user }
-  sf_method: [get]
-  
-show_report:
-  url:   /job/username/password
-  class:   sfDoctrineRoute
-  options: { model: login, type: object }
-  param: { module: job, action: report }
-  sf_method: [get]
-  
-show_session:
-  url:   /job/username/password
-  class:   sfDoctrineRoute
-  options: { model: login, type: object }
-  param: { module: job, action: session }
+  param: { module: sbtm, action: home }
   sf_method: [get]
  
+ 
 show_logout:
-  url:   /job/username
+  url:   /sbtm/username
   class:   sfDoctrineRoute
   options: { model: login, type: object }
-  param: { module: job, action: logout }
+  param: { module: sbtm, action: logout }
   sf_method: [get]
   
 homepage:

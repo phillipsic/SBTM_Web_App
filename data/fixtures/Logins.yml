@@ -4,10 +4,12 @@ Logins:
     username: Ian
     password: Ian123
     email:    Ian.PHILLIPS@comverse.com
-    status:    A
+    role: Admin
+    islocked: No
   user_logins:
     name:  mohamedsithik
     username: mohamedsithik
     password: mohamed123
     email:    mohamed.wahithali@aricent.com
-    status:    U
+    role: User
+    islocked: No

@@ -1,0 +1,119 @@
+May 28 05:10:22 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /job with parameters array (  'module' => 'job',  'action' => 'index',)
+May 28 05:10:22 symfony [info] {sfFrontWebController} Action "job/index" does not exist
+May 28 05:10:22 symfony [err] {sfError404Exception} Action "job/index" does not exist.
+May 28 05:10:22 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 28 05:10:22 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 28 05:10:22 symfony [info] {sfWebDebugLogger} Configuration 842.95 ms (5)
+May 28 05:10:22 symfony [info] {sfWebDebugLogger} Factories 472.57 ms (1)
+May 28 05:10:44 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /job with parameters array (  'module' => 'job',  'action' => 'index',)
+May 28 05:10:44 symfony [info] {sfFrontWebController} Action "job/index" does not exist
+May 28 05:10:44 symfony [err] {sfError404Exception} Action "job/index" does not exist.
+May 28 05:10:44 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 28 05:10:44 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 28 05:10:44 symfony [info] {sfWebDebugLogger} Configuration 19.90 ms (5)
+May 28 05:10:44 symfony [info] {sfWebDebugLogger} Factories 90.99 ms (1)
+May 30 14:56:01 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /category with parameters array (  'module' => 'category',  'action' => 'index',)
+May 30 14:56:02 symfony [info] {sfFrontWebController} Action "category/index" does not exist
+May 30 14:56:02 symfony [err] {sfError404Exception} Action "category/index" does not exist.
+May 30 14:56:02 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 14:56:02 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 14:56:02 symfony [info] {sfWebDebugLogger} Configuration 20.61 ms (5)
+May 30 14:56:02 symfony [info] {sfWebDebugLogger} Factories 172.70 ms (1)
+May 30 15:16:42 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /category with parameters array (  'module' => 'category',  'action' => 'index',)
+May 30 15:16:42 symfony [info] {sfFrontWebController} Action "category/index" does not exist
+May 30 15:16:42 symfony [err] {sfError404Exception} Action "category/index" does not exist.
+May 30 15:16:42 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:16:42 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:16:42 symfony [info] {sfWebDebugLogger} Configuration 15.93 ms (5)
+May 30 15:16:42 symfony [info] {sfWebDebugLogger} Factories 132.38 ms (1)
+May 30 15:16:47 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /category with parameters array (  'module' => 'category',  'action' => 'index',)
+May 30 15:16:47 symfony [info] {sfFrontWebController} Action "category/index" does not exist
+May 30 15:16:47 symfony [err] {sfError404Exception} Action "category/index" does not exist.
+May 30 15:16:47 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:16:47 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:16:47 symfony [info] {sfWebDebugLogger} Configuration 15.11 ms (5)
+May 30 15:16:47 symfony [info] {sfWebDebugLogger} Factories 182.13 ms (1)
+May 30 15:17:26 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /job/1/edit with parameters array (  'module' => 'job',  'action' => '1',  'edit' => true,)
+May 30 15:17:26 symfony [info] {sfFrontWebController} Action "job/1" does not exist
+May 30 15:17:26 symfony [err] {sfError404Exception} Action "job/1" does not exist.
+May 30 15:17:26 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:17:26 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:17:26 symfony [info] {sfWebDebugLogger} Configuration 11.81 ms (5)
+May 30 15:17:26 symfony [info] {sfWebDebugLogger} Factories 147.65 ms (1)
+May 30 15:17:28 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /job with parameters array (  'module' => 'job',  'action' => 'index',)
+May 30 15:17:28 symfony [info] {sfFrontWebController} Action "job/index" does not exist
+May 30 15:17:28 symfony [err] {sfError404Exception} Action "job/index" does not exist.
+May 30 15:17:28 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:17:28 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:17:28 symfony [info] {sfWebDebugLogger} Configuration 11.56 ms (5)
+May 30 15:17:28 symfony [info] {sfWebDebugLogger} Factories 88.20 ms (1)
+May 30 15:17:30 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /jb with parameters array (  'module' => 'jb',  'action' => 'index',)
+May 30 15:17:30 symfony [info] {sfFrontWebController} Action "jb/index" does not exist
+May 30 15:17:30 symfony [err] {sfError404Exception} Action "jb/index" does not exist.
+May 30 15:17:30 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:17:30 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:17:30 symfony [info] {sfWebDebugLogger} Configuration 11.85 ms (5)
+May 30 15:17:30 symfony [info] {sfWebDebugLogger} Factories 89.63 ms (1)
+May 30 15:17:31 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /job with parameters array (  'module' => 'job',  'action' => 'index',)
+May 30 15:17:31 symfony [info] {sfFrontWebController} Action "job/index" does not exist
+May 30 15:17:31 symfony [err] {sfError404Exception} Action "job/index" does not exist.
+May 30 15:17:31 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:17:31 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:17:31 symfony [info] {sfWebDebugLogger} Configuration 12.57 ms (5)
+May 30 15:17:31 symfony [info] {sfWebDebugLogger} Factories 91.92 ms (1)
+May 30 15:17:32 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /job/1/edit with parameters array (  'module' => 'job',  'action' => '1',  'edit' => true,)
+May 30 15:17:32 symfony [info] {sfFrontWebController} Action "job/1" does not exist
+May 30 15:17:32 symfony [err] {sfError404Exception} Action "job/1" does not exist.
+May 30 15:17:32 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:17:32 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:17:32 symfony [info] {sfWebDebugLogger} Configuration 13.93 ms (5)
+May 30 15:17:32 symfony [info] {sfWebDebugLogger} Factories 92.68 ms (1)
+May 30 15:17:33 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /category with parameters array (  'module' => 'category',  'action' => 'index',)
+May 30 15:17:33 symfony [info] {sfFrontWebController} Action "category/index" does not exist
+May 30 15:17:33 symfony [err] {sfError404Exception} Action "category/index" does not exist.
+May 30 15:17:33 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:17:33 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:17:33 symfony [info] {sfWebDebugLogger} Configuration 11.76 ms (5)
+May 30 15:17:33 symfony [info] {sfWebDebugLogger} Factories 91.76 ms (1)
+May 30 15:17:34 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /category with parameters array (  'module' => 'category',  'action' => 'index',)
+May 30 15:17:34 symfony [info] {sfFrontWebController} Action "category/index" does not exist
+May 30 15:17:34 symfony [err] {sfError404Exception} Action "category/index" does not exist.
+May 30 15:17:34 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 30 15:17:34 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 30 15:17:34 symfony [info] {sfWebDebugLogger} Configuration 15.69 ms (5)
+May 30 15:17:34 symfony [info] {sfWebDebugLogger} Factories 370.11 ms (1)
+May 31 04:48:18 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /category/1/edit with parameters array (  'module' => 'category',  'action' => '1',  'edit' => true,)
+May 31 04:48:18 symfony [info] {sfFrontWebController} Action "category/1" does not exist
+May 31 04:48:18 symfony [err] {sfError404Exception} Action "category/1" does not exist.
+May 31 04:48:18 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 31 04:48:18 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 31 04:48:18 symfony [info] {sfWebDebugLogger} Configuration 19.09 ms (5)
+May 31 04:48:18 symfony [info] {sfWebDebugLogger} Factories 163.35 ms (1)
+May 31 07:09:15 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /category/1/edit with parameters array (  'module' => 'category',  'action' => '1',  'edit' => true,)
+May 31 07:09:15 symfony [info] {sfFrontWebController} Action "category/1" does not exist
+May 31 07:09:15 symfony [err] {sfError404Exception} Action "category/1" does not exist.
+May 31 07:09:15 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+May 31 07:09:15 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+May 31 07:09:15 symfony [info] {sfWebDebugLogger} Configuration 13.00 ms (5)
+May 31 07:09:15 symfony [info] {sfWebDebugLogger} Factories 122.74 ms (1)
+Jun 01 09:21:20 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /category/new with parameters array (  'module' => 'category',  'action' => 'new',)
+Jun 01 09:21:20 symfony [info] {sfFrontWebController} Action "category/new" does not exist
+Jun 01 09:21:20 symfony [err] {sfError404Exception} Action "category/new" does not exist.
+Jun 01 09:21:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Jun 01 09:21:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 01 09:21:20 symfony [info] {sfWebDebugLogger} Configuration 53.44 ms (5)
+Jun 01 09:21:20 symfony [info] {sfWebDebugLogger} Factories 187.87 ms (1)
+Jun 01 09:43:37 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /job with parameters array (  'module' => 'job',  'action' => 'index',)
+Jun 01 09:43:37 symfony [info] {sfFrontWebController} Action "job/index" does not exist
+Jun 01 09:43:37 symfony [err] {sfError404Exception} Action "job/index" does not exist.
+Jun 01 09:43:37 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Jun 01 09:43:37 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 01 09:43:37 symfony [info] {sfWebDebugLogger} Configuration 15.90 ms (5)
+Jun 01 09:43:37 symfony [info] {sfWebDebugLogger} Factories 165.77 ms (1)
+Jun 01 09:44:00 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /job with parameters array (  'module' => 'job',  'action' => 'index',)
+Jun 01 09:44:00 symfony [info] {sfFrontWebController} Action "job/index" does not exist
+Jun 01 09:44:00 symfony [err] {sfError404Exception} Action "job/index" does not exist.
+Jun 01 09:44:00 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Jun 01 09:44:00 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 01 09:44:00 symfony [info] {sfWebDebugLogger} Configuration 14.71 ms (5)
+Jun 01 09:44:00 symfony [info] {sfWebDebugLogger} Factories 113.54 ms (1)

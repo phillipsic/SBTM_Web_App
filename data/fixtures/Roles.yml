@@ -1,0 +1,6 @@
+Roles:
+  admin_role:
+    name:  Admin
+  user_role:
+    name:  user
+  

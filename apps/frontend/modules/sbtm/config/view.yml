@@ -1,0 +1,15 @@
+# apps/frontend/modules/job/config/view.yml
+indexSuccess:
+  stylesheets: [sbtms.css]
+homeSuccess:
+  stylesheets: [sbtm.css]
+loginSuccess:
+  stylesheets: [sbtm.css]
+projectadminSuccess:
+  stylesheets: [sbtm.css]
+useradminSuccess:
+  stylesheets: [sbtm.css]
+userdetailSuccess:
+  stylesheets: [sbtm.css]
+showSuccess:
+  stylesheets: [sbtm.css]

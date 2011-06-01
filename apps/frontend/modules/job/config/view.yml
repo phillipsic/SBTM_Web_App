@@ -1,9 +1,0 @@
-# apps/frontend/modules/job/config/view.yml
-indexSuccess:
-  stylesheets: [jobs.css]
-homeSuccess:
-  stylesheets: [job.css]
-projectadminSuccess:
-  stylesheets: [job.css] 
-showSuccess:
-  stylesheets: [job.css]

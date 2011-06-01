@@ -1,9 +1,21 @@
-Logins:
+ProjectCategory:
   actAs: { Timestampable: ~ }
   columns:
-    name:  { type: string(255), notnull: true }
-    username:      { type: string(255),notnull: true }
-    password:      { type: string(255), notnull: true }
-    email:      { type: string(255), notnull: true }
-    status:      { type: string(255), notnull: true }
+    name: { type: string(255), notnull: true, unique: true }
+
+Logins:
+   actAs: { Timestampable: ~ }
+   columns:
+    name: { type: string(255), notnull: true }
+    username: { type: string(255), notnull: true, unique: true }
+    password: { type: string(255), notnull: true }
+    email: { type: string(255), notnull: true }
+    role: { type: string(255), notnull: true}
+    islocked: { type: string(255), notnull: true}
+
+Roles:
+   actAs: { Timestampable: ~ }
+   columns:
+    name: { type: string(255), notnull: true, unique: true }
     
+  
