@@ -12,10 +12,69 @@ class jobActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
+    //$this->loginss = Doctrine_Core::getTable('Logins')
+      //->createQuery('a')
+     //->execute();
+    $this->project_category = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+     ->execute();
+  }
+  public function executeHome(sfWebRequest $request)
+  {
+      
+    $this->userName = $request->getParameter('username');
+    $this->passWord = $request->getParameter('password');
+    $this->project = $request->getParameter('project');
     $this->loginss = Doctrine_Core::getTable('Logins')
       ->createQuery('a')
-      ->execute();
+       ->execute();
+  
   }
+  public function executeLogout(sfWebRequest $request)
+  {
+   
+  $this->redirect('job/index');
+  }
+  
+  public function executeProjectadmin(sfWebRequest $request)
+  {
+   $this->userName = $request->getParameter('username');
+   $this->project = $request->getParameter('project');
+   $this->project_category = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+     ->execute();
+  }
+  
+  public function executeLogin(sfWebRequest $request)
+  {
+    $this->user = $request->getParameter('username');
+    $this->pass = $request->getParameter('password');
+    $this->project = $request->getParameter('project_action');
+    $this->logins = Doctrine_Core::getTable('Logins')
+           ->createQuery('l')
+           ->where('l.username = ?', $this->user)
+           ->execute();
+  
+    if($this->user=="sithik" && $this->pass=="sithik123"){
+     //if($this->user==$logins->username && $this->pass==$logins->password){
+        $this->redirect('job/home?username='.$this->user.'&password='.$this->pass.'&project='.$this->project);}
+    else{
+        $this->redirect('job/index?flag=true');}
+   // $flag= $this->logins->getTable()->find(array($request->getParameter('username')));
+   //$this->forward404Unless($flag, sprintf('User does not exist (%s).', $request->getParameter('username')));
+   
+   /*foreach ($this->logins as $user) {
+            $request->setAttribute("admin",$user->status); 
+       if(($user->username==$this->user) && ($user->password==$this->pass)) {        
+  
+         }
+       else{
+          $this->redirect('job/login'); 
+       }
+                   }*/
+   
+   }
+  
 
   public function executeShow(sfWebRequest $request)
   {
@@ -76,4 +135,8 @@ class jobActions extends sfActions
       $this->redirect('job/edit?id='.$logins->getId());
     }
   }
+  
+  
+  
+  
 }

@@ -18,7 +18,7 @@
       <div id="header">
         <div class="content">
           <h1><a href="<?php echo url_for('job/index') ?>">
-            <img src="/images/logo.jpg" alt="PQA SBTM - Web based" />
+            <img src="/images/comverse-mini.png" alt="PQA SBTM - Web based" />
           </a></h1>
           <!--div id="sub_header">
             <div class="post">
