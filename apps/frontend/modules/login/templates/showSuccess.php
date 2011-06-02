@@ -43,4 +43,4 @@
 
 <a href="<?php echo url_for('login/edit?id='.$logins->getId()) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('login/index') ?>">List</a>
+<a href="<?php echo url_for('sbtm/useradmin') ?>">Back</a>

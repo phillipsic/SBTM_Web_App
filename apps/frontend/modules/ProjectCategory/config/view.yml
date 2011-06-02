@@ -3,13 +3,7 @@ indexSuccess:
   stylesheets: [sbtms.css]
 newSuccess:
   stylesheets: [sbtm.css]
-loginSuccess:
-  stylesheets: [sbtm.css]
-projectadminSuccess:
-  stylesheets: [sbtm.css]
-useradminSuccess:
-  stylesheets: [sbtm.css]
-userdetailSuccess:
+editSuccess:
   stylesheets: [sbtm.css]
 showSuccess:
   stylesheets: [sbtm.css]

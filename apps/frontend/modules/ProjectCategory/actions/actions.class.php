@@ -65,7 +65,7 @@ class ProjectCategoryActions extends sfActions
     $this->forward404Unless($project_category = Doctrine_Core::getTable('ProjectCategory')->find(array($request->getParameter('id'))), sprintf('Object project_category does not exist (%s).', $request->getParameter('id')));
     $project_category->delete();
 
-    $this->redirect('ProjectCategory/index');
+    $this->redirect('sbtm/projectadmin');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)

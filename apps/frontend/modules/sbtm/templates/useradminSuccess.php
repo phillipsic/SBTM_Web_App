@@ -33,7 +33,7 @@ function checkAll()
           <th class="sf_admin_text sf_admin_list_th_name">
            Locked
           </th>
-
+          <th id="sf_admin_list_th_actions">Actions</th>
         </tr>
       </thead>
       
@@ -41,14 +41,21 @@ function checkAll()
           <?php foreach ($users as $user): ?>
             <tr class="sf_admin_row odd">
             <td class="sf_admin_text sf_admin_list_td_id">
-            <a href="<?php echo url_for('sbtm/userdetail?id='.$user->getId()) ?>"><?php echo $user->getName() ?></a></td>
+            <a href="<?php echo url_for('login/show?id='.$user->getId()) ?>"><?php echo $user->getName() ?></a></td>
             <td class="sf_admin_text sf_admin_list_td_name">
             <?php echo $user->getEmail() ?></td>
             <td class="sf_admin_text sf_admin_list_td_name">
             <?php echo $user->getRole() ?></td>
             <td class="sf_admin_text sf_admin_list_td_name">
             <?php echo $user->getIslocked() ?></td>
-
+            <td><ul class="sf_admin_td_actions">
+            <li class="sf_admin_action_edit">
+            <a href="<?php echo url_for('login/edit?id='.$user->getId()) ?>">Edit</a>
+            </li>  
+            <li class="sf_admin_action_delete">
+            <?php echo link_to('Delete', 'login/delete?id='.$user->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
+            </li> 
+            </ul>
 
             </td>
           </tr>
@@ -66,7 +73,7 @@ function checkAll()
       <input type="hidden" value="7ff886bdfe2685bcac278e510c309b06" name="_csrf_token">
     <input type="submit" value="go">
 </li-->
-      <li class="sf_admin_action_new"><a href="/frontend_dev.php/login/new">create New User</a></li>    </ul>
+      <li class="sf_admin_action_new"><a href="<?php echo url_for('login/new') ?>">create New User</a></li>    </ul>
     </form>
   </div>
-  <!--a href="<?php echo url_for('sbtm/new') ?>">New</a-->
+

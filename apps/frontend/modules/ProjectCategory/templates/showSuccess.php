@@ -23,4 +23,4 @@
 
 <a href="<?php echo url_for('ProjectCategory/edit?id='.$project_category->getId()) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('ProjectCategory/index') ?>">List</a>
+<a href="<?php echo url_for('sbtm/projectadmin') ?>">Back</a>

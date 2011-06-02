@@ -84,7 +84,7 @@
       <td> | </td>
       <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
       <td> | </td>
-      <td><a href="<?php echo url_for('sbtm/runsession') ?>"><?php echo "Run Session" ?></a></td>
+      <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
         <td> | </td>
       <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
       <div id="job">  
