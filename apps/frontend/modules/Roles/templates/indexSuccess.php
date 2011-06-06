@@ -12,7 +12,7 @@
   <tbody>
     <?php foreach ($roless as $roles): ?>
     <tr>
-      <td><a href="<?php echo url_for('Roles/show?id='.$roles->getId()) ?>"><?php echo $roles->getId() ?></a></td>
+      <td><a href="<?php echo url_for('roles/show?id='.$roles->getId()) ?>"><?php echo $roles->getId() ?></a></td>
       <td><?php echo $roles->getName() ?></td>
       <td><?php echo $roles->getCreatedAt() ?></td>
       <td><?php echo $roles->getUpdatedAt() ?></td>
@@ -21,4 +21,4 @@
   </tbody>
 </table>
 
-  <a href="<?php echo url_for('Roles/new') ?>">New</a>
+  <a href="<?php echo url_for('roles/new') ?>">New</a>

@@ -13,3 +13,5 @@ userdetailSuccess:
   stylesheets: [sbtm.css]
 showSuccess:
   stylesheets: [sbtm.css]
+sessionsSuccess:
+  stylesheets: [sbtm.css]

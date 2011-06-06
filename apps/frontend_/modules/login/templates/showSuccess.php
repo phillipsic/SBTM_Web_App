@@ -22,7 +22,7 @@
     </tr>
     <tr>
       <th>Role:</th>
-      <td><?php echo $logins->getRole() ?></td>
+      <td><?php echo $logins->getRoleId() ?></td>
     </tr>
     <tr>
       <th>Islocked:</th>

@@ -21,6 +21,6 @@
 
 <hr />
 
-<a href="<?php echo url_for('Roles/edit?id='.$roles->getId()) ?>">Edit</a>
+<a href="<?php echo url_for('roles/edit?id='.$roles->getId()) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('Roles/index') ?>">List</a>
+<a href="<?php echo url_for('roles/index') ?>">List</a>

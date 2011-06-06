@@ -3,6 +3,11 @@ ProjectCategory:
   columns:
     name: { type: string(255), notnull: true, unique: true }
 
+Role:
+   actAs: { Timestampable: ~ }
+   columns:
+    name: { type: string(255), notnull: true, unique: true }
+
 Logins:
    actAs: { Timestampable: ~ }
    columns:
@@ -10,12 +15,27 @@ Logins:
     username: { type: string(255), notnull: true, unique: true }
     password: { type: string(255), notnull: true }
     email: { type: string(255), notnull: true }
-    role: { type: string(255), notnull: true}
+    role_id: { type: integer, notnull: true }
     islocked: { type: string(255), notnull: true}
+   relations:
+    Role: { onDelete: CASCADE, local: role_id, foreign: id, foreignAlias: Role } 
 
-Roles:
+   
+Status:
    actAs: { Timestampable: ~ }
    columns:
     name: { type: string(255), notnull: true, unique: true }
     
+Sessions:
+   actAs: { Timestampable: ~ }
+   columns:
+    sessionname: { type: string(255), notnull: true, unique: true }
+    charter: { type: string(255), notnull: true }
+    areas: { type: string(800), notnull: true }
+    testnotes: { type: string(255), notnull: true}
+    ready: { type: string(255), notnull: true}
+    status_id:  { type: integer, notnull: true }
+   relations:
+    Status: { onDelete: CASCADE, local: status_id, foreign: id, foreignAlias: Sessionstatus } 
+
   

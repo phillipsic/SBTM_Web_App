@@ -1,11 +1,12 @@
 <?PHP
 
-$correct_username = 'logmein';
-$what_visitor_typed = 'logmein';
+$myFile = "testFile.txt";
+$fh = fopen($myFile, 'w') or die("can't open file");
+$stringData = "Bobby Bopper\n";
+fwrite($fh, $stringData);
+$stringData = "Tracy Tanner\n";
+fwrite($fh, $stringData);
+fclose($fh);
 
-if ($what_visitor_typed != $correct_username) {
-print("You're not a valid user of this site!");
-}
-else{print("You valid user of this site!");}
 
 ?>

@@ -52,7 +52,7 @@
  
         <?php if ($sf_user->hasFlash('error')): ?>
           <div class="flash_error">
-            <?php $sf_user->getAttributeHolder()->clear();
+            <?php //$sf_user->getAttributeHolder()->clear();
             echo $sf_user->getFlash('error'); ?>
           </div>
         <?php endif ?>
@@ -77,11 +77,14 @@
 </table>
 </div>
 
-<div id="menu">   
+<div id="menu">
+    <?php $admin=$sf_user->getAttribute('adminrole');
+    if ($admin=="Admin"): ?> 
       <td><a href="<?php echo url_for('sbtm/useradmin') ?>"><?php echo "User Admin" ?></a></td>
       <td> | </td>
       <td><a href="<?php echo url_for('sbtm/projectadmin') ?>"><?php echo "Project Admin" ?></a></td>
       <td> | </td>
+      <?php endif ?> 
       <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
       <td> | </td>
       <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
@@ -99,13 +102,7 @@
  
       <div id="footer">
         <div class="content">
-          <!--span class="symfony">
-            <img src="/images/comverse-mini.png" />
-            powered by <a href="http://www.symfony-project.org/">
-            <img src="/images/symfony.gif" alt="symfony framework" />
-            </a>
-          </span-->
-          
+         
         </div>
       </div>
     </div>

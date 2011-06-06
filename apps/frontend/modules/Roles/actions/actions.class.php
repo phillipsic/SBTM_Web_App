@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Roles actions.
+ * roles actions.
  *
  * @package    PQASBTM
- * @subpackage Roles
+ * @subpackage roles
  * @author     PQASBTM
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class RolesActions extends sfActions
+class rolesActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
@@ -63,7 +63,7 @@ class RolesActions extends sfActions
     $this->forward404Unless($roles = Doctrine_Core::getTable('Roles')->find(array($request->getParameter('id'))), sprintf('Object roles does not exist (%s).', $request->getParameter('id')));
     $roles->delete();
 
-    $this->redirect('Roles/index');
+    $this->redirect('roles/index');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -73,7 +73,7 @@ class RolesActions extends sfActions
     {
       $roles = $form->save();
 
-      $this->redirect('Roles/edit?id='.$roles->getId());
+      $this->redirect('roles/edit?id='.$roles->getId());
     }
   }
 }

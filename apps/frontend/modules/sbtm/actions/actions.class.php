@@ -39,6 +39,14 @@ class sbtmActions extends sfActions
       ->createQuery('a')
      ->execute();
   }
+  
+  public function executeSessions(sfWebRequest $request)
+  {
+
+   $this->sessions = Doctrine_Core::getTable('Sessions')
+      ->createQuery('a')
+     ->execute();
+  }
   public function executeUserdetail(sfWebRequest $request)
   {
 
@@ -55,7 +63,6 @@ class sbtmActions extends sfActions
     $this->project = $request->getParameter('project_action');
     $this->getUser()->setAttribute('username', $this->user);
     $this->getUser()->setAttribute('project', $this->project);
-    
     $this->logins = Doctrine_Core::getTable('Logins')
            ->createQuery('l')
            ->where('l.username = ?',$this->user )
@@ -63,11 +70,14 @@ class sbtmActions extends sfActions
     foreach ($this->logins as $login): 
     $dbuser=$login->getUsername();
     $dbpass=$login->getPassword();
+    $dbrole=$login->getRole();    
     endforeach;
+     $this->getUser()->setAttribute('adminrole', $dbrole);
     if($this->user==$dbuser && $this->pass==$dbpass && $this->project != ""){
         $this->getUser()->setAttribute('logindone', 'logindone');
-        if($this->project=="newproject"){
-       $this->redirect('ProjectCategory/new');
+        if($this->project=="newproject" && $dbrole=="Admin"){
+           
+            $this->redirect('ProjectCategory/new');
         }
         
         
@@ -140,6 +150,8 @@ class sbtmActions extends sfActions
       $this->redirect('sbtm/edit?id='.$logins->getId());
     }
   }
+  
+  
   
   
   

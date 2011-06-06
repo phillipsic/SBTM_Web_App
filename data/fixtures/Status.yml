@@ -1,0 +1,8 @@
+Status:
+  todo:
+    name:  Todo
+  submitted:
+    name:  Submitted
+  approved:
+    name:  Approved
+  

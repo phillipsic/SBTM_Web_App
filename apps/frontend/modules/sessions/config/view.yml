@@ -1,0 +1,9 @@
+# apps/frontend/modules/job/config/view.yml
+indexSuccess:
+  stylesheets: [sbtms.css]
+newSuccess:
+  stylesheets: [sbtm.css]
+editSuccess:
+  stylesheets: [sbtm.css]
+showSuccess:
+  stylesheets: [sbtm.css]

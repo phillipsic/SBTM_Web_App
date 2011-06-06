@@ -22,7 +22,7 @@
       <td><?php echo $logins->getUsername() ?></td>
       <td><?php echo $logins->getPassword() ?></td>
       <td><?php echo $logins->getEmail() ?></td>
-      <td><?php echo $logins->getRole() ?></td>
+      <td><?php echo $logins->getRoles() ?></td>
       <td><?php echo $logins->getIslocked() ?></td>
       <td><?php echo $logins->getCreatedAt() ?></td>
       <td><?php echo $logins->getUpdatedAt() ?></td>
