@@ -5,6 +5,7 @@ Sessions:
     areas: DR-2-012-229 - Usage threshold Alerting,Usage threshold Alerting | SUM0200 – Configure Usage Thresholds 
     testnotes: Build Number -
     ready: Yes
+    tester:
     Status: todo
   session2:
     sessionname: et-todo-yymmdd-4-SUM Final Validation of SUM0200-B.ses
@@ -12,4 +13,5 @@ Sessions:
     areas: DR-2-012-229 - Usage threshold Alerting,Usage threshold Alerting | SUM0200 – Configure Usage Thresholds 
     testnotes: Build Number -
     ready: Yes
+    tester:
     Status: todo

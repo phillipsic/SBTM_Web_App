@@ -34,6 +34,7 @@ Sessions:
     areas: { type: string(800), notnull: true }
     testnotes: { type: string(255), notnull: true}
     ready: { type: string(255), notnull: true}
+    tester: { type: string(255)}
     status_id:  { type: integer, notnull: true }
    relations:
     Status: { onDelete: CASCADE, local: status_id, foreign: id, foreignAlias: Sessionstatus } 

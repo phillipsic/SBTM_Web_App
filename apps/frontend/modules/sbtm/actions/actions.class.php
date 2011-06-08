@@ -45,6 +45,7 @@ class sbtmActions extends sfActions
 
    $this->sessions = Doctrine_Core::getTable('Sessions')
       ->createQuery('a')
+           //->where('a.ready=?','yes')
      ->execute();
   }
   public function executeUserdetail(sfWebRequest $request)
@@ -78,6 +79,10 @@ class sbtmActions extends sfActions
         if($this->project=="newproject" && $dbrole=="Admin"){
            
             $this->redirect('ProjectCategory/new');
+        }
+        if($this->project=="newproject" && $dbrole=="User"){
+           
+            $this->redirect('sbtm/index');
         }
         
         

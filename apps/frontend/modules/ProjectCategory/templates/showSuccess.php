@@ -8,14 +8,6 @@
       <th>Name:</th>
       <td><?php echo $project_category->getName() ?></td>
     </tr>
-    <tr>
-      <th>Created at:</th>
-      <td><?php echo $project_category->getCreatedAt() ?></td>
-    </tr>
-    <tr>
-      <th>Updated at:</th>
-      <td><?php echo $project_category->getUpdatedAt() ?></td>
-    </tr>
   </tbody>
 </table>
 

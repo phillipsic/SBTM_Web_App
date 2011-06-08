@@ -28,14 +28,6 @@
       <th>Islocked:</th>
       <td><?php echo $logins->getIslocked() ?></td>
     </tr>
-    <tr>
-      <th>Created at:</th>
-      <td><?php echo $logins->getCreatedAt() ?></td>
-    </tr>
-    <tr>
-      <th>Updated at:</th>
-      <td><?php echo $logins->getUpdatedAt() ?></td>
-    </tr>
   </tbody>
 </table>
 

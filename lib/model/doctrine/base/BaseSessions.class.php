@@ -10,6 +10,7 @@
  * @property string $areas
  * @property string $testnotes
  * @property string $ready
+ * @property string $tester
  * @property integer $status_id
  * @property Status $Status
  * 
@@ -18,6 +19,7 @@
  * @method string   getAreas()       Returns the current record's "areas" value
  * @method string   getTestnotes()   Returns the current record's "testnotes" value
  * @method string   getReady()       Returns the current record's "ready" value
+ * @method string   getTester()      Returns the current record's "tester" value
  * @method integer  getStatusId()    Returns the current record's "status_id" value
  * @method Status   getStatus()      Returns the current record's "Status" value
  * @method Sessions setSessionname() Sets the current record's "sessionname" value
@@ -25,6 +27,7 @@
  * @method Sessions setAreas()       Sets the current record's "areas" value
  * @method Sessions setTestnotes()   Sets the current record's "testnotes" value
  * @method Sessions setReady()       Sets the current record's "ready" value
+ * @method Sessions setTester()      Sets the current record's "tester" value
  * @method Sessions setStatusId()    Sets the current record's "status_id" value
  * @method Sessions setStatus()      Sets the current record's "Status" value
  * 
@@ -62,6 +65,10 @@ abstract class BaseSessions extends sfDoctrineRecord
         $this->hasColumn('ready', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
+             'length' => 255,
+             ));
+        $this->hasColumn('tester', 'string', 255, array(
+             'type' => 'string',
              'length' => 255,
              ));
         $this->hasColumn('status_id', 'integer', null, array(

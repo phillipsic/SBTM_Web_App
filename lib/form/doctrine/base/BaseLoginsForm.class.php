@@ -22,8 +22,8 @@ abstract class BaseLoginsForm extends BaseFormDoctrine
       'email'      => new sfWidgetFormInputText(),
       'role_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Role'), 'add_empty' => false)),
       'islocked'   => new sfWidgetFormInputText(),
-      'created_at' => new sfWidgetFormDateTime(),
-      'updated_at' => new sfWidgetFormDateTime(),
+      //'created_at' => new sfWidgetFormDateTime(),
+      //'updated_at' => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -34,8 +34,8 @@ abstract class BaseLoginsForm extends BaseFormDoctrine
       'email'      => new sfValidatorString(array('max_length' => 255)),
       'role_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Role'))),
       'islocked'   => new sfValidatorString(array('max_length' => 255)),
-      'created_at' => new sfValidatorDateTime(),
-      'updated_at' => new sfValidatorDateTime(),
+      //'created_at' => new sfValidatorDateTime(),
+      //'updated_at' => new sfValidatorDateTime(),
     ));
 
     $this->validatorSchema->setPostValidator(

@@ -22,8 +22,8 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
       'testnotes'   => new sfWidgetFormInputText(),
       'ready'       => new sfWidgetFormInputText(),
       'status_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Status'), 'add_empty' => false)),
-      'created_at'  => new sfWidgetFormDateTime(),
-      'updated_at'  => new sfWidgetFormDateTime(),
+      //'created_at'  => new sfWidgetFormDateTime(),
+      //'updated_at'  => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -34,8 +34,8 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
       'testnotes'   => new sfValidatorString(array('max_length' => 255)),
       'ready'       => new sfValidatorString(array('max_length' => 255)),
       'status_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Status'))),
-      'created_at'  => new sfValidatorDateTime(),
-      'updated_at'  => new sfValidatorDateTime(),
+      //'created_at'  => new sfValidatorDateTime(),
+      //'updated_at'  => new sfValidatorDateTime(),
     ));
 
     $this->validatorSchema->setPostValidator(

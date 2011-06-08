@@ -78,6 +78,15 @@ class sessionsActions extends sfActions
   }
 
   public function executeDownload(sfWebRequest $request) {
+      
+      $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id')));
+      $usertest=$this->getUser()->getAttribute('username');
+      $sessionupdate->setStatusId('3');
+      $sessionupdate->setTester($usertest);
+      $sessionupdate->save();
+      $urlRefresh = "sessions";
+      header("Refresh: 1; URL=\"" . $urlRefresh . "\"");
+            
       $linebreaker="\n";
       $extra="-----------------------------------------------";
       $chart="CHARTER";
@@ -138,6 +147,11 @@ class sessionsActions extends sfActions
 	    $response->sendHttpHeaders();
 	    $response->setContent(file_get_contents('./'.$myFile, true));
             unlink('./'.$myFile);
+            
+            
+
 	    return sfView::NONE;
+            
+            
 	}
 }

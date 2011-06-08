@@ -24,14 +24,7 @@
       <th>Status:</th>
       <td><?php echo $logins->getStatus() ?></td>
     </tr>
-    <tr>
-      <th>Created at:</th>
-      <td><?php echo $logins->getCreatedAt() ?></td>
-    </tr>
-    <tr>
-      <th>Updated at:</th>
-      <td><?php echo $logins->getUpdatedAt() ?></td>
-    </tr>
+
   </tbody>
 </table>
 

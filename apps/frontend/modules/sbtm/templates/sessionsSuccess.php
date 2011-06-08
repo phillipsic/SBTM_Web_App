@@ -13,8 +13,8 @@ function checkAll()
 }
 /* ]]&gt; */
 </script>
-
-
+<?php $admin=$sf_user->getAttribute('adminrole');
+$admin=$sf_user->getAttribute('adminrole');?> 
 <div id="sf_admin_container">
     <form method="post" action="">
     <div class="sf_admin_list">
@@ -34,7 +34,7 @@ function checkAll()
            <th class="sf_admin_date sf_admin_list_th_created_at">
             Created at
            </th>
-           <th id="sf_admin_list_th_actions">Actions</th>
+           <th id="sf_admin_list_th_actions">Tester/Actions</th>
         </tr>
       </thead>
       
@@ -52,15 +52,24 @@ function checkAll()
 
             <td>
             <ul class="sf_admin_td_actions">
+                <?php if ($admin=="Admin"): ?> 
             <li class="sf_admin_action_edit">
             <a href="<?php echo url_for('sessions/edit?id='.$session->getId()) ?>">Edit</a>
             </li>  
             <li class="sf_admin_action_delete">
             <?php echo link_to('Delete', 'sessions/delete?id='.$session->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
             </li> 
+              <?php endif ?>
+            <?php if ($session->getTester()== null){ ?>
             <li class="sf_admin_action_download">
             <a href="<?php echo url_for('sessions/download?id='.$session->getId()) ?>">Download</a>
             </li> 
+            <?php }
+            else{?>
+               <li class="sf_admin_action_download">
+            <?php echo $session->getTester() ?></li> 
+             <?php } ?>
+
             <li class="sf_admin_action_upload">
             <a href="<?php echo url_for('sbtm/upload?id='.$session->getId()) ?>">Upload</a>
             </li> 
@@ -71,9 +80,10 @@ function checkAll()
         </tbody>
     </table>
   </div>
-
+<?php if ($admin=="Admin"): ?> 
     <ul class="sf_admin_actions">
       <li class="sf_admin_action_new"><a href="<?php echo url_for('sessions/new') ?>">Add Session</a></li>    </ul>
+        <?php endif ?>
     </form>
   </div>
 

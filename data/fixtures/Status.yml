@@ -3,6 +3,8 @@ Status:
     name:  Todo
   submitted:
     name:  Submitted
+  running:
+    name:  Running
   approved:
     name:  Approved
   

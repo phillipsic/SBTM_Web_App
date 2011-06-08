@@ -28,14 +28,7 @@
     <th>Status:</th>
       <td><?php echo $sessions->getStatusId() ?></td>
     </tr>
-    <tr>
-      <th>Created at:</th>
-      <td><?php echo $sessions->getCreatedAt() ?></td>
-    </tr>
-    <tr>
-      <th>Updated at:</th>
-      <td><?php echo $sessions->getUpdatedAt() ?></td>
-    </tr>
+
   </tbody>
 </table>
 
