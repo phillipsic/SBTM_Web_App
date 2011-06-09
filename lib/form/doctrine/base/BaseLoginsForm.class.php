@@ -18,7 +18,7 @@ abstract class BaseLoginsForm extends BaseFormDoctrine
       'id'         => new sfWidgetFormInputHidden(),
       'name'       => new sfWidgetFormInputText(),
       'username'   => new sfWidgetFormInputText(),
-      'password'   => new sfWidgetFormInputText(),
+      'password'   => new sfWidgetFormInputPassword(),
       'email'      => new sfWidgetFormInputText(),
       'role_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Role'), 'add_empty' => false)),
       'islocked'   => new sfWidgetFormInputText(),
