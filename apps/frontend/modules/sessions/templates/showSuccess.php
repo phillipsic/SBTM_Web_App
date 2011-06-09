@@ -25,6 +25,10 @@
       <td><?php echo $sessions->getReady() ?></td>
     </tr>
     <tr>
+      <th>Tester:</th>
+      <td><?php echo $sessions->getTester() ?></td>
+    </tr>
+    <tr>
     <th>Status:</th>
       <td><?php echo $sessions->getStatusId() ?></td>
     </tr>

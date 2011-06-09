@@ -18,7 +18,7 @@ abstract class BaseStatusForm extends BaseFormDoctrine
       'id'         => new sfWidgetFormInputHidden(),
       'name'       => new sfWidgetFormInputText(),
       //'created_at' => new sfWidgetFormDateTime(),
-      //'updated_at' => new sfWidgetFormDateTime(),
+     // 'updated_at' => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(

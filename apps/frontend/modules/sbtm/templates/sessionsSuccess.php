@@ -13,6 +13,7 @@ function checkAll()
 }
 /* ]]&gt; */
 </script>
+<?php echo $sf_user->getAttribute('sithik') ?>
 <?php $admin=$sf_user->getAttribute('adminrole');
 $admin=$sf_user->getAttribute('adminrole');?> 
 <div id="sf_admin_container">
@@ -71,7 +72,7 @@ $admin=$sf_user->getAttribute('adminrole');?>
              <?php } ?>
 
             <li class="sf_admin_action_upload">
-            <a href="<?php echo url_for('sbtm/upload?id='.$session->getId()) ?>">Upload</a>
+            <a href="<?php echo url_for('sbtm/uploads?id='.$session->getId()) ?>">Upload</a>
             </li> 
             </ul>
             </td>
@@ -82,7 +83,9 @@ $admin=$sf_user->getAttribute('adminrole');?>
   </div>
 <?php if ($admin=="Admin"): ?> 
     <ul class="sf_admin_actions">
-      <li class="sf_admin_action_new"><a href="<?php echo url_for('sessions/new') ?>">Add Session</a></li>    </ul>
+      <li class="sf_admin_action_new"><a href="<?php echo url_for('sessions/new') ?>">Add Session</a></li> 
+
+      <li class="sf_admin_action_upload"><a href="<?php echo url_for('sessions/uploads') ?>">Upload Sessions</a></li>    </ul>
         <?php endif ?>
     </form>
   </div>

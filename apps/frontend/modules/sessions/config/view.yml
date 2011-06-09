@@ -7,3 +7,5 @@ editSuccess:
   stylesheets: [sbtm.css]
 showSuccess:
   stylesheets: [sbtm.css]
+uploadsSuccess:
+  stylesheets: [sbtm.css]

@@ -154,4 +154,46 @@ class sessionsActions extends sfActions
             
             
 	}
+        
+        
+public function executeUpload(sfWebRequest $request)
+{
+$target_path = "uploads/";
+$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
+
+if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+$myFile = "uploads/sessions.txt";
+$fh = fopen($myFile, 'r');
+while(! feof($fh))
+  {
+$theData = fgets($fh);
+list($sessionname, $charter, $areas,$testnotes,$ready,$tester,$statusid) = split('[&]', $theData);
+$sessioninsert = new Sessions();
+$sessioninsert->setSessionname($sessionname);
+$sessioninsert->setCharter($charter);
+$sessioninsert->setAreas($areas);
+$sessioninsert->setTestnotes($testnotes);
+$sessioninsert->setReady($ready);
+$sessioninsert->setTester($tester);
+$sessioninsert->setStatusId($statusid);
+$sessioninsert->save();
+  }
+fclose($fh);
+
+    
+    $this->getUser()->setAttribute('loadedmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
+} else{
+    $this->getUser()->setAttribute('loadedmessage', 'There was an error uploading the file, please try again! ');
+}
+
+        
+        
+$this->redirect('sbtm/sessions');    
+}
+
+public function executeUploads()
+{
+
+}
+        
 }
