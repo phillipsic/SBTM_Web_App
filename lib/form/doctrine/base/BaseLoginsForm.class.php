@@ -38,10 +38,20 @@ abstract class BaseLoginsForm extends BaseFormDoctrine
       //'updated_at' => new sfValidatorDateTime(),
     ));
 
-    $this->validatorSchema->setPostValidator(
-      new sfValidatorDoctrineUnique(array('model' => 'Logins', 'column' => array('username')))
-    );
 
+
+$this->validatorSchema['password'] = new sfValidatorAnd(array(
+$this->validatorSchema['password'],
+new sfValidatorString(array('max_length' => 25)),
+));
+$this->widgetSchema['password_confirmation'] = new sfWidgetFormInputPassword();
+$this->widgetSchema->setLabel('password_confirmation', 'Password confirm');
+$this->validatorSchema['password_confirmation'] = clone $this->validatorSchema['password'];
+$this->widgetSchema->moveField('password_confirmation', 'after', 'password');
+$this->mergePostValidator(new sfValidatorSchemaCompare('password',
+sfValidatorSchemaCompare::EQUAL, 'password_confirmation',
+array(),
+array('invalid' => 'Passwords do not match.')));
     $this->widgetSchema->setNameFormat('logins[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

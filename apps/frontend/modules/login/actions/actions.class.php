@@ -15,6 +15,8 @@ class loginActions extends sfActions
     $this->loginss = Doctrine_Core::getTable('Logins')
       ->createQuery('a')
       ->execute();
+    
+    
   }
 
   public function executeShow(sfWebRequest $request)
@@ -36,7 +38,7 @@ class loginActions extends sfActions
 
     $this->processForm($request, $this->form);
 
-    //$this->setTemplate('new');
+    $this->setTemplate('new');
     //$this->redirect('sbtm/useradmin');
   }
 
@@ -65,7 +67,7 @@ class loginActions extends sfActions
     $this->forward404Unless($logins = Doctrine_Core::getTable('Logins')->find(array($request->getParameter('id'))), sprintf('Object logins does not exist (%s).', $request->getParameter('id')));
     $logins->delete();
 
-    $this->redirect('login/index');
+    $this->redirect('sbtm/useradmin');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
