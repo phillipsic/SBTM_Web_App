@@ -11,6 +11,7 @@
       <th>Ready</th>
       <th>Tester</th>
       <th>Status</th>
+      <th>Project</th>
       <th>Created at</th>
       <th>Updated at</th>
     </tr>
@@ -26,6 +27,7 @@
       <td><?php echo $sessions->getReady() ?></td>
       <td><?php echo $sessions->getTester() ?></td>
       <td><?php echo $sessions->getStatusId() ?></td>
+      <td><?php echo $sessions->getProjectId() ?></td>
       <td><?php echo $sessions->getCreatedAt() ?></td>
       <td><?php echo $sessions->getUpdatedAt() ?></td>
     </tr>

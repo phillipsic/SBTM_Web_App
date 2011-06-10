@@ -33,6 +33,10 @@
       <td><?php echo $sessions->getStatusId() ?></td>
     </tr>
     <tr>
+      <th>Project:</th>
+      <td><?php echo $sessions->getProjectId() ?></td>
+    </tr>
+    <tr>
       <th>Created at:</th>
       <td><?php echo $sessions->getCreatedAt() ?></td>
     </tr>

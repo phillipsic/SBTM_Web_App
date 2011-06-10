@@ -47,7 +47,7 @@ function checkAll()
             <td class="sf_admin_text sf_admin_list_td_name">
             <?php echo $user->getRole() ?></td>
             <td class="sf_admin_text sf_admin_list_td_name">
-            <?php echo $user->getIslocked() ?></td>
+            <?php if($user->getIslocked()==''){echo 'No';} else{echo 'Yes';} ?></td>
             <td><ul class="sf_admin_td_actions">
             <li class="sf_admin_action_edit">
             <a href="<?php echo url_for('login/edit?id='.$user->getId()) ?>">Edit</a>

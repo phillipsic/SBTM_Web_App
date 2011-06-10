@@ -12,28 +12,34 @@
  * @property string $ready
  * @property string $tester
  * @property integer $status_id
+ * @property integer $project_id
  * @property Status $Status
+ * @property ProjectCategory $ProjectCategory
  * 
- * @method string   getSessionname() Returns the current record's "sessionname" value
- * @method string   getCharter()     Returns the current record's "charter" value
- * @method string   getAreas()       Returns the current record's "areas" value
- * @method string   getTestnotes()   Returns the current record's "testnotes" value
- * @method string   getReady()       Returns the current record's "ready" value
- * @method string   getTester()      Returns the current record's "tester" value
- * @method integer  getStatusId()    Returns the current record's "status_id" value
- * @method Status   getStatus()      Returns the current record's "Status" value
- * @method Sessions setSessionname() Sets the current record's "sessionname" value
- * @method Sessions setCharter()     Sets the current record's "charter" value
- * @method Sessions setAreas()       Sets the current record's "areas" value
- * @method Sessions setTestnotes()   Sets the current record's "testnotes" value
- * @method Sessions setReady()       Sets the current record's "ready" value
- * @method Sessions setTester()      Sets the current record's "tester" value
- * @method Sessions setStatusId()    Sets the current record's "status_id" value
- * @method Sessions setStatus()      Sets the current record's "Status" value
+ * @method string          getSessionname()     Returns the current record's "sessionname" value
+ * @method string          getCharter()         Returns the current record's "charter" value
+ * @method string          getAreas()           Returns the current record's "areas" value
+ * @method string          getTestnotes()       Returns the current record's "testnotes" value
+ * @method string          getReady()           Returns the current record's "ready" value
+ * @method string          getTester()          Returns the current record's "tester" value
+ * @method integer         getStatusId()        Returns the current record's "status_id" value
+ * @method integer         getProjectId()       Returns the current record's "project_id" value
+ * @method Status          getStatus()          Returns the current record's "Status" value
+ * @method ProjectCategory getProjectCategory() Returns the current record's "ProjectCategory" value
+ * @method Sessions        setSessionname()     Sets the current record's "sessionname" value
+ * @method Sessions        setCharter()         Sets the current record's "charter" value
+ * @method Sessions        setAreas()           Sets the current record's "areas" value
+ * @method Sessions        setTestnotes()       Sets the current record's "testnotes" value
+ * @method Sessions        setReady()           Sets the current record's "ready" value
+ * @method Sessions        setTester()          Sets the current record's "tester" value
+ * @method Sessions        setStatusId()        Sets the current record's "status_id" value
+ * @method Sessions        setProjectId()       Sets the current record's "project_id" value
+ * @method Sessions        setStatus()          Sets the current record's "Status" value
+ * @method Sessions        setProjectCategory() Sets the current record's "ProjectCategory" value
  * 
  * @package    PQASBTM
  * @subpackage model
- * @author     PQASBTM
+ * @author     Mohamed Sithik
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseSessions extends sfDoctrineRecord
@@ -75,6 +81,10 @@ abstract class BaseSessions extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
+        $this->hasColumn('project_id', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
     }
 
     public function setUp()
@@ -82,6 +92,11 @@ abstract class BaseSessions extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Status', array(
              'local' => 'status_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('ProjectCategory', array(
+             'local' => 'project_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

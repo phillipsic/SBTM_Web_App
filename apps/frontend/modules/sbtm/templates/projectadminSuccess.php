@@ -31,11 +31,14 @@ function checkAll()
            Name
           </th>
            <th class="sf_admin_date sf_admin_list_th_created_at">
-            Created at
+            Start Date
            </th>
            <th class="sf_admin_date sf_admin_list_th_updated_at">
-            Updated at
+            End Date
            </th>
+           <th class="sf_admin_text sf_admin_list_th_name">
+           Completed Status
+          </th>
           <th id="sf_admin_list_th_actions">Actions</th>
         </tr>
       </thead>
@@ -49,11 +52,13 @@ function checkAll()
             <td class="sf_admin_text sf_admin_list_td_id">
             <a href="<?php echo url_for('ProjectCategory/show?id='.$project->getId()) ?>"><?php echo $project->getId() ?></a></td>
             <td class="sf_admin_text sf_admin_list_td_name">
-            <?php echo $project->getName() ?></td>
-            <td class="sf_admin_date sf_admin_list_td_created_at">
-            <?php echo $project->getCreatedAt() ?></td>
-            <td class="sf_admin_date sf_admin_list_td_updated_at">
-            <?php echo $project->getUpdatedAt() ?></td>
+            <a href="<?php echo url_for('ProjectCategory/show?id='.$project->getId()) ?>"><?php echo $project->getName() ?></a></td>
+            <td class="sf_admin_text sf_admin_list_td_name">
+            <?php echo $project->getStartdate() ?></td>
+            <td class="sf_admin_text sf_admin_list_td_name">
+            <?php echo $project->getEnddate() ?></td>
+            <td class="sf_admin_text sf_admin_list_td_name">
+            <?php if($project->getCompletetag()==''){echo 'No';} else{echo 'Yes';} ?></td>
             <td>
             <ul class="sf_admin_td_actions">
             <li class="sf_admin_action_edit">

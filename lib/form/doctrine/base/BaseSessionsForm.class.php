@@ -23,6 +23,7 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
       'ready'       => new sfWidgetFormInputText(),
       'tester'      => new sfWidgetFormInputText(),
       'status_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Status'), 'add_empty' => false)),
+      'project_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProjectCategory'), 'add_empty' => false)),
       //'created_at'  => new sfWidgetFormDateTime(),
       //'updated_at'  => new sfWidgetFormDateTime(),
     ));
@@ -36,6 +37,7 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
       'ready'       => new sfValidatorString(array('max_length' => 255)),
       'tester'      => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'status_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Status'))),
+      'project_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ProjectCategory'))),
       //'created_at'  => new sfValidatorDateTime(),
       //'updated_at'  => new sfValidatorDateTime(),
     ));

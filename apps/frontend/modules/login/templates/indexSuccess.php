@@ -6,7 +6,7 @@
       <th>Id</th>
       <th>Name</th>
       <th>Username</th>
-      <th>Password</th>
+      <!--th>Password</th-->
       <th>Email</th>
       <th>Role</th>
       <th>Islocked</th>
@@ -20,10 +20,9 @@
       <td><a href="<?php echo url_for('login/show?id='.$logins->getId()) ?>"><?php echo $logins->getId() ?></a></td>
       <td><?php echo $logins->getName() ?></td>
       <td><?php echo $logins->getUsername() ?></td>
-      <td><?php echo $logins->getPassword() ?></td>
       <td><?php echo $logins->getEmail() ?></td>
       <td><?php echo $logins->getRole() ?></td>
-      <td><?php echo $logins->getIslocked() ?></td>
+      <td><?php if($logins->getIslocked()==''){echo 'No';} else{echo 'Yes';} ?></td>
       <td><?php echo $logins->getCreatedAt() ?></td>
       <td><?php echo $logins->getUpdatedAt() ?></td>
     </tr>

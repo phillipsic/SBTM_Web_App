@@ -7,6 +7,8 @@ Sessions:
     ready: Yes
     tester:
     Status: todo
+    ProjectCategory: Drop_1
+    
   session2:
     sessionname: et-todo-yymmdd-4-SUM Final Validation of SUM0200-B.ses
     charter: Final Validation of Configure Usage Thresholds
@@ -15,3 +17,4 @@ Sessions:
     ready: Yes
     tester:
     Status: todo
+    ProjectCategory: Drop_1

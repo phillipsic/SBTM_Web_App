@@ -56,7 +56,7 @@ class loginActions extends sfActions
 
     $this->processForm($request, $this->form);
 
-    //$this->setTemplate('edit');
+    $this->setTemplate('edit');
     //$this->redirect('sbtm/useradmin');
   }
 
@@ -75,6 +75,7 @@ class loginActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
+        
       $logins = $form->save();
 $this->redirect('sbtm/useradmin');
       //$this->redirect('login/edit?id='.$logins->getId());

@@ -28,8 +28,8 @@
   </tbody>
 </table>
 
-<hr />
 
-<a href="<?php echo url_for('sbtm/edit?id='.$logins->getId()) ?>">Edit</a>
+
+<!--a href="<?php echo url_for('sbtm/edit?id='.$logins->getId()) ?>">Edit</a-->
 &nbsp;
 <a href="<?php echo url_for('sbtm/index') ?>">List</a>

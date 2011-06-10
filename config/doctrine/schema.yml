@@ -2,6 +2,9 @@ ProjectCategory:
   actAs: { Timestampable: ~ }
   columns:
     name: { type: string(255), notnull: true, unique: true }
+    startdate: { type: date}
+    enddate: { type: date}
+    completetag: {type: string(255)}
 
 Role:
    actAs: { Timestampable: ~ }
@@ -36,7 +39,9 @@ Sessions:
     ready: { type: string(255), notnull: true}
     tester: { type: string(255)}
     status_id:  { type: integer, notnull: true }
+    project_id:  { type: integer, notnull: true }
    relations:
     Status: { onDelete: CASCADE, local: status_id, foreign: id, foreignAlias: Sessionstatus } 
+    ProjectCategory: { onDelete: CASCADE, local: project_id, foreign: id, foreignAlias: Projectlink } 
 
   

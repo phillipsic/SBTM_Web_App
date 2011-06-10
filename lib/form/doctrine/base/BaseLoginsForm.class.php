@@ -21,8 +21,8 @@ abstract class BaseLoginsForm extends BaseFormDoctrine
       'password'   => new sfWidgetFormInputPassword(),
       'email'      => new sfWidgetFormInputText(),
       'role_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Role'), 'add_empty' => false)),
-      'islocked'   => new sfWidgetFormInputText(),
-      //'created_at' => new sfWidgetFormDateTime(),
+      'islocked'   => new sfWidgetFormInputCheckbox(array('value_attribute_value' => 1)),
+     // 'created_at' => new sfWidgetFormDateTime(),
       //'updated_at' => new sfWidgetFormDateTime(),
     ));
 
@@ -33,7 +33,9 @@ abstract class BaseLoginsForm extends BaseFormDoctrine
       'password'   => new sfValidatorString(array('max_length' => 255)),
       'email'      => new sfValidatorString(array('max_length' => 255)),
       'role_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Role'))),
-      'islocked'   => new sfValidatorString(array('max_length' => 255)),
+      'islocked'   => new sfValidatorBoolean(),
+
+      //new sfValidatorChoice(array('choices' => array('Yes'), 'empty_value' => 'No')),
       //'created_at' => new sfValidatorDateTime(),
       //'updated_at' => new sfValidatorDateTime(),
     ));
