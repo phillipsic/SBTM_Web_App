@@ -1,22 +1,15 @@
 <?php $sf_user->getAttributeHolder()->clear();?>
-<div >
- <table>  
-<thead>
-<tr>
+<div id="sf_admin_container"> 
+<form action="<?php echo url_for('sbtm/login') ?>" method="post">
+<table  >
+    <thead>
+        <tr>
 <th class="sf_admin_text sf_admin_list_th_name">
  SBTM Web Application 
 </th>
-
+<th>
+        </th>
 </tr>
-
- </thead>
-</table>
-</div>
-
-<div > 
-<form action="<?php echo url_for('sbtm/login') ?>" method="post">
-<table>
-    <thead>
     <tr>
         <th>
         <label>UserName :</label>
@@ -36,7 +29,7 @@
 
     <tr> 
         <th>
-            Select project :
+           <label> Select project :</label>
         </th>
     <th class="sf_admin_batch_actions_choice">
     <select name="project_action">
@@ -52,8 +45,9 @@
     
     <tr>
         <th>
-        <input type="submit" value=" Login "/><br />
         </th>
+        <th>        <input type="submit" value=" Login " /><br />
+</th>
     </tr>
     </thead>
 </table>

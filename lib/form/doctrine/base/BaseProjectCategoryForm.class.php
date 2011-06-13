@@ -37,7 +37,7 @@ abstract class BaseProjectCategoryForm extends BaseFormDoctrine
     $this->validatorSchema->setPostValidator(
       new sfValidatorDoctrineUnique(array('model' => 'ProjectCategory', 'column' => array('name')))
     );
-
+    
     $this->widgetSchema->setNameFormat('project_category[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

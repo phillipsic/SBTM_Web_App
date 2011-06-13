@@ -29,7 +29,7 @@ class sbtmActions extends sfActions
 
    $this->project_category = Doctrine_Core::getTable('ProjectCategory')
       ->createQuery('a')
-     ->execute();
+      ->execute();
   }
   
   public function executeUseradmin(sfWebRequest $request)
@@ -42,9 +42,16 @@ class sbtmActions extends sfActions
   
   public function executeSessions(sfWebRequest $request)
   {
-
+      $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid): 
+   $dbprojectID =$projectid->getId();
+endforeach;
    $this->sessions = Doctrine_Core::getTable('Sessions')
       ->createQuery('a')
+           ->where('a.project_id = ?',$dbprojectID)
            //->where('a.ready=?','yes')
      ->execute();
   }
@@ -162,6 +169,13 @@ $target_path = "uploads/";
 $target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
 
 if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+     $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));
+      $usertest=$this->getUser()->getAttribute('username');
+      $sessionupdate->setStatusId('2');
+      $sessionupdate->setTester($usertest);
+      $sessionupdate->save();
+      $urlRefresh = "sessions";
+      header("Refresh: 1; URL=\"" . $urlRefresh . "\"");
     $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
 } else{
     $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
@@ -171,9 +185,9 @@ if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
         
 $this->redirect('sbtm/sessions');    
 }
- public function executeUploads()
+ public function executeUploads(sfWebRequest $request)
 {
-
+$this->getUser()->setAttribute('id',$request->getParameter('id'));
 }
 
 }

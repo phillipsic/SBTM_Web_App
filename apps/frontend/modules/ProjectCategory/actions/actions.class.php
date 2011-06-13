@@ -36,7 +36,7 @@ class ProjectCategoryActions extends sfActions
 
     $this->processForm($request, $this->form);
 
-    //$this->setTemplate('new');
+    $this->setTemplate('new');
     //$this->redirect('sbtm/projectadmin');
   }
 
@@ -74,7 +74,12 @@ class ProjectCategoryActions extends sfActions
     if ($form->isValid())
     {
       $project_category = $form->save();
-     $this->redirect('sbtm/projectadmin');
+
+          $this->getUser()->setAttribute('project',$form->getValue('name'));
+//                   $this->logMessage($val.'sithik'.$form->getValue('name'), 'err');
+  
+
+      $this->redirect('sbtm/projectadmin');
       //$this->redirect('ProjectCategory/edit?id='.$project_category->getId());
     }
   }
