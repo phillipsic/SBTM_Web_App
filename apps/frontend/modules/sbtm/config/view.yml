@@ -17,3 +17,16 @@ sessionsSuccess:
   stylesheets: [sbtm.css]
 uploadsSuccess:
   stylesheets: [sbtm.css]
+usermysessionSuccess:
+  stylesheets: [sbtm.css]
+adminmysessionSuccess:
+  stylesheets: [sbtm.css]
+reportingSuccess:
+  stylesheets: [sbtm.css]
+sessionlistSuccess:
+  stylesheets: [sbtm.css]
+burndownchartSuccess:
+  http_metas:
+    Content-type: image/png
+  stylesheets: [sbtm.css]
+  has_layout:     false

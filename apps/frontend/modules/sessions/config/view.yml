@@ -9,3 +9,5 @@ showSuccess:
   stylesheets: [sbtm.css]
 uploadsSuccess:
   stylesheets: [sbtm.css]
+reviewSuccess:
+  stylesheets: [sbtm.css]
