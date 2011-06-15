@@ -1,3 +1,9 @@
+<?php if ($sf_user->hasAttribute('error')): ?> 
+          <div class="flash_error">
+            <?php //$sf_user->getAttributeHolder()->clear();
+            echo $sf_user->getAttribute('error'); ?>
+          </div>
+        <?php endif ?>
 <?php $sf_user->getAttributeHolder()->clear();?>
 <div id="sf_admin_container"> 
 <form action="<?php echo url_for('sbtm/login') ?>" method="post">
@@ -46,7 +52,7 @@
     <tr>
         <th>
         </th>
-        <th>        <input type="submit" value=" Login " /><br />
+        <th>        <input type="submit" value=" Login " ></input><br />
 </th>
     </tr>
     </thead>
