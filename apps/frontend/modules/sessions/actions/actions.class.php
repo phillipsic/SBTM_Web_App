@@ -167,7 +167,7 @@ $fh = fopen($myFile, 'r');
 while(! feof($fh))
   {
 $theData = fgets($fh);
-list($sessionname, $charter, $areas,$testnotes,$ready,$tester,$statusid) = split('[&]', $theData);
+list($sessionname, $charter, $areas,$testnotes,$ready,$tester,$statusid,$projectid) = split('[&]', $theData);
 $sessioninsert = new Sessions();
 $sessioninsert->setSessionname($sessionname);
 $sessioninsert->setCharter($charter);
@@ -176,6 +176,7 @@ $sessioninsert->setTestnotes($testnotes);
 $sessioninsert->setReady($ready);
 $sessioninsert->setTester($tester);
 $sessioninsert->setStatusId($statusid);
+$sessioninsert->setProjectId($projectid);
 $sessioninsert->save();
   }
 fclose($fh);
@@ -195,5 +196,21 @@ public function executeUploads()
 {
 
 }
-        
+ 
+public function executeReview(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+$this->status = Doctrine_Core::getTable('Status')
+      ->createQuery('a')
+      ->execute();
+ $name=sbtm::slugify($request->getParameter('name'));
+ $this->getUser()->setAttribute('filename',$name);
+ $this->getUser()->setAttribute('id',$request->getParameter('id'));
+$myFile = "uploads/{$dirname}/".$name;
+$this->logMessage($myFile, 'err');
+$theData = file_get_contents($myFile);
+$this->getUser()->setAttribute('theData',$theData);
+$this->logMessage($theData, 'err');
+
+}
 }
