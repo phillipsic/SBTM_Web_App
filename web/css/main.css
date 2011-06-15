@@ -166,6 +166,7 @@ body
   padding: 0px 15px;
   font-size: 124%;
   background: url(../images/bg-listheader.gif) no-repeat;
+  width:130px;
   line-height: 32px;
   color: #fff;
 }
