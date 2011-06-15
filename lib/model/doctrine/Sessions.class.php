@@ -16,4 +16,9 @@ public function getFileSlug()
 {
   return sbtm::slugify($this->getSessionname());
 }
+
+public function getFilenmaeSlug($text)
+{
+  return sbtm::slugify($this->$text);
+}
 }
