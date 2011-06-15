@@ -3,4 +3,6 @@ Role:
     name:  Admin
   user:
     name:  User
+  reviewer:
+    name:  Reviewer
   

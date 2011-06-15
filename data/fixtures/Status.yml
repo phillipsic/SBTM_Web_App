@@ -7,4 +7,5 @@ Status:
     name:  Running
   approved:
     name:  Approved
-  
+  finalize:
+    name:  Finalize
