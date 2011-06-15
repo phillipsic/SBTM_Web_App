@@ -18,7 +18,7 @@ function checkAll()
 $admin=$sf_user->getAttribute('adminrole');?> 
 <div id="sf_admin_container">
     <form method="post" action="">
-    <div class="sf_admin_list">
+    <div class="sf_admin_list" style="overflow:auto; width:900px; height: 350px;">
       <table  border="5">
       <thead>
         <tr>
