@@ -40,8 +40,13 @@ Sessions:
     tester: { type: string(255)}
     status_id:  { type: integer, notnull: true }
     project_id:  { type: integer, notnull: true }
+    strategy_id:  { type: integer, notnull: true }
    relations:
     Status: { onDelete: CASCADE, local: status_id, foreign: id, foreignAlias: Sessionstatus } 
     ProjectCategory: { onDelete: CASCADE, local: project_id, foreign: id, foreignAlias: Projectlink } 
+    Strategy: { onDelete: CASCADE, local: strategy_id, foreign: id, foreignAlias: Sessionstrategy } 
 
-  
+Strategy:
+   actAs: { Timestampable: ~ }
+   columns:
+    name: { type: string(255), notnull: true, unique: true }  
