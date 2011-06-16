@@ -68,6 +68,7 @@ class sbtmActions extends sfActions
       ->createQuery('a')
            ->where('a.project_id = ?',$dbprojectID)
            ->andWhereIn('a.status_id',array(1))
+                         ->andWhere('a.ready= ?','Yes')
            //->where('a.ready=?','yes')
      ->execute();
   }
@@ -317,5 +318,11 @@ endforeach;
 
   }
 
-
+public function executeManagesession(sfWebRequest $request)
+  {$this->getUser()->setAttribute('dropid',$request->getparameter('id'));
+     $this->sessions = Doctrine_Core::getTable('Sessions')
+      ->createQuery('a')
+           ->where('a.project_id = ?',$request->getparameter('id'))
+     ->execute();
+  }
 }

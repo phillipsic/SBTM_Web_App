@@ -25,8 +25,10 @@
   </tbody>
 </table>
 </div>
+   
 <ul class="sf_admin_actions">
-      <li class="sf_admin_action_previous"><a href="<?php echo url_for('sbtm/projectadmin') ?>">Back</a></li>    </ul>
+      <li class="sf_admin_action_previous"><a href="<?php echo url_for('sbtm/projectadmin') ?>">Back</a></li>    
+<li class="sf_admin_action_next"><a href="<?php echo url_for('sbtm/managesession?id='.$project_category->getId()) ?>">Manage session</a></li></ul>
     
 
 <!--a href="<?php echo url_for('ProjectCategory/edit?id='.$project_category->getId()) ?>">Edit</a-->
