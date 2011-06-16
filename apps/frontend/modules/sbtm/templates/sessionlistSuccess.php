@@ -20,7 +20,7 @@
           <?php foreach ($approved_sessions as $app): ?>
             <tr class="sf_admin_row odd">
             <td class="sf_admin_text sf_admin_list_td_id">
-            <a href="<?php echo url_for('sessions/show?id='.$app->getId()) ?>"><?php echo $app->getSessionname() ?></a></td>
+            <a href="<?php echo url_for('sessions/sessionreadonly?name='.$app->getSessionname().'&id='.$app->getId()) ?>"><?php echo $app->getSessionname() ?></a></td>
             <td class="sf_admin_text sf_admin_list_td_name">
             <?php echo $app->getTester() ?></td>
             <td class="sf_admin_text sf_admin_list_td_name">

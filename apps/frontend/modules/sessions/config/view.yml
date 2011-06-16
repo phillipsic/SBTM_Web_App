@@ -11,3 +11,5 @@ uploadsSuccess:
   stylesheets: [sbtm.css]
 reviewSuccess:
   stylesheets: [sbtm.css]
+sessionreadonlySuccess:
+  stylesheets: [sbtm.css]

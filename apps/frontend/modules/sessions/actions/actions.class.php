@@ -158,25 +158,48 @@ class sessionsActions extends sfActions
         
 public function executeUpload(sfWebRequest $request)
 {
+    
+    $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
 $target_path = "uploads/";
 $target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
 
 if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
-$myFile = "uploads/sessions.txt";
+$myFile = "uploads/todo.csv";
 $fh = fopen($myFile, 'r');
+$this->strategy_id = Doctrine_Core::getTable('Strategy')
+      ->createQuery('a')
+     ->execute();
+$theData = fgets($fh);
 while(! feof($fh))
   {
 $theData = fgets($fh);
-list($sessionname, $charter, $areas,$testnotes,$ready,$tester,$statusid,$projectid) = split('[&]', $theData);
+list($sessionname, $charter, $areas,$startegy) = split('[,]', $theData);
+
+$this->logMessage('abcde');
+foreach ($this->strategy_id as $strategyid):
+   // $this->logMessage('abcd'.$strategyid->getId());
+    if($strategyid->getName()== trim($startegy)){
+        $this->logMessage($strategyid->getId().'sithik12'.$startegy);
+   $statID =$strategyid->getId();}
+endforeach;
+
 $sessioninsert = new Sessions();
-$sessioninsert->setSessionname($sessionname);
+$sessioninsert->setSessionname($sessionname.'.ses');
 $sessioninsert->setCharter($charter);
 $sessioninsert->setAreas($areas);
-$sessioninsert->setTestnotes($testnotes);
-$sessioninsert->setReady($ready);
-$sessioninsert->setTester($tester);
-$sessioninsert->setStatusId($statusid);
-$sessioninsert->setProjectId($projectid);
+//$sessioninsert->setTestnotes($testnotes);
+$sessioninsert->setReady('No');
+$sessioninsert->setTester('');
+$sessioninsert->setStatusId(1);
+$sessioninsert->setProjectId($dbprojectID);
+$sessioninsert->setStrategyId($statID);
+
 $sessioninsert->save();
   }
 fclose($fh);
@@ -198,6 +221,23 @@ public function executeUploads()
 }
  
 public function executeReview(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+$this->status = Doctrine_Core::getTable('Status')
+      ->createQuery('a')
+      ->execute();
+ $name=sbtm::slugify($request->getParameter('name'));
+ $this->getUser()->setAttribute('filename',$name);
+ $this->getUser()->setAttribute('id',$request->getParameter('id'));
+$myFile = "uploads/{$dirname}/".$name;
+$this->logMessage($myFile, 'err');
+$theData = file_get_contents($myFile);
+$this->getUser()->setAttribute('theData',$theData);
+$this->logMessage($theData, 'err');
+
+}
+
+public function executeSessionreadonly(sfWebRequest $request)
 {
 $dirname = $this->getUser()->getAttribute('project'); 
 $this->status = Doctrine_Core::getTable('Status')

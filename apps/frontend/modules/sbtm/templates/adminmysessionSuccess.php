@@ -40,7 +40,7 @@ $admin=$sf_user->getAttribute('adminrole');?>
           <?php foreach ($sessions as $session): ?>
             <tr class="sf_admin_row odd">
             <td class="sf_admin_text sf_admin_list_td_name">
-            <a href="<?php echo url_for('sessions/show?id='.$session->getId()) ?>"><?php echo $session->getSessionname() ?></a></td>
+            <?php echo $session->getSessionname() ?></td>
             <td class="sf_admin_text sf_admin_list_td_name">
             <?php echo $session->getStatus() ?></td>
             

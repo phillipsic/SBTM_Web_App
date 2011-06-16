@@ -300,6 +300,11 @@ th
   background: url(../images/previous_1.png) no-repeat 0 0;
 }
 
+#sf_admin_container ul li.sf_admin_action_next a
+{
+  background: url(../images/next_1.png) no-repeat 0 0;
+}
+
 #sf_admin_container ul li.sf_admin_action_delete a
 {
   background: url(../images/delete.png) no-repeat 0 0;

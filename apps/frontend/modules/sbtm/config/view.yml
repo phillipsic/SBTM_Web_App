@@ -25,6 +25,8 @@ reportingSuccess:
   stylesheets: [sbtm.css]
 sessionlistSuccess:
   stylesheets: [sbtm.css]
+managesessionSuccess:
+  stylesheets: [sbtm.css]
 burndownchartSuccess:
   http_metas:
     Content-type: image/png
