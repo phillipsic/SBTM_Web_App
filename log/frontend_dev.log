@@ -13357,3 +13357,1184 @@ Jun 16 05:20:47 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 93
 Jun 16 05:20:47 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
 Jun 16 05:20:47 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 237.90 ms (1)
 Jun 16 05:20:47 symfony [info] {sfWebResponse} Send content (57561 o)
+Jun 16 06:48:14 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /sbtm with parameters array (  'module' => 'sbtm',  'action' => 'index',)
+Jun 16 06:48:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 06:48:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 06:48:14 symfony [info] {sbtmActions} Call "sbtmActions->executeIndex()"
+Jun 16 06:48:14 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 06:48:14 symfony [info] {Doctrine_Connection_Mysql} query : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p - ()
+Jun 16 06:48:14 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/indexSuccess.php"
+Jun 16 06:48:14 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:48:14 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:48:14 symfony [info] {main} Get slot "title"
+Jun 16 06:48:14 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 06:48:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 06:48:14 symfony [info] {sfWebDebugLogger} Configuration 45.33 ms (9)
+Jun 16 06:48:14 symfony [info] {sfWebDebugLogger} Factories 164.07 ms (1)
+Jun 16 06:48:14 symfony [info] {sfWebDebugLogger} Action "sbtm/index" 164.04 ms (1)
+Jun 16 06:48:14 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 06:48:14 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/index" 64.11 ms (1)
+Jun 16 06:48:14 symfony [info] {sfWebResponse} Send content (34973 o)
+Jun 16 06:55:50 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/login with parameters array (  'module' => 'sbtm',  'action' => 'login',)
+Jun 16 06:55:50 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 06:55:50 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 06:55:50 symfony [info] {sbtmActions} Call "sbtmActions->executeLogin()"
+Jun 16 06:55:50 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 06:55:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT l.id AS l__id, l.name AS l__name, l.username AS l__username, l.password AS l__password, l.email AS l__email, l.role_id AS l__role_id, l.islocked AS l__islocked, l.created_at AS l__created_at, l.updated_at AS l__updated_at FROM logins l WHERE (l.username = ?) - (Ian)
+Jun 16 06:55:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT r.id AS r__id, r.name AS r__name, r.created_at AS r__created_at, r.updated_at AS r__updated_at FROM role r WHERE (r.id = ?) - (1)
+Jun 16 06:55:50 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/loginSuccess.php"
+Jun 16 06:55:50 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:55:50 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:55:50 symfony [info] {main} Get slot "title"
+Jun 16 06:55:50 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 06:55:50 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 06:55:50 symfony [info] {sfWebDebugLogger} Configuration 29.89 ms (9)
+Jun 16 06:55:50 symfony [info] {sfWebDebugLogger} Factories 320.77 ms (1)
+Jun 16 06:55:50 symfony [info] {sfWebDebugLogger} Action "sbtm/login" 483.08 ms (1)
+Jun 16 06:55:50 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.05 ms (3)
+Jun 16 06:55:50 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/login" 65.33 ms (1)
+Jun 16 06:55:51 symfony [info] {sfWebResponse} Send content (35981 o)
+Jun 16 06:55:53 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/projectadmin with parameters array (  'module' => 'sbtm',  'action' => 'projectadmin',)
+Jun 16 06:55:53 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 06:55:53 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 06:55:53 symfony [info] {sbtmActions} Call "sbtmActions->executeProjectadmin()"
+Jun 16 06:55:53 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 06:55:53 symfony [info] {Doctrine_Connection_Mysql} query : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p - ()
+Jun 16 06:55:53 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/projectadminSuccess.php"
+Jun 16 06:55:53 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:55:53 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:55:53 symfony [info] {main} Get slot "title"
+Jun 16 06:55:53 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 06:55:53 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 06:55:53 symfony [info] {sfWebDebugLogger} Configuration 24.40 ms (9)
+Jun 16 06:55:53 symfony [info] {sfWebDebugLogger} Factories 130.87 ms (1)
+Jun 16 06:55:53 symfony [info] {sfWebDebugLogger} Action "sbtm/projectadmin" 53.37 ms (1)
+Jun 16 06:55:53 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 06:55:53 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/projectadmin" 114.70 ms (1)
+Jun 16 06:55:53 symfony [info] {sfWebResponse} Send content (40020 o)
+Jun 16 06:55:54 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /ProjectCategory/show/id/1 with parameters array (  'module' => 'ProjectCategory',  'action' => 'show',  'id' => '1',)
+Jun 16 06:55:55 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 06:55:55 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 06:55:55 symfony [info] {ProjectCategoryActions} Call "ProjectCategoryActions->executeShow()"
+Jun 16 06:55:55 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 06:55:55 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.id = ?) LIMIT 1 - (1)
+Jun 16 06:55:55 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/ProjectCategory/templates/showSuccess.php"
+Jun 16 06:55:55 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:55:55 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:55:55 symfony [info] {main} Get slot "title"
+Jun 16 06:55:55 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 06:55:55 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 06:55:55 symfony [info] {sfWebDebugLogger} Configuration 90.14 ms (9)
+Jun 16 06:55:55 symfony [info] {sfWebDebugLogger} Factories 155.58 ms (1)
+Jun 16 06:55:55 symfony [info] {sfWebDebugLogger} Action "ProjectCategory/show" 81.22 ms (1)
+Jun 16 06:55:55 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 06:55:55 symfony [info] {sfWebDebugLogger} View "Success" for "ProjectCategory/show" 108.95 ms (1)
+Jun 16 06:55:55 symfony [info] {sfWebResponse} Send content (35740 o)
+Jun 16 06:55:56 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 06:55:56 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 06:55:56 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 06:55:56 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 06:55:56 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 06:55:56 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 06:55:56 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 06:55:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 06:55:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:55:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:55:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:55:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:55:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:55:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:55:57 symfony [notice] {sfWebDebugLogger}  Notice at E:\development\PQASBTM\apps\frontend\modules\sbtm\templates\managesessionSuccess.php on line 71 (Undefined property: sfPHPView::$configuration)
+Jun 16 06:58:46 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 06:58:46 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 06:58:46 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 06:58:46 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 06:58:46 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:58:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:58:46 symfony [notice] {sfWebDebugLogger}  Notice at E:\development\PQASBTM\apps\frontend\modules\sbtm\templates\managesessionSuccess.php on line 83 (Undefined property: sfPHPView::$configuration)
+Jun 16 06:59:20 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 06:59:20 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 06:59:20 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 06:59:20 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 06:59:20 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:59:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 06:59:20 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:59:20 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 06:59:20 symfony [info] {main} Get slot "title"
+Jun 16 06:59:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 06:59:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 06:59:20 symfony [info] {sfWebDebugLogger} Configuration 26.47 ms (9)
+Jun 16 06:59:20 symfony [info] {sfWebDebugLogger} Factories 134.43 ms (1)
+Jun 16 06:59:20 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 75.69 ms (1)
+Jun 16 06:59:20 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 06:59:20 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 229.25 ms (1)
+Jun 16 06:59:20 symfony [info] {sfWebResponse} Send content (55375 o)
+Jun 16 07:28:50 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /ProjectCategory/show/id/1 with parameters array (  'module' => 'ProjectCategory',  'action' => 'show',  'id' => '1',)
+Jun 16 07:28:50 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:28:50 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:28:50 symfony [info] {ProjectCategoryActions} Call "ProjectCategoryActions->executeShow()"
+Jun 16 07:28:50 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:28:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.id = ?) LIMIT 1 - (1)
+Jun 16 07:28:50 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/ProjectCategory/templates/showSuccess.php"
+Jun 16 07:28:50 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:28:50 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:28:50 symfony [info] {main} Get slot "title"
+Jun 16 07:28:50 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:28:50 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:28:50 symfony [info] {sfWebDebugLogger} Configuration 31.86 ms (9)
+Jun 16 07:28:50 symfony [info] {sfWebDebugLogger} Factories 314.64 ms (1)
+Jun 16 07:28:50 symfony [info] {sfWebDebugLogger} Action "ProjectCategory/show" 76.51 ms (1)
+Jun 16 07:28:50 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:28:50 symfony [info] {sfWebDebugLogger} View "Success" for "ProjectCategory/show" 76.86 ms (1)
+Jun 16 07:28:50 symfony [info] {sfWebResponse} Send content (35790 o)
+Jun 16 07:28:51 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:28:52 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:28:52 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:28:52 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:28:52 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:28:52 symfony [notice] {sfWebDebugLogger}  Notice at E:\development\PQASBTM\apps\frontend\modules\sbtm\templates\managesessionSuccess.php on line 42 (Undefined variable: status)
+Jun 16 07:28:52 symfony [warning] {sfWebDebugLogger}  Warning at E:\development\PQASBTM\apps\frontend\modules\sbtm\templates\managesessionSuccess.php on line 42 (Invalid argument supplied for foreach())
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:28:52 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:28:52 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:28:52 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:28:52 symfony [info] {main} Get slot "title"
+Jun 16 07:28:52 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:28:52 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:28:52 symfony [info] {sfWebDebugLogger} Configuration 36.35 ms (9)
+Jun 16 07:28:52 symfony [info] {sfWebDebugLogger} Factories 158.22 ms (1)
+Jun 16 07:28:52 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 95.33 ms (1)
+Jun 16 07:28:52 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.30 ms (9)
+Jun 16 07:28:52 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 272.09 ms (1)
+Jun 16 07:28:52 symfony [info] {sfWebResponse} Send content (66440 o)
+Jun 16 07:29:57 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:29:57 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:29:57 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:29:57 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:29:57 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:29:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:29:57 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:29:57 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:29:57 symfony [info] {main} Get slot "title"
+Jun 16 07:29:57 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:29:57 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:29:57 symfony [info] {sfWebDebugLogger} Configuration 25.86 ms (9)
+Jun 16 07:29:57 symfony [info] {sfWebDebugLogger} Factories 148.27 ms (1)
+Jun 16 07:29:57 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 79.70 ms (1)
+Jun 16 07:29:57 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:29:57 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 224.29 ms (1)
+Jun 16 07:29:58 symfony [info] {sfWebResponse} Send content (55683 o)
+Jun 16 07:30:30 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:30:30 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:30:30 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:30:30 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:30:30 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:30 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:30:30 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:30:30 symfony [info] {main} Get slot "title"
+Jun 16 07:30:30 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:30:30 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:30:30 symfony [info] {sfWebDebugLogger} Configuration 32.41 ms (9)
+Jun 16 07:30:30 symfony [info] {sfWebDebugLogger} Factories 162.35 ms (1)
+Jun 16 07:30:30 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 102.69 ms (1)
+Jun 16 07:30:30 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:30:30 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 231.69 ms (1)
+Jun 16 07:30:30 symfony [info] {sfWebResponse} Send content (55684 o)
+Jun 16 07:30:49 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:30:49 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:30:49 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:30:49 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:30:49 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:30:49 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:30:50 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:30:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:30:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:50 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:30:50 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:30:50 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:30:50 symfony [info] {main} Get slot "title"
+Jun 16 07:30:50 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:30:50 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:30:50 symfony [info] {sfWebDebugLogger} Configuration 37.25 ms (9)
+Jun 16 07:30:50 symfony [info] {sfWebDebugLogger} Factories 169.39 ms (1)
+Jun 16 07:30:50 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 106.78 ms (1)
+Jun 16 07:30:50 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:30:50 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 226.36 ms (1)
+Jun 16 07:30:50 symfony [info] {sfWebResponse} Send content (55698 o)
+Jun 16 07:31:29 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:31:29 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:31:29 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:31:29 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:31:29 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:29 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:31:29 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:31:29 symfony [info] {main} Get slot "title"
+Jun 16 07:31:29 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:31:29 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:31:29 symfony [info] {sfWebDebugLogger} Configuration 31.71 ms (9)
+Jun 16 07:31:29 symfony [info] {sfWebDebugLogger} Factories 142.43 ms (1)
+Jun 16 07:31:29 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 80.82 ms (1)
+Jun 16 07:31:29 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.15 ms (9)
+Jun 16 07:31:29 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 219.83 ms (1)
+Jun 16 07:31:29 symfony [info] {sfWebResponse} Send content (55711 o)
+Jun 16 07:31:46 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:31:46 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:31:46 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:31:46 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:31:46 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:31:46 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:31:46 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:31:46 symfony [info] {main} Get slot "title"
+Jun 16 07:31:47 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:31:47 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:31:47 symfony [info] {sfWebDebugLogger} Configuration 36.69 ms (9)
+Jun 16 07:31:47 symfony [info] {sfWebDebugLogger} Factories 148.16 ms (1)
+Jun 16 07:31:47 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 83.15 ms (1)
+Jun 16 07:31:47 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:31:47 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 224.11 ms (1)
+Jun 16 07:31:47 symfony [info] {sfWebResponse} Send content (55707 o)
+Jun 16 07:32:06 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:32:06 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:32:06 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:32:06 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:32:06 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:06 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:32:06 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:32:06 symfony [info] {main} Get slot "title"
+Jun 16 07:32:06 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:32:06 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:32:06 symfony [info] {sfWebDebugLogger} Configuration 26.16 ms (9)
+Jun 16 07:32:06 symfony [info] {sfWebDebugLogger} Factories 140.28 ms (1)
+Jun 16 07:32:06 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 81.51 ms (1)
+Jun 16 07:32:06 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:32:06 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 226.39 ms (1)
+Jun 16 07:32:06 symfony [info] {sfWebResponse} Send content (55716 o)
+Jun 16 07:32:28 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:32:28 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:32:28 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:32:28 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:32:28 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:28 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:32:28 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:32:28 symfony [info] {main} Get slot "title"
+Jun 16 07:32:28 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:32:28 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:32:28 symfony [info] {sfWebDebugLogger} Configuration 30.70 ms (9)
+Jun 16 07:32:28 symfony [info] {sfWebDebugLogger} Factories 160.07 ms (1)
+Jun 16 07:32:28 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 108.73 ms (1)
+Jun 16 07:32:28 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:32:28 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 223.24 ms (1)
+Jun 16 07:32:28 symfony [info] {sfWebResponse} Send content (55717 o)
+Jun 16 07:32:47 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:32:48 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:32:48 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:32:48 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:32:48 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:48 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:32:48 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:32:48 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:32:48 symfony [info] {main} Get slot "title"
+Jun 16 07:32:48 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:32:48 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:32:48 symfony [info] {sfWebDebugLogger} Configuration 31.08 ms (9)
+Jun 16 07:32:48 symfony [info] {sfWebDebugLogger} Factories 163.17 ms (1)
+Jun 16 07:32:48 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 98.17 ms (1)
+Jun 16 07:32:48 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.15 ms (9)
+Jun 16 07:32:48 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 268.31 ms (1)
+Jun 16 07:32:48 symfony [info] {sfWebResponse} Send content (55716 o)
+Jun 16 07:33:57 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:33:57 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:33:57 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:33:57 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:33:57 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:33:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:33:57 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:33:57 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:33:57 symfony [info] {main} Get slot "title"
+Jun 16 07:33:57 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:33:57 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:33:57 symfony [info] {sfWebDebugLogger} Configuration 29.56 ms (9)
+Jun 16 07:33:57 symfony [info] {sfWebDebugLogger} Factories 139.77 ms (1)
+Jun 16 07:33:57 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 79.62 ms (1)
+Jun 16 07:33:57 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:33:57 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 225.71 ms (1)
+Jun 16 07:33:57 symfony [info] {sfWebResponse} Send content (55830 o)
+Jun 16 07:34:17 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:34:17 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:34:17 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:34:17 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:34:17 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:17 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:17 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:17 symfony [info] {main} Get slot "title"
+Jun 16 07:34:17 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:34:17 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:34:17 symfony [info] {sfWebDebugLogger} Configuration 31.67 ms (9)
+Jun 16 07:34:17 symfony [info] {sfWebDebugLogger} Factories 150.86 ms (1)
+Jun 16 07:34:17 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 84.04 ms (1)
+Jun 16 07:34:17 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:34:17 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 228.39 ms (1)
+Jun 16 07:34:17 symfony [info] {sfWebResponse} Send content (55787 o)
+Jun 16 07:34:19 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:34:20 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:34:20 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:34:20 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:34:20 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:20 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:20 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:20 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:20 symfony [info] {main} Get slot "title"
+Jun 16 07:34:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:34:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:34:20 symfony [info] {sfWebDebugLogger} Configuration 50.38 ms (9)
+Jun 16 07:34:20 symfony [info] {sfWebDebugLogger} Factories 135.71 ms (1)
+Jun 16 07:34:20 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 79.37 ms (1)
+Jun 16 07:34:20 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:34:20 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 219.38 ms (1)
+Jun 16 07:34:20 symfony [info] {sfWebResponse} Send content (55787 o)
+Jun 16 07:34:26 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:34:26 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:34:26 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:34:26 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:34:26 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:34:26 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:34:27 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:34:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:34:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:27 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:27 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:27 symfony [info] {main} Get slot "title"
+Jun 16 07:34:27 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:34:27 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:34:27 symfony [info] {sfWebDebugLogger} Configuration 33.28 ms (9)
+Jun 16 07:34:27 symfony [info] {sfWebDebugLogger} Factories 148.38 ms (1)
+Jun 16 07:34:27 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 80.39 ms (1)
+Jun 16 07:34:27 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.15 ms (9)
+Jun 16 07:34:27 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 220.49 ms (1)
+Jun 16 07:34:27 symfony [info] {sfWebResponse} Send content (55786 o)
+Jun 16 07:34:32 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:34:32 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:34:32 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:34:32 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:34:32 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:34:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:34:33 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:34:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:34:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:33 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:33 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:33 symfony [info] {main} Get slot "title"
+Jun 16 07:34:33 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:34:33 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:34:33 symfony [info] {sfWebDebugLogger} Configuration 33.33 ms (9)
+Jun 16 07:34:33 symfony [info] {sfWebDebugLogger} Factories 146.25 ms (1)
+Jun 16 07:34:33 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 98.02 ms (1)
+Jun 16 07:34:33 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:34:33 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 295.60 ms (1)
+Jun 16 07:34:33 symfony [info] {sfWebResponse} Send content (55723 o)
+Jun 16 07:34:42 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:34:43 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:34:43 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:34:43 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:34:43 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:43 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:34:43 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:43 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:34:43 symfony [info] {main} Get slot "title"
+Jun 16 07:34:43 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:34:43 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:34:43 symfony [info] {sfWebDebugLogger} Configuration 29.51 ms (9)
+Jun 16 07:34:43 symfony [info] {sfWebDebugLogger} Factories 233.03 ms (1)
+Jun 16 07:34:43 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 79.25 ms (1)
+Jun 16 07:34:43 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:34:43 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 219.64 ms (1)
+Jun 16 07:34:43 symfony [info] {sfWebResponse} Send content (55786 o)
+Jun 16 07:36:18 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:36:18 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:36:18 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:36:18 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:36:18 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:18 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:18 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:18 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:18 symfony [info] {main} Get slot "title"
+Jun 16 07:36:18 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:36:18 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:36:18 symfony [info] {sfWebDebugLogger} Configuration 31.30 ms (9)
+Jun 16 07:36:18 symfony [info] {sfWebDebugLogger} Factories 146.16 ms (1)
+Jun 16 07:36:18 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 97.18 ms (1)
+Jun 16 07:36:18 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:36:18 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 219.94 ms (1)
+Jun 16 07:36:18 symfony [info] {sfWebResponse} Send content (55824 o)
+Jun 16 07:36:20 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sessions/edit/id/1 with parameters array (  'module' => 'sessions',  'action' => 'edit',  'id' => '1',)
+Jun 16 07:36:21 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:36:21 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:36:21 symfony [info] {sessionsActions} Call "sessionsActions->executeEdit()"
+Jun 16 07:36:21 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:36:21 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (1)
+Jun 16 07:36:21 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sessions/templates/editSuccess.php"
+Jun 16 07:36:21 symfony [info] {sfPartialView} Render "E:\development\PQASBTM\apps\frontend\modules/sessions/templates/_form.php"
+Jun 16 07:36:21 symfony [info] {Doctrine_Connection_Mysql} query : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s - ()
+Jun 16 07:36:21 symfony [info] {Doctrine_Connection_Mysql} query : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p - ()
+Jun 16 07:36:21 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:21 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:21 symfony [info] {main} Get slot "title"
+Jun 16 07:36:21 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:36:21 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:36:21 symfony [info] {sfWebDebugLogger} Configuration 65.97 ms (9)
+Jun 16 07:36:21 symfony [info] {sfWebDebugLogger} Factories 143.18 ms (1)
+Jun 16 07:36:21 symfony [info] {sfWebDebugLogger} Action "sessions/edit" 242.79 ms (1)
+Jun 16 07:36:21 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.06 ms (4)
+Jun 16 07:36:21 symfony [info] {sfWebDebugLogger} View "Success" for "sessions/edit" 206.97 ms (1)
+Jun 16 07:36:21 symfony [info] {sfWebDebugLogger} Partial "sessions/_form" 53.38 ms (1)
+Jun 16 07:36:21 symfony [info] {sfWebResponse} Send content (46758 o)
+Jun 16 07:36:23 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/sessions with parameters array (  'module' => 'sbtm',  'action' => 'sessions',)
+Jun 16 07:36:24 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:36:24 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:36:24 symfony [info] {sbtmActions} Call "sbtmActions->executeSessions()"
+Jun 16 07:36:24 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:36:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.name = ?) - (Drop 1)
+Jun 16 07:36:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ? AND s.status_id IN (?) AND s.ready = ?) - (1, 1, Yes)
+Jun 16 07:36:24 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/sessionsSuccess.php"
+Jun 16 07:36:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:24 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:24 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:24 symfony [info] {main} Get slot "title"
+Jun 16 07:36:24 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:36:24 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:36:24 symfony [info] {sfWebDebugLogger} Configuration 24.94 ms (9)
+Jun 16 07:36:24 symfony [info] {sfWebDebugLogger} Factories 136.89 ms (1)
+Jun 16 07:36:24 symfony [info] {sfWebDebugLogger} Action "sbtm/sessions" 118.71 ms (1)
+Jun 16 07:36:24 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.07 ms (4)
+Jun 16 07:36:24 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/sessions" 117.87 ms (1)
+Jun 16 07:36:24 symfony [info] {sfWebResponse} Send content (41513 o)
+Jun 16 07:36:28 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/projectadmin with parameters array (  'module' => 'sbtm',  'action' => 'projectadmin',)
+Jun 16 07:36:28 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:36:28 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:36:28 symfony [info] {sbtmActions} Call "sbtmActions->executeProjectadmin()"
+Jun 16 07:36:28 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:36:28 symfony [info] {Doctrine_Connection_Mysql} query : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p - ()
+Jun 16 07:36:28 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/projectadminSuccess.php"
+Jun 16 07:36:28 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:28 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:28 symfony [info] {main} Get slot "title"
+Jun 16 07:36:28 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:36:28 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:36:28 symfony [info] {sfWebDebugLogger} Configuration 22.49 ms (9)
+Jun 16 07:36:28 symfony [info] {sfWebDebugLogger} Factories 151.52 ms (1)
+Jun 16 07:36:28 symfony [info] {sfWebDebugLogger} Action "sbtm/projectadmin" 56.32 ms (1)
+Jun 16 07:36:28 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:36:28 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/projectadmin" 109.81 ms (1)
+Jun 16 07:36:28 symfony [info] {sfWebResponse} Send content (40069 o)
+Jun 16 07:36:30 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /ProjectCategory/show/id/1 with parameters array (  'module' => 'ProjectCategory',  'action' => 'show',  'id' => '1',)
+Jun 16 07:36:30 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:36:30 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:36:30 symfony [info] {ProjectCategoryActions} Call "ProjectCategoryActions->executeShow()"
+Jun 16 07:36:30 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:36:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.id = ?) LIMIT 1 - (1)
+Jun 16 07:36:30 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/ProjectCategory/templates/showSuccess.php"
+Jun 16 07:36:30 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:30 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:30 symfony [info] {main} Get slot "title"
+Jun 16 07:36:30 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:36:30 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:36:30 symfony [info] {sfWebDebugLogger} Configuration 23.39 ms (9)
+Jun 16 07:36:30 symfony [info] {sfWebDebugLogger} Factories 136.78 ms (1)
+Jun 16 07:36:30 symfony [info] {sfWebDebugLogger} Action "ProjectCategory/show" 70.12 ms (1)
+Jun 16 07:36:30 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:36:30 symfony [info] {sfWebDebugLogger} View "Success" for "ProjectCategory/show" 70.15 ms (1)
+Jun 16 07:36:30 symfony [info] {sfWebResponse} Send content (35784 o)
+Jun 16 07:36:32 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:36:32 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:36:32 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:36:32 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:36:32 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:36:32 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:32 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:36:32 symfony [info] {main} Get slot "title"
+Jun 16 07:36:32 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:36:32 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:36:32 symfony [info] {sfWebDebugLogger} Configuration 23.71 ms (9)
+Jun 16 07:36:32 symfony [info] {sfWebDebugLogger} Factories 136.48 ms (1)
+Jun 16 07:36:32 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 79.80 ms (1)
+Jun 16 07:36:32 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:36:32 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 218.01 ms (1)
+Jun 16 07:36:32 symfony [info] {sfWebResponse} Send content (55792 o)
+Jun 16 07:36:39 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sessions/statusready with parameters array (  'module' => 'sessions',  'action' => 'statusready',)
+Jun 16 07:36:39 symfony [info] {sfFrontWebController} Action "sessions/statusready" does not exist
+Jun 16 07:36:39 symfony [err] {sfError404Exception} Action "sessions/statusready" does not exist.
+Jun 16 07:36:39 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
+Jun 16 07:36:39 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:36:39 symfony [info] {sfWebDebugLogger} Configuration 9.50 ms (5)
+Jun 16 07:36:39 symfony [info] {sfWebDebugLogger} Factories 141.45 ms (1)
+Jun 16 07:38:54 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:38:54 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:38:54 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:38:54 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:38:54 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:38:54 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:38:54 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:38:54 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:38:54 symfony [info] {main} Get slot "title"
+Jun 16 07:38:54 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:38:54 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:38:54 symfony [info] {sfWebDebugLogger} Configuration 31.18 ms (9)
+Jun 16 07:38:54 symfony [info] {sfWebDebugLogger} Factories 144.80 ms (1)
+Jun 16 07:38:54 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 82.86 ms (1)
+Jun 16 07:38:54 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:38:54 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 225.78 ms (1)
+Jun 16 07:38:55 symfony [info] {sfWebResponse} Send content (55792 o)
+Jun 16 07:42:30 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sessions/statusready with parameters array (  'module' => 'sessions',  'action' => 'statusready',)
+Jun 16 07:42:30 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:42:30 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:42:30 symfony [info] {sessionsActions} Call "sessionsActions->executeStatusready()"
+Jun 16 07:42:30 symfony [err] {sessionsActions} 1
+Jun 16 07:42:30 symfony [err] {sessionsActions} 2
+Jun 16 07:42:30 symfony [err] {sessionsActions} 3
+Jun 16 07:42:30 symfony [err] {sessionsActions} 4
+Jun 16 07:42:30 symfony [err] {sessionsActions} 5
+Jun 16 07:42:30 symfony [err] {sessionsActions} 6
+Jun 16 07:42:30 symfony [err] {sessionsActions} 7
+Jun 16 07:42:30 symfony [err] {sfValidatorErrorSchema} _csrf_token [Required.]
+Jun 16 07:42:30 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+Jun 16 07:42:30 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:42:30 symfony [info] {sfWebDebugLogger} Configuration 25.81 ms (8)
+Jun 16 07:42:30 symfony [info] {sfWebDebugLogger} Factories 140.71 ms (1)
+Jun 16 07:42:30 symfony [info] {sfWebDebugLogger} Action "sessions/statusready" 156.27 ms (1)
+Jun 16 07:43:03 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:43:03 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:43:03 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:43:03 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:43:03 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:43:03 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:43:03 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:43:03 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:43:03 symfony [info] {main} Get slot "title"
+Jun 16 07:43:03 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:43:03 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:43:03 symfony [info] {sfWebDebugLogger} Configuration 23.45 ms (9)
+Jun 16 07:43:03 symfony [info] {sfWebDebugLogger} Factories 132.60 ms (1)
+Jun 16 07:43:03 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 87.06 ms (1)
+Jun 16 07:43:03 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:43:03 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 228.33 ms (1)
+Jun 16 07:43:03 symfony [info] {sfWebResponse} Send content (55792 o)
+Jun 16 07:43:09 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sessions/statusready with parameters array (  'module' => 'sessions',  'action' => 'statusready',)
+Jun 16 07:43:09 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:43:09 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:43:09 symfony [info] {sessionsActions} Call "sessionsActions->executeStatusready()"
+Jun 16 07:43:09 symfony [err] {sessionsActions} 1
+Jun 16 07:43:09 symfony [err] {sessionsActions} 2
+Jun 16 07:43:09 symfony [err] {sessionsActions} 3
+Jun 16 07:43:09 symfony [err] {sessionsActions} 4
+Jun 16 07:43:09 symfony [err] {sessionsActions} 5
+Jun 16 07:43:09 symfony [err] {sessionsActions} 6
+Jun 16 07:43:09 symfony [err] {sessionsActions} 7
+Jun 16 07:43:09 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sessions/templates/statusreadySuccess.php"
+Jun 16 07:43:09 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:43:09 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:43:09 symfony [info] {main} Get slot "title"
+Jun 16 07:43:09 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:43:09 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:43:09 symfony [info] {sfWebDebugLogger} Configuration 21.38 ms (9)
+Jun 16 07:43:09 symfony [info] {sfWebDebugLogger} Factories 132.84 ms (1)
+Jun 16 07:43:09 symfony [info] {sfWebDebugLogger} Action "sessions/statusready" 3.02 ms (1)
+Jun 16 07:43:09 symfony [info] {sfWebDebugLogger} View "Success" for "sessions/statusready" 58.95 ms (1)
+Jun 16 07:43:09 symfony [info] {sfWebResponse} Send content (33314 o)
+Jun 16 07:44:28 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/projectadmin with parameters array (  'module' => 'sbtm',  'action' => 'projectadmin',)
+Jun 16 07:44:28 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:44:28 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:44:28 symfony [info] {sbtmActions} Call "sbtmActions->executeProjectadmin()"
+Jun 16 07:44:28 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:44:28 symfony [info] {Doctrine_Connection_Mysql} query : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p - ()
+Jun 16 07:44:28 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/projectadminSuccess.php"
+Jun 16 07:44:28 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:44:28 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:44:28 symfony [info] {main} Get slot "title"
+Jun 16 07:44:28 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:44:28 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:44:28 symfony [info] {sfWebDebugLogger} Configuration 38.95 ms (9)
+Jun 16 07:44:28 symfony [info] {sfWebDebugLogger} Factories 132.14 ms (1)
+Jun 16 07:44:28 symfony [info] {sfWebDebugLogger} Action "sbtm/projectadmin" 59.18 ms (1)
+Jun 16 07:44:28 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:44:28 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/projectadmin" 106.58 ms (1)
+Jun 16 07:44:28 symfony [info] {sfWebResponse} Send content (40076 o)
+Jun 16 07:44:30 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /ProjectCategory/show/id/1 with parameters array (  'module' => 'ProjectCategory',  'action' => 'show',  'id' => '1',)
+Jun 16 07:44:30 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:44:30 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:44:30 symfony [info] {ProjectCategoryActions} Call "ProjectCategoryActions->executeShow()"
+Jun 16 07:44:30 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:44:30 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.id = ?) LIMIT 1 - (1)
+Jun 16 07:44:30 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/ProjectCategory/templates/showSuccess.php"
+Jun 16 07:44:30 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:44:30 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:44:30 symfony [info] {main} Get slot "title"
+Jun 16 07:44:30 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:44:30 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:44:30 symfony [info] {sfWebDebugLogger} Configuration 31.44 ms (9)
+Jun 16 07:44:30 symfony [info] {sfWebDebugLogger} Factories 130.77 ms (1)
+Jun 16 07:44:30 symfony [info] {sfWebDebugLogger} Action "ProjectCategory/show" 73.34 ms (1)
+Jun 16 07:44:30 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:44:30 symfony [info] {sfWebDebugLogger} View "Success" for "ProjectCategory/show" 73.85 ms (1)
+Jun 16 07:44:30 symfony [info] {sfWebResponse} Send content (35784 o)
+Jun 16 07:44:31 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:44:32 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:44:32 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:44:32 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:44:32 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:44:32 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:44:32 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:44:32 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:44:32 symfony [info] {main} Get slot "title"
+Jun 16 07:44:32 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:44:32 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:44:32 symfony [info] {sfWebDebugLogger} Configuration 30.67 ms (9)
+Jun 16 07:44:32 symfony [info] {sfWebDebugLogger} Factories 132.37 ms (1)
+Jun 16 07:44:32 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 80.16 ms (1)
+Jun 16 07:44:32 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:44:32 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 223.89 ms (1)
+Jun 16 07:44:32 symfony [info] {sfWebResponse} Send content (55792 o)
+Jun 16 07:44:37 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sessions/statusready with parameters array (  'module' => 'sessions',  'action' => 'statusready',)
+Jun 16 07:44:38 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:44:38 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:44:38 symfony [info] {sessionsActions} Call "sessionsActions->executeStatusready()"
+Jun 16 07:44:38 symfony [err] {sessionsActions} 1
+Jun 16 07:44:38 symfony [err] {sessionsActions} 2
+Jun 16 07:44:38 symfony [err] {sessionsActions} 3
+Jun 16 07:44:38 symfony [err] {sessionsActions} 4
+Jun 16 07:44:38 symfony [err] {sessionsActions} 5
+Jun 16 07:44:38 symfony [err] {sessionsActions} 6
+Jun 16 07:44:38 symfony [err] {sessionsActions} 8
+Jun 16 07:44:38 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sessions/templates/statusreadySuccess.php"
+Jun 16 07:44:38 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:44:38 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:44:38 symfony [info] {main} Get slot "title"
+Jun 16 07:44:38 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:44:38 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:44:38 symfony [info] {sfWebDebugLogger} Configuration 18.08 ms (9)
+Jun 16 07:44:38 symfony [info] {sfWebDebugLogger} Factories 133.02 ms (1)
+Jun 16 07:44:38 symfony [info] {sfWebDebugLogger} Action "sessions/statusready" 3.35 ms (1)
+Jun 16 07:44:38 symfony [info] {sfWebDebugLogger} View "Success" for "sessions/statusready" 64.73 ms (1)
+Jun 16 07:44:38 symfony [info] {sfWebResponse} Send content (33314 o)
+Jun 16 07:49:14 symfony [info] {sfPatternRouting} Match route "show_logout" (/sbtm/username) for /sbtm/username with parameters array (  'module' => 'sbtm',  'action' => 'logout',)
+Jun 16 07:49:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:49:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:49:14 symfony [info] {sbtmActions} Call "sbtmActions->executeLogout()"
+Jun 16 07:49:14 symfony [info] {sfFrontWebController} Redirect to "http://localhost:9090/frontend_dev.php/sbtm"
+Jun 16 07:49:14 symfony [info] {sfWebResponse} Send status "HTTP/1.1 302 Found"
+Jun 16 07:49:14 symfony [info] {sfWebResponse} Send header "Location: http://localhost:9090/frontend_dev.php/sbtm"
+Jun 16 07:49:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:49:14 symfony [info] {sfWebDebugLogger} Configuration 28.00 ms (8)
+Jun 16 07:49:14 symfony [info] {sfWebDebugLogger} Factories 175.43 ms (1)
+Jun 16 07:49:14 symfony [info] {sfWebDebugLogger} Action "sbtm/logout" 3.01 ms (1)
+Jun 16 07:49:14 symfony [info] {sfWebResponse} Send content (114 o)
+Jun 16 07:49:15 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /sbtm with parameters array (  'module' => 'sbtm',  'action' => 'index',)
+Jun 16 07:49:15 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:49:15 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:49:15 symfony [info] {sbtmActions} Call "sbtmActions->executeIndex()"
+Jun 16 07:49:18 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:49:18 symfony [info] {Doctrine_Connection_Mysql} query : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p - ()
+Jun 16 07:49:18 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/indexSuccess.php"
+Jun 16 07:49:18 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:49:18 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:49:18 symfony [info] {main} Get slot "title"
+Jun 16 07:49:18 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:49:18 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:49:18 symfony [info] {sfWebDebugLogger} Configuration 19.12 ms (9)
+Jun 16 07:49:18 symfony [info] {sfWebDebugLogger} Factories 80.39 ms (1)
+Jun 16 07:49:18 symfony [info] {sfWebDebugLogger} Action "sbtm/index" 2942.93 ms (1)
+Jun 16 07:49:18 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:49:18 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/index" 69.97 ms (1)
+Jun 16 07:49:18 symfony [info] {sfWebResponse} Send content (33710 o)
+Jun 16 07:49:56 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/login with parameters array (  'module' => 'sbtm',  'action' => 'login',)
+Jun 16 07:49:56 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:49:56 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:49:56 symfony [info] {sbtmActions} Call "sbtmActions->executeLogin()"
+Jun 16 07:49:57 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:49:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT l.id AS l__id, l.name AS l__name, l.username AS l__username, l.password AS l__password, l.email AS l__email, l.role_id AS l__role_id, l.islocked AS l__islocked, l.created_at AS l__created_at, l.updated_at AS l__updated_at FROM logins l WHERE (l.username = ?) - (Ian)
+Jun 16 07:49:57 symfony [info] {Doctrine_Connection_Statement} execute : SELECT r.id AS r__id, r.name AS r__name, r.created_at AS r__created_at, r.updated_at AS r__updated_at FROM role r WHERE (r.id = ?) - (1)
+Jun 16 07:49:57 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/loginSuccess.php"
+Jun 16 07:49:57 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:49:57 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:49:57 symfony [info] {main} Get slot "title"
+Jun 16 07:49:57 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:49:57 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:49:57 symfony [info] {sfWebDebugLogger} Configuration 20.58 ms (9)
+Jun 16 07:49:57 symfony [info] {sfWebDebugLogger} Factories 106.22 ms (1)
+Jun 16 07:49:57 symfony [info] {sfWebDebugLogger} Action "sbtm/login" 237.55 ms (1)
+Jun 16 07:49:57 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.05 ms (3)
+Jun 16 07:49:57 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/login" 61.25 ms (1)
+Jun 16 07:49:57 symfony [info] {sfWebResponse} Send content (35980 o)
+Jun 16 07:50:00 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/projectadmin with parameters array (  'module' => 'sbtm',  'action' => 'projectadmin',)
+Jun 16 07:50:00 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:50:00 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:50:00 symfony [info] {sbtmActions} Call "sbtmActions->executeProjectadmin()"
+Jun 16 07:50:00 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:50:00 symfony [info] {Doctrine_Connection_Mysql} query : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p - ()
+Jun 16 07:50:00 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/projectadminSuccess.php"
+Jun 16 07:50:00 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:00 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:00 symfony [info] {main} Get slot "title"
+Jun 16 07:50:00 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:50:00 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:50:00 symfony [info] {sfWebDebugLogger} Configuration 17.40 ms (9)
+Jun 16 07:50:00 symfony [info] {sfWebDebugLogger} Factories 139.40 ms (1)
+Jun 16 07:50:00 symfony [info] {sfWebDebugLogger} Action "sbtm/projectadmin" 54.88 ms (1)
+Jun 16 07:50:00 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:50:00 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/projectadmin" 110.40 ms (1)
+Jun 16 07:50:01 symfony [info] {sfWebResponse} Send content (40020 o)
+Jun 16 07:50:02 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /ProjectCategory/show/id/1 with parameters array (  'module' => 'ProjectCategory',  'action' => 'show',  'id' => '1',)
+Jun 16 07:50:02 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:50:02 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:50:02 symfony [info] {ProjectCategoryActions} Call "ProjectCategoryActions->executeShow()"
+Jun 16 07:50:02 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:50:02 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.id = ?) LIMIT 1 - (1)
+Jun 16 07:50:02 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/ProjectCategory/templates/showSuccess.php"
+Jun 16 07:50:02 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:02 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:02 symfony [info] {main} Get slot "title"
+Jun 16 07:50:02 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:50:02 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:50:02 symfony [info] {sfWebDebugLogger} Configuration 31.83 ms (9)
+Jun 16 07:50:02 symfony [info] {sfWebDebugLogger} Factories 135.39 ms (1)
+Jun 16 07:50:02 symfony [info] {sfWebDebugLogger} Action "ProjectCategory/show" 81.36 ms (1)
+Jun 16 07:50:02 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:50:02 symfony [info] {sfWebDebugLogger} View "Success" for "ProjectCategory/show" 69.22 ms (1)
+Jun 16 07:50:02 symfony [info] {sfWebResponse} Send content (35738 o)
+Jun 16 07:50:04 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:50:04 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:50:04 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:50:04 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:50:04 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:04 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:04 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:04 symfony [info] {main} Get slot "title"
+Jun 16 07:50:04 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:50:04 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:50:04 symfony [info] {sfWebDebugLogger} Configuration 19.50 ms (9)
+Jun 16 07:50:04 symfony [info] {sfWebDebugLogger} Factories 114.54 ms (1)
+Jun 16 07:50:04 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 79.32 ms (1)
+Jun 16 07:50:04 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:50:04 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 240.38 ms (1)
+Jun 16 07:50:04 symfony [info] {sfWebResponse} Send content (55769 o)
+Jun 16 07:50:11 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sessions/statusready with parameters array (  'module' => 'sessions',  'action' => 'statusready',)
+Jun 16 07:50:11 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:50:11 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:50:11 symfony [info] {sessionsActions} Call "sessionsActions->executeStatusready()"
+Jun 16 07:50:11 symfony [err] {sessionsActions} 1
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (1)
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (No, 2011-06-16 07:50:12, 1)
+Jun 16 07:50:12 symfony [err] {sessionsActions} 2
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (2)
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (No, 2011-06-16 07:50:12, 2)
+Jun 16 07:50:12 symfony [err] {sessionsActions} 3
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (3)
+Jun 16 07:50:12 symfony [err] {sessionsActions} 4
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (4)
+Jun 16 07:50:12 symfony [err] {sessionsActions} 5
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (5)
+Jun 16 07:50:12 symfony [err] {sessionsActions} 6
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (6)
+Jun 16 07:50:12 symfony [err] {sessionsActions} 7
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (7)
+Jun 16 07:50:12 symfony [info] {sfFrontWebController} Redirect to "http://localhost:9090/frontend_dev.php/sbtm/managesession"
+Jun 16 07:50:12 symfony [info] {sfWebResponse} Send status "HTTP/1.1 302 Found"
+Jun 16 07:50:12 symfony [info] {sfWebResponse} Send header "Location: http://localhost:9090/frontend_dev.php/sbtm/managesession"
+Jun 16 07:50:12 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} Configuration 16.13 ms (8)
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} Factories 131.30 ms (1)
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} Action "sessions/statusready" 419.29 ms (1)
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.16 ms (10)
+Jun 16 07:50:12 symfony [info] {sfWebResponse} Send content (128 o)
+Jun 16 07:50:12 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession with parameters array (  'module' => 'sbtm',  'action' => 'managesession',)
+Jun 16 07:50:12 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:50:12 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:50:12 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:50:12 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - ()
+Jun 16 07:50:12 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:50:12 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:12 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:12 symfony [info] {main} Get slot "title"
+Jun 16 07:50:12 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:50:12 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} Configuration 17.57 ms (9)
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} Factories 114.62 ms (1)
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 91.28 ms (1)
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:50:12 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 61.32 ms (1)
+Jun 16 07:50:12 symfony [info] {sfWebResponse} Send content (37019 o)
+Jun 16 07:50:23 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/projectadmin with parameters array (  'module' => 'sbtm',  'action' => 'projectadmin',)
+Jun 16 07:50:23 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:50:23 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:50:23 symfony [info] {sbtmActions} Call "sbtmActions->executeProjectadmin()"
+Jun 16 07:50:23 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:50:23 symfony [info] {Doctrine_Connection_Mysql} query : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p - ()
+Jun 16 07:50:23 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/projectadminSuccess.php"
+Jun 16 07:50:23 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:23 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:23 symfony [info] {main} Get slot "title"
+Jun 16 07:50:23 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:50:23 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:50:23 symfony [info] {sfWebDebugLogger} Configuration 17.88 ms (9)
+Jun 16 07:50:23 symfony [info] {sfWebDebugLogger} Factories 111.38 ms (1)
+Jun 16 07:50:23 symfony [info] {sfWebDebugLogger} Action "sbtm/projectadmin" 65.54 ms (1)
+Jun 16 07:50:23 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:50:23 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/projectadmin" 113.63 ms (1)
+Jun 16 07:50:23 symfony [info] {sfWebResponse} Send content (40056 o)
+Jun 16 07:50:24 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /ProjectCategory/show/id/1 with parameters array (  'module' => 'ProjectCategory',  'action' => 'show',  'id' => '1',)
+Jun 16 07:50:25 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:50:25 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:50:25 symfony [info] {ProjectCategoryActions} Call "ProjectCategoryActions->executeShow()"
+Jun 16 07:50:25 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:50:25 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.id = ?) LIMIT 1 - (1)
+Jun 16 07:50:25 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/ProjectCategory/templates/showSuccess.php"
+Jun 16 07:50:25 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:25 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:25 symfony [info] {main} Get slot "title"
+Jun 16 07:50:25 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:50:25 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:50:25 symfony [info] {sfWebDebugLogger} Configuration 20.61 ms (9)
+Jun 16 07:50:25 symfony [info] {sfWebDebugLogger} Factories 133.01 ms (1)
+Jun 16 07:50:25 symfony [info] {sfWebDebugLogger} Action "ProjectCategory/show" 79.53 ms (1)
+Jun 16 07:50:25 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (2)
+Jun 16 07:50:25 symfony [info] {sfWebDebugLogger} View "Success" for "ProjectCategory/show" 65.62 ms (1)
+Jun 16 07:50:25 symfony [info] {sfWebResponse} Send content (35766 o)
+Jun 16 07:50:26 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:50:26 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:50:26 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:50:26 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:50:26 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:50:26 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:50:26 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:50:26 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:50:26 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:26 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:50:27 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:27 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:50:27 symfony [info] {main} Get slot "title"
+Jun 16 07:50:27 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:50:27 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:50:27 symfony [info] {sfWebDebugLogger} Configuration 19.68 ms (9)
+Jun 16 07:50:27 symfony [info] {sfWebDebugLogger} Factories 117.23 ms (1)
+Jun 16 07:50:27 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 98.95 ms (1)
+Jun 16 07:50:27 symfony [info] {sfWebDebugLogger} Database (Doctrine) 1.35 ms (9)
+Jun 16 07:50:27 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 212.66 ms (1)
+Jun 16 07:50:27 symfony [info] {sfWebResponse} Send content (55781 o)
+Jun 16 07:53:27 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sessions/statusready with parameters array (  'module' => 'sessions',  'action' => 'statusready',)
+Jun 16 07:53:27 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:53:27 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:53:27 symfony [info] {sessionsActions} Call "sessionsActions->executeStatusready()"
+Jun 16 07:53:27 symfony [err] {sessionsActions} 1
+Jun 16 07:53:27 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:53:27 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (1)
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (Yes, 2011-06-16 07:53:28, 1)
+Jun 16 07:53:28 symfony [err] {sessionsActions} 2
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (2)
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (Yes, 2011-06-16 07:53:28, 2)
+Jun 16 07:53:28 symfony [err] {sessionsActions} 3
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (3)
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (Yes, 2011-06-16 07:53:28, 3)
+Jun 16 07:53:28 symfony [err] {sessionsActions} 4
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (4)
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (Yes, 2011-06-16 07:53:28, 4)
+Jun 16 07:53:28 symfony [err] {sessionsActions} 5
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (5)
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (Yes, 2011-06-16 07:53:28, 5)
+Jun 16 07:53:28 symfony [err] {sessionsActions} 6
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (6)
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (Yes, 2011-06-16 07:53:28, 6)
+Jun 16 07:53:28 symfony [err] {sessionsActions} 7
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (7)
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (Yes, 2011-06-16 07:53:28, 7)
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.name = ?) - (Drop 1)
+Jun 16 07:53:28 symfony [info] {sfFrontWebController} Redirect to "http://localhost:9090/frontend_dev.php/sbtm/managesession/id/1"
+Jun 16 07:53:28 symfony [info] {sfWebResponse} Send status "HTTP/1.1 302 Found"
+Jun 16 07:53:28 symfony [info] {sfWebResponse} Send header "Location: http://localhost:9090/frontend_dev.php/sbtm/managesession/id/1"
+Jun 16 07:53:28 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:53:28 symfony [info] {sfWebDebugLogger} Configuration 33.24 ms (8)
+Jun 16 07:53:28 symfony [info] {sfWebDebugLogger} Factories 136.65 ms (1)
+Jun 16 07:53:28 symfony [info] {sfWebDebugLogger} Action "sessions/statusready" 536.97 ms (1)
+Jun 16 07:53:28 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.26 ms (16)
+Jun 16 07:53:28 symfony [info] {sfWebResponse} Send content (133 o)
+Jun 16 07:53:28 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:53:28 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:53:28 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:53:28 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:53:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:53:28 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:53:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:53:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:29 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:53:29 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:53:29 symfony [info] {main} Get slot "title"
+Jun 16 07:53:29 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:53:29 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:53:29 symfony [info] {sfWebDebugLogger} Configuration 104.37 ms (9)
+Jun 16 07:53:29 symfony [info] {sfWebDebugLogger} Factories 133.48 ms (1)
+Jun 16 07:53:29 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 86.20 ms (1)
+Jun 16 07:53:29 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:53:29 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 352.95 ms (1)
+Jun 16 07:53:29 symfony [info] {sfWebResponse} Send content (55797 o)
+Jun 16 07:53:39 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sessions/statusready with parameters array (  'module' => 'sessions',  'action' => 'statusready',)
+Jun 16 07:53:39 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:53:39 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:53:39 symfony [info] {sessionsActions} Call "sessionsActions->executeStatusready()"
+Jun 16 07:53:39 symfony [err] {sessionsActions} 5
+Jun 16 07:53:39 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:53:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (5)
+Jun 16 07:53:39 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (No, 2011-06-16 07:53:39, 5)
+Jun 16 07:53:39 symfony [err] {sessionsActions} 6
+Jun 16 07:53:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (6)
+Jun 16 07:53:39 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (No, 2011-06-16 07:53:39, 6)
+Jun 16 07:53:39 symfony [err] {sessionsActions} 7
+Jun 16 07:53:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.id = ?) LIMIT 1 - (7)
+Jun 16 07:53:39 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sessions SET ready = ?, updated_at = ? WHERE id = ? - (No, 2011-06-16 07:53:39, 7)
+Jun 16 07:53:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.name = ?) - (Drop 1)
+Jun 16 07:53:39 symfony [info] {sfFrontWebController} Redirect to "http://localhost:9090/frontend_dev.php/sbtm/managesession/id/1"
+Jun 16 07:53:39 symfony [info] {sfWebResponse} Send status "HTTP/1.1 302 Found"
+Jun 16 07:53:39 symfony [info] {sfWebResponse} Send header "Location: http://localhost:9090/frontend_dev.php/sbtm/managesession/id/1"
+Jun 16 07:53:39 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:53:39 symfony [info] {sfWebDebugLogger} Configuration 11.14 ms (8)
+Jun 16 07:53:39 symfony [info] {sfWebDebugLogger} Factories 114.12 ms (1)
+Jun 16 07:53:39 symfony [info] {sfWebDebugLogger} Action "sessions/statusready" 248.41 ms (1)
+Jun 16 07:53:39 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.12 ms (8)
+Jun 16 07:53:39 symfony [info] {sfWebResponse} Send content (133 o)
+Jun 16 07:53:40 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/managesession/id/1 with parameters array (  'module' => 'sbtm',  'action' => 'managesession',  'id' => '1',)
+Jun 16 07:53:40 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:53:40 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:53:40 symfony [info] {sbtmActions} Call "sbtmActions->executeManagesession()"
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ?) - (1)
+Jun 16 07:53:40 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/managesessionSuccess.php"
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (4)
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:40 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:53:40 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:53:40 symfony [info] {main} Get slot "title"
+Jun 16 07:53:40 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:53:40 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:53:40 symfony [info] {sfWebDebugLogger} Configuration 19.46 ms (9)
+Jun 16 07:53:40 symfony [info] {sfWebDebugLogger} Factories 128.90 ms (1)
+Jun 16 07:53:40 symfony [info] {sfWebDebugLogger} Action "sbtm/managesession" 85.55 ms (1)
+Jun 16 07:53:40 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.14 ms (9)
+Jun 16 07:53:40 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/managesession" 211.81 ms (1)
+Jun 16 07:53:40 symfony [info] {sfWebResponse} Send content (55792 o)
+Jun 16 07:53:45 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /sbtm/sessions with parameters array (  'module' => 'sbtm',  'action' => 'sessions',)
+Jun 16 07:53:45 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jun 16 07:53:45 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jun 16 07:53:45 symfony [info] {sbtmActions} Call "sbtmActions->executeSessions()"
+Jun 16 07:53:45 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jun 16 07:53:45 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.name AS p__name, p.startdate AS p__startdate, p.enddate AS p__enddate, p.completetag AS p__completetag, p.created_at AS p__created_at, p.updated_at AS p__updated_at FROM project_category p WHERE (p.name = ?) - (Drop 1)
+Jun 16 07:53:45 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.sessionname AS s__sessionname, s.charter AS s__charter, s.areas AS s__areas, s.testnotes AS s__testnotes, s.ready AS s__ready, s.tester AS s__tester, s.status_id AS s__status_id, s.project_id AS s__project_id, s.strategy_id AS s__strategy_id, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sessions s WHERE (s.project_id = ? AND s.status_id IN (?) AND s.ready = ?) - (1, 1, Yes)
+Jun 16 07:53:45 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\modules/sbtm/templates/sessionsSuccess.php"
+Jun 16 07:53:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:46 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM status s WHERE (s.id = ?) - (1)
+Jun 16 07:53:46 symfony [info] {sfPHPView} Decorate content with "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:53:46 symfony [info] {sfPHPView} Render "E:\development\PQASBTM\apps\frontend\templates/layout.php"
+Jun 16 07:53:46 symfony [info] {main} Get slot "title"
+Jun 16 07:53:46 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jun 16 07:53:46 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jun 16 07:53:46 symfony [info] {sfWebDebugLogger} Configuration 11.10 ms (9)
+Jun 16 07:53:46 symfony [info] {sfWebDebugLogger} Factories 112.14 ms (1)
+Jun 16 07:53:46 symfony [info] {sfWebDebugLogger} Action "sbtm/sessions" 96.79 ms (1)
+Jun 16 07:53:46 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.09 ms (6)
+Jun 16 07:53:46 symfony [info] {sfWebDebugLogger} View "Success" for "sbtm/sessions" 142.77 ms (1)
+Jun 16 07:53:46 symfony [info] {sfWebResponse} Send content (47503 o)

@@ -17,8 +17,8 @@ function checkAll()
 <?php $admin=$sf_user->getAttribute('adminrole');
 $admin=$sf_user->getAttribute('adminrole');?> 
 <div id="sf_admin_container">
-    <form method="post" action="">
-    <div class="sf_admin_list" style="overflow:auto; width:900px; height: 350px;">
+    <form method="post" action="<?php echo url_for('sessions/statusready') ?>">
+    <div class="sf_admin_list" style="overflow:auto; width:900px; height: 33w0px;">
       <table  border="5">
       <thead>
         <tr>
@@ -35,6 +35,8 @@ $admin=$sf_user->getAttribute('adminrole');?>
             Status
            </th>
            <th id="sf_admin_list_th_actions">Tester/Actions</th>
+           
+           
         </tr>
       </thead>
       
@@ -66,10 +68,26 @@ $admin=$sf_user->getAttribute('adminrole');?>
           </tr>
           <?php endforeach; ?> 
         </tbody>
+        
     </table>
-  </div><ul class="sf_admin_actions">
-<?php if ($admin=="Admin"): ?> 
+        
+  </div><div>
+     <th>
+           Select ready Status of sessions
+          </th>
+       <th class="sf_admin_batch_actions_choice">
+    <select name="ready_action">
+    <option value="">Choose an action</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+    </select>
+    </th>
     
+    <th>        <input type="submit" value=" Go " /></th> 
+        
+        </div><ul class="sf_admin_actions">
+<?php if ($admin=="Admin"): ?> 
+   
       <li class="sf_admin_action_new"><a href="<?php echo url_for('sessions/new') ?>">Add Session</a></li> 
 
       <li class="sf_admin_action_upload"><a href="<?php echo url_for('sessions/uploads') ?>">Upload Sessions</a></li>   
@@ -77,5 +95,5 @@ $admin=$sf_user->getAttribute('adminrole');?>
 
         <li class="sf_admin_action_previous"><a href="<?php echo url_for('ProjectCategory/show?id='.$sf_user->getAttribute('dropid')) ?>">Back</a></li>    </ul>
     </form>
-  </div>
+   </div>
 

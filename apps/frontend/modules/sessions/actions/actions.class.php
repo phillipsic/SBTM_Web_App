@@ -65,6 +65,28 @@ class sessionsActions extends sfActions
 
     $this->redirect('sbtm/sessions');
   }
+  
+  public function executeStatusready(sfWebRequest $request)
+  {
+      $this->ready = $request->getParameter('ready_action');
+      
+      for ($i=0; $i<count($_POST['ids']); $i++){
+          $this->logMessage($_POST['ids'][$i], 'err');
+           $this->forward404Unless($sessions = Doctrine_Core::getTable('Sessions')->find(array($_POST['ids'][$i])), sprintf('Object sessions does not exist (%s).', $_POST['ids'][$i]));
+    $sessions->setReady($this->ready);
+    $sessions->save();
+
+}
+    //$request->checkCSRFProtection();
+$this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+$this->redirect('sbtm/managesession?id='.$dbprojectID);
+  }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
