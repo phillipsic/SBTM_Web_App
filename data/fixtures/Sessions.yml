@@ -8,6 +8,7 @@ Sessions:
     tester:
     Status: todo
     ProjectCategory: Drop_1
+    Strategy: acceptance
     
   session2:
     sessionname: et-todo-yymmdd-4-SUM Final Validation of SUM0200-B.ses
@@ -18,3 +19,4 @@ Sessions:
     tester:
     Status: todo
     ProjectCategory: Drop_1
+    Strategy: bugvalidation

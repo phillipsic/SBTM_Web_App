@@ -1,0 +1,9 @@
+Strategy:
+  acceptance:
+    name:  Acceptance
+  exploration:
+    name:  Exploration & Analysis
+  bugvalidation:
+    name:  Bug Validation
+  finalvalidation:
+    name:  Final Validation

@@ -1,21 +1,17 @@
 ProjectCategory:
   Drop_1:
     name:  Drop 1
-    startdate:
-    enddate:
+    startdate: 
+    enddate: 
     completetag:
   Drop_2:
     name:  Drop 2
-    startdate:
-    enddate:
+    startdate: 
+    enddate: 
     completetag:
   Drop_3:
     name:  Drop 3
-    startdate:
-    enddate:
+    startdate: 
+    enddate: 
     completetag:
-  Drop_1:
-    name:  Drop 1
-    startdate:
-    enddate:
-    completetag:
+
