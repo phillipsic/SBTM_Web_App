@@ -1,22 +1,22 @@
 Logins:
   admin_logins:
-    name:  Ian
-    username: Ian
-    password: Ian123
-    email:    Ian.PHILLIPS@sbtm.com
+    name:  Admin
+    username: Admin
+    password: Admin
+    email:    Admin@sbtm.com
     Role: admin
     islocked: ''
   users_logins:
-    name:  mohamedsithik
-    username: mohamedsithik
-    password: mohamed123
-    email:    mohamed.wahithali@sbtm.com
+    name:  User
+    username: User
+    password: User
+    email:   User@sbtm.com
     Role: user
     islocked: ''
   user_logins:
-    name:  Joel
-    username: Joel
-    password: Joel123
-    email:    joel@sbtm.com
-    Role: user
+    name:  Reviewer
+    username: Reviewer
+    password: Reviewer
+    email:    Reviewer@sbtm.com
+    Role: reviewer
     islocked: ''
