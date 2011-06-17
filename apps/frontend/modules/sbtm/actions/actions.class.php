@@ -10,6 +10,7 @@
  */
 class sbtmActions extends sfActions
 {
+
   public function executeIndex(sfWebRequest $request)
   {
     $this->project_category = Doctrine_Core::getTable('ProjectCategory')

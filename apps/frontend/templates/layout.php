@@ -8,39 +8,54 @@
     PQA SBTM - Web based
   <?php endif ?>
 </title>
+      
+<link rel="stylesheet" type="text/css" href="/css/script.css" />
+<script type="text/javascript" src="/js/popup-window.js"></script>
 
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_javascripts() ?>
     <?php include_stylesheets() ?>
   </head>
   <body>
+<div class="sample_popup"     id="popup" style="display: none;">
+<div class="menu_form_header" id="popup_drag">
+<img class="menu_form_exit"   id="popup_exit" src="/images/exit.png" alt="" />
+&nbsp;&nbsp;&nbsp;About
+</div>
+
+<div class="menu_form_body">
+<form action="">
+<table>
+    <?php
+    $fh = fopen("config/version.txt", 'r');
+$theData=null;
+while(! feof($fh))
+  { ?>
+ <tr><th><?php  echo fgets($fh)."\r\n"; ?></th></tr>
+<?php 
+ //$theData += fgets($fh)."\n";
+  //logMessage($theData, 'err'); 
+  }
+
+//$ini_array = file_get_contents("config/version.ini");
+
+?>
+
+</table>
+</form>
+
+</div>
+
+</div>
     <div id="container">
       <div id="header">
         <div class="content">
-          <h1><a href="<?php echo url_for('sbtm/index') ?>">
-            <img src="/images/comverse-mini.png" alt="PQA SBTM - Web based" />
-          </a></h1>
-          <!--div id="sub_header">
-            <div class="post">
-              <h2>Ask for people</h2>
-              <div>
-                <a href="<?php echo url_for('sbtm/index') ?>">Post a Job</a>
-              </div>
-            </div>
- 
-            <div class="search">
-              <h2>Ask for a job</h2>
-              <form action="" method="get">
-                <input type="text" name="keywords"
-                  id="search_keywords" />
-                <input type="submit" value="search" />
-                <div class="help">
-                  Enter some keywords (city, country, position, ...)
+           
+          <h1><a href="<?php echo url_for('sbtm/index') ?>" />
+</h1>
+            <h2> <a href="#" onclick="javascript:popup_show('popup', 'popup_drag', 'popup_exit', 'screen-center',         0,   0)">About Me</a>
+           </h2>
                 </div>
-              </form>
-            </div>
-          </div-->
-        </div>
       </div>
  
       <div id="content">
@@ -76,6 +91,9 @@
  </thead>
 </table>
 </div>
+ 
+
+            
 <div id="job">  
       <h2>Logged In : <?php echo $sf_user->getAttribute('username') ?></h2>
       </div> 

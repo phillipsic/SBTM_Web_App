@@ -1,0 +1,5 @@
+Name of the application : SBTM Web Application
+Version                 : Release_0.1
+Date of release         : 01-July-2011
+Link to github site     : https://github.com/phillipsic/SBTM_Web_App
+Name of Author          : Mohamed Sithik Wahithali
