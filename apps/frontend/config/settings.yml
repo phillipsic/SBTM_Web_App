@@ -33,3 +33,8 @@ all:
 
     # Enable the database manager
     use_database:           true
+    
+  .actions:
+    login_module:    sbtm
+    login_action:    index
+

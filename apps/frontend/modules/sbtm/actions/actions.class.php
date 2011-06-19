@@ -13,9 +13,11 @@ class sbtmActions extends sfActions
 
   public function executeIndex(sfWebRequest $request)
   {
-    $this->project_category = Doctrine_Core::getTable('ProjectCategory')
+     
+     $this->project_category = Doctrine_Core::getTable('ProjectCategory')
       ->createQuery('a')
-     ->execute();
+      ->execute();
+    
 
   }
 
@@ -36,6 +38,7 @@ class sbtmActions extends sfActions
 
   public function executeLogout(sfWebRequest $request)
   {
+      $this->getUser()->setAuthenticated(false);
    $this->getUser()->getAttributeHolder()->clear();
   $this->redirect('sbtm/index');
   }
@@ -105,22 +108,30 @@ class sbtmActions extends sfActions
     if($this->user==$dbuser && $this->pass==$dbpass && $this->project != ""){
         $this->getUser()->setAttribute('logindone', 'logindone');
         if($dblock!=''){
+            $this->getUser()->setAuthenticated(false);
         $this->getUser()->setAttribute('error', 'User '.$this->user.' locked please contact administrator');
         $this->redirect('sbtm/index');
 }
 
         if($this->project=="newproject" && $dbrole=="Admin"){
-
+            $this->getUser()->setAuthenticated(true);
             $this->redirect('ProjectCategory/new');
         }
         if($this->project=="newproject" && $dbrole=="User"){
+            $this->getUser()->setAuthenticated(false);
            $this->getUser()->setAttribute('error', 'User '.$this->user.' not allowed to create a new project');
             $this->redirect('sbtm/index');
         }
+        else{
+
+            $this->getUser()->setAuthenticated(true);
+            
+            }
 
 
         }
     else{
+        $this->getUser()->setAuthenticated(false);
         $this->getUser()->setAttribute('error', 'Username/Password not Valid');
         $this->redirect('sbtm/index');
 
