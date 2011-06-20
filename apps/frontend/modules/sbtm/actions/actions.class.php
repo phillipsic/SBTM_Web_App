@@ -115,6 +115,7 @@ class sbtmActions extends sfActions
 
         if($this->project=="newproject" && $dbrole=="Admin"){
             $this->getUser()->setAuthenticated(true);
+            $this->getUser()->setAttribute('new','yes');
             $this->redirect('ProjectCategory/new');
         }
         if($this->project=="newproject" && $dbrole=="User"){

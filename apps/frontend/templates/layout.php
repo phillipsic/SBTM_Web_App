@@ -75,7 +75,7 @@ while(! feof($fh))
         <div class="content">
             
             
-          <?php if ($sf_user->hasAttribute('logindone')): ?>  
+          <?php if ($sf_user->hasAttribute('logindone') && $sf_user->getAttribute('new')!='yes'): ?>  
             <div id="sf_admin_container">
  <table>  
 <thead>
@@ -123,9 +123,7 @@ while(! feof($fh))
       </div>
  
       <div id="footer">
-        <div class="content">
-         
-        </div>
+        
       </div>
     </div>
   </body>
