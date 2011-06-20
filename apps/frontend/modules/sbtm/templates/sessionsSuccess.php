@@ -71,9 +71,9 @@ $admin=$sf_user->getAttribute('adminrole');?>
             <?php echo $session->getTester() ?></li> 
              <?php } ?>
 
-            <li class="sf_admin_action_upload">
+            <!--li class="sf_admin_action_upload">
             <a href="<?php echo url_for('sbtm/uploads?id='.$session->getId()) ?>">Upload</a>
-            </li> 
+            </li--> 
             </ul>
             </td>
           </tr>

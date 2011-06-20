@@ -66,6 +66,19 @@ class sessionsActions extends sfActions
     $this->redirect('sbtm/sessions');
   }
   
+  
+  public function executeCancel(sfWebRequest $request)
+  {
+    $request->checkCSRFProtection();
+
+    $this->forward404Unless($sessions = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id'))), sprintf('Object sessions does not exist (%s).', $request->getParameter('id')));
+    $sessions->setStatusId('1');
+      $sessions->setTester('');
+      $sessions->save();
+
+    $this->redirect('sbtm/sessions');
+  }
+  
   public function executeStatusready(sfWebRequest $request)
   {
       $this->ready = $request->getParameter('ready_action');
