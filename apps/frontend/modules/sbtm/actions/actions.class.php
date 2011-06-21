@@ -13,9 +13,11 @@ class sbtmActions extends sfActions
 
   public function executeIndex(sfWebRequest $request)
   {
-    $this->project_category = Doctrine_Core::getTable('ProjectCategory')
+     
+     $this->project_category = Doctrine_Core::getTable('ProjectCategory')
       ->createQuery('a')
-     ->execute();
+      ->execute();
+    
 
   }
 
@@ -36,6 +38,7 @@ class sbtmActions extends sfActions
 
   public function executeLogout(sfWebRequest $request)
   {
+      $this->getUser()->setAuthenticated(false);
    $this->getUser()->getAttributeHolder()->clear();
   $this->redirect('sbtm/index');
   }
@@ -105,22 +108,31 @@ class sbtmActions extends sfActions
     if($this->user==$dbuser && $this->pass==$dbpass && $this->project != ""){
         $this->getUser()->setAttribute('logindone', 'logindone');
         if($dblock!=''){
+            $this->getUser()->setAuthenticated(false);
         $this->getUser()->setAttribute('error', 'User '.$this->user.' locked please contact administrator');
         $this->redirect('sbtm/index');
 }
 
         if($this->project=="newproject" && $dbrole=="Admin"){
-
+            $this->getUser()->setAuthenticated(true);
+            $this->getUser()->setAttribute('new','yes');
             $this->redirect('ProjectCategory/new');
         }
         if($this->project=="newproject" && $dbrole=="User"){
+            $this->getUser()->setAuthenticated(false);
            $this->getUser()->setAttribute('error', 'User '.$this->user.' not allowed to create a new project');
             $this->redirect('sbtm/index');
         }
+        else{
+
+            $this->getUser()->setAuthenticated(true);
+            
+            }
 
 
         }
     else{
+        $this->getUser()->setAuthenticated(false);
         $this->getUser()->setAttribute('error', 'Username/Password not Valid');
         $this->redirect('sbtm/index');
 
@@ -201,9 +213,14 @@ class sbtmActions extends sfActions
       
 $target_path = "uploads/{$dirname}/";
 $target_path = $target_path . basename( $_FILES['uploadedfile']['name']);
+$sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));
+//$this->logMessage($sessionupdate->getSessionname().'sithik'.basename( $_FILES['uploadedfile']['name']));
+$name=sbtm::slugify($sessionupdate->getSessionname());
+if($name==basename( $_FILES['uploadedfile']['name'])){
+$this->getUser()->getAttributeHolder()->remove('error');
 
 if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
-     $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));
+     
       $usertest=$this->getUser()->getAttribute('username');
       $sessionupdate->setStatusId('2');
       $sessionupdate->setTester($usertest);
@@ -214,10 +231,15 @@ if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 } else{
     $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
 }
+$this->redirect('sbtm/usermysession');
+}
+else{
+    $this->getUser()->setAttribute('error', 'File name '.basename( $_FILES['uploadedfile']['name']).' not matched with the session');
+   $this->redirect('sbtm/uploads?id='.$this->getUser()->getAttribute('id')); 
+}
 
 
 
-$this->redirect('sbtm/sessions');
 }
  public function executeUploads(sfWebRequest $request)
 {

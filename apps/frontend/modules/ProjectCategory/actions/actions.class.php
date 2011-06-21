@@ -74,8 +74,10 @@ class ProjectCategoryActions extends sfActions
     if ($form->isValid())
     {
       $project_category = $form->save();
-
+if($this->getUser()->getAttribute('new')=='yes'){
           $this->getUser()->setAttribute('project',$form->getValue('name'));
+          $this->getUser()->getAttributeHolder()->remove('new');
+          }
 //                   $this->logMessage($val.'sithik'.$form->getValue('name'), 'err');
   
 

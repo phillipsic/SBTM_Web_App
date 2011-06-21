@@ -48,11 +48,11 @@ $admin=$sf_user->getAttribute('adminrole');?>
             <td>
             <ul class="sf_admin_td_actions">
  <?php if ($admin=="Admin"): ?> 
-            <li class="sf_admin_action_edit">
+            <!--li class="sf_admin_action_edit">
             <a href="<?php echo url_for('sessions/edit?id='.$session->getId()) ?>">Edit</a>
-            </li>  
+            </li-->  
             <li class="sf_admin_action_delete">
-            <?php echo link_to('Delete', 'sessions/delete?id='.$session->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
+            <?php echo link_to('Cancel', 'sessions/cancel?id='.$session->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
             </li> 
               <?php endif ?>
                       
@@ -70,10 +70,10 @@ $admin=$sf_user->getAttribute('adminrole');?>
     </table>
   </div>
 <?php if ($admin=="Admin"): ?> 
-    <ul class="sf_admin_actions">
+    <!--ul class="sf_admin_actions">
       <li class="sf_admin_action_new"><a href="<?php echo url_for('sessions/new') ?>">Add Session</a></li> 
 
-      <li class="sf_admin_action_upload"><a href="<?php echo url_for('sessions/uploads') ?>">Upload Sessions</a></li>    </ul>
+      <li class="sf_admin_action_upload"><a href="<?php echo url_for('sessions/uploads') ?>">Upload Sessions</a></li>    </ul-->
         <?php endif ?>
     </form>
   </div>

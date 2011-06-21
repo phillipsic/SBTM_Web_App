@@ -310,6 +310,16 @@ th
   background: url(../images/delete.png) no-repeat 0 0;
 }
 
+#sf_admin_container ul li.sf_admin_action_stat a
+{
+  background: url(../images/statistics.png) no-repeat 0 0;
+}
+
+#sf_admin_container ul li.sf_admin_action_listing a
+{
+  background: url(../images/listing.png) no-repeat 0 0;
+}
+
 #sf_admin_container ul li.sf_admin_action_list a
 {
   background: url(../images/list.png) no-repeat 0 0;

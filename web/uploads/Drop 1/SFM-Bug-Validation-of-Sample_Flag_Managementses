@@ -1,0 +1,40 @@
+CHARTER
+-----------------------------------------------
+Bug Regression Testing of Sample_Flag_Management
+
+AREAS
+-----------------------------------------------
+DR-2-011-791_Sample_Flag_Management;OS | AIX;ApplicationServer | Weblogic | 10.3;Version | 3.5.90;WEB_Browser | ??;APPS | ??;Roles | ??;ENV | ??;LANG | EN
+
+START
+-----------------------------------------------
+
+
+TESTER
+-----------------------------------------------
+
+
+TASK BREAKDOWN
+-----------------------------------------------
+#DURATION
+#TEST DESIGN AND EXECUTION
+#BUG INVESTIGATION AND REPORTING
+#SESSION SETUP
+#CHARTER VS. OPPORTUNITY
+100/0
+
+DATA FILES
+-----------------------------------------------
+N/A
+
+TEST NOTES
+-----------------------------------------------
+
+
+BUGS
+-----------------------------------------------
+N/A
+
+ISSUES
+-----------------------------------------------
+N/A
