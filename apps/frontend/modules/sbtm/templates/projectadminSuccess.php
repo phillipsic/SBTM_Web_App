@@ -19,6 +19,7 @@ function checkAll()
     <form method="post" action="">
     <div class="sf_admin_list">
       <table  border="5">
+          <?php if ($project_category->count()>0){ ?>
       <thead>
         <tr>
           <th id="sf_admin_list_batch_actions">
@@ -42,7 +43,12 @@ function checkAll()
           <th id="sf_admin_list_th_actions">Actions</th>
         </tr>
       </thead>
-      
+      <?php } else{ ?>  
+      <div class="record_error">
+            <?php //$sf_user->getAttributeHolder()->clear();
+            echo 'No record Found'; ?>
+          </div>
+      <?php }  ?> 
       <tbody>
           <?php foreach ($project_category as $project): ?>
             <tr class="sf_admin_row odd">

@@ -36,7 +36,7 @@ class sessionsActions extends sfActions
 
     $this->processForm($request, $this->form);
 
-    //$this->setTemplate('new');
+    $this->setTemplate('new');
   }
 
   public function executeEdit(sfWebRequest $request)

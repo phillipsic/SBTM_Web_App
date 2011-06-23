@@ -2,6 +2,7 @@
     <form method="post" action="">
     <div class="sf_admin_list" style="overflow:auto; width:770px; height: 200px;">
       <table  border="5">
+          <?php if ($approved_sessions->count()>0){ ?>
       <thead>
         <tr>
           <th class="sf_admin_text sf_admin_list_th_name">
@@ -15,7 +16,13 @@
           </th>          
          </tr>
       </thead>
-      
+       <?php } else{ ?>  
+      <div class="record_error">
+            <?php //$sf_user->getAttributeHolder()->clear();
+            echo 'Approved Sessions ';
+            echo 'No record Found'; ?>
+          </div>
+      <?php }  ?> 
       <tbody>
           <?php foreach ($approved_sessions as $app): ?>
             <tr class="sf_admin_row odd">
@@ -35,6 +42,7 @@
         
         <div class="sf_admin_list" style="overflow:auto; width:770px; height: 200px;">
       <table  border="5">
+          <?php if ($progress_sessions->count()>0){ ?>
       <thead>
         <tr>
           <th class="sf_admin_text sf_admin_list_th_name">
@@ -51,7 +59,13 @@
           </th>          
          </tr>
       </thead>
-      
+      <?php } else{ ?>  
+      <div class="record_error">
+            <?php //$sf_user->getAttributeHolder()->clear();
+            echo 'Unfinised Sessions ';
+            echo 'No record Found'; ?>
+          </div>
+      <?php }  ?> 
       <tbody>
           <?php foreach ($progress_sessions as $prog): ?>
             <tr class="sf_admin_row odd">

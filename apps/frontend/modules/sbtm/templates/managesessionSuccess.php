@@ -20,6 +20,7 @@ $admin=$sf_user->getAttribute('adminrole');?>
     <form method="post" action="<?php echo url_for('sessions/statusready') ?>">
     <div class="sf_admin_list" style="overflow:auto; width:900px; height: 350px;">
       <table  border="5">
+           <?php if ($sessions->count()>0){ ?>
       <thead>
         <tr>
            <th id="sf_admin_list_batch_actions">
@@ -39,7 +40,12 @@ $admin=$sf_user->getAttribute('adminrole');?>
            
         </tr>
       </thead>
-      
+      <?php } else{ ?>  
+      <div class="record_error">
+            <?php //$sf_user->getAttributeHolder()->clear();
+            echo 'No record Found'; ?>
+          </div>
+      <?php }  ?> 
       <tbody>
           <?php foreach ($sessions as $session): ?>
             <tr class="sf_admin_row odd">

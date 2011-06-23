@@ -19,6 +19,7 @@ function checkAll()
     <form method="post" action="">
     <div class="sf_admin_list">
       <table  border="5">
+           <?php if ($users->count()>0){ ?>
       <thead>
         <tr>
           <th class="sf_admin_text sf_admin_list_th_name">
@@ -36,7 +37,12 @@ function checkAll()
           <th id="sf_admin_list_th_actions">Actions</th>
         </tr>
       </thead>
-      
+       <?php } else{ ?>  
+      <div class="record_error">
+            <?php //$sf_user->getAttributeHolder()->clear();
+            echo 'No record Found'; ?>
+          </div>
+      <?php }  ?> 
       <tbody>
           <?php foreach ($users as $user): ?>
             <tr class="sf_admin_row odd">

@@ -20,6 +20,7 @@ $admin=$sf_user->getAttribute('adminrole');?>
     <form method="post" action="">
     <div class="sf_admin_list">
       <table  border="5">
+           <?php if ($sessions->count()>0){ ?>
       <thead>
         <tr>
           
@@ -35,7 +36,12 @@ $admin=$sf_user->getAttribute('adminrole');?>
            </th>
         </tr>
       </thead>
-      
+       <?php } else{ ?>  
+      <div class="record_error">
+            <?php //$sf_user->getAttributeHolder()->clear();
+            echo 'No record Found'; ?>
+          </div>
+      <?php }  ?> 
       <tbody>
           <?php foreach ($sessions as $session): ?>
             <tr class="sf_admin_row odd">
