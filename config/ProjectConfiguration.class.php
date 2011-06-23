@@ -6,7 +6,7 @@ sfCoreAutoload::register();
 class ProjectConfiguration extends sfProjectConfiguration
 {
   public function setup()
-  {
+  {$this->setWebDir('E://development//PQASBTM//web');
     $this->enablePlugins('sfDoctrinePlugin');
   }
 }
