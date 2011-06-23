@@ -321,6 +321,14 @@ em
   color: #fff;
 }
 
+.record_error
+{
+  margin: 3px 0;
+  padding: 7px;
+  background-color: #387C44;
+  color: #fff;
+}
+
 
 #job_history
 {
