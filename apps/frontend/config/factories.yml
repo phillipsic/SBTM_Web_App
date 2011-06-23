@@ -2,6 +2,10 @@
 # http://www.symfony-project.org/reference/1_4/en/05-Factories
 
 prod:
+  response:
+   class: sfWebResponse
+   param:
+    send_http_headers: false
   logger:
     class:   sfNoLogger
     param:
@@ -40,3 +44,13 @@ all:
     param:
       cache_key_use_vary_headers: true
       cache_key_use_host_name:    true
+      
+storage:
+  class: sfSessionStorage
+  param:
+    session_name: sbtm
+    
+user:
+  class: myUser
+  param:
+    timeout: 1800
