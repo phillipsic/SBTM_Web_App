@@ -132,8 +132,12 @@ class sbtmActions extends sfActions
 
         }
     else{
+        if($this->project == ""){
+            $this->getUser()->setAttribute('error', 'Please select the Project');
+        }
+        else {$this->getUser()->setAttribute('error', 'Username/Password not Valid');}
         $this->getUser()->setAuthenticated(false);
-        $this->getUser()->setAttribute('error', 'Username/Password not Valid');
+        
         $this->redirect('sbtm/index');
 
         }
