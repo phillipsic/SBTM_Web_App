@@ -1,6 +1,6 @@
-Session Name,Charter,Areas,Strategy Type
-SFM Acceptance of Sample_Flag_Management3,Acceptance of Sample_Flag_Management,DR-2-011-791_Sample_Flag_Management;OS | AIX;ApplicationServer | Weblogic | 10.3;Version | 3.5.90;WEB_Browser | ??;APPS | ??;Roles | ??;ENV | ??;LANG | EN,Acceptance
-SFM Exploration & Analysis of Sample_Flag_Management3,Exploration & Analysis of Sample_Flag_Management,DR-2-011-791_Sample_Flag_Management;OS | AIX;ApplicationServer | Weblogic | 10.3;Version | 3.5.90;WEB_Browser | ??;APPS | ??;Roles | ??;ENV | ??;LANG | EN,Exploration & Analysis
-SFM Bug Validation of Sample_Flag_Management3,Bug Regression Testing of Sample_Flag_Management,DR-2-011-791_Sample_Flag_Management;OS | AIX;ApplicationServer | Weblogic | 10.3;Version | 3.5.90;WEB_Browser | ??;APPS | ??;Roles | ??;ENV | ??;LANG | EN,Bug Validation
-SFM Final Validation of Sample_Flag_Management3,Final Validation of Sample_Flag_Management,DR-2-011-791_Sample_Flag_Management;OS | AIX;ApplicationServer | Weblogic | 10.3;Version | 3.5.90;WEB_Browser | ??;APPS | ??;Roles | ??;ENV | ??;LANG | EN,Final Validation
-PPM Acceptance of Prepaid promo management3,Acceptance of Prepaid promo management,DR-2-011-276_Prepaid promo management;OS | AIX;ApplicationServer | Weblogic | 10.3;Version | 3.5.90;WEB_Browser | ??;APPS | ??;Roles | ??;ENV | ??;LANG | EN,Acceptance
+Session Name,Charter,Areas
+Session 1, Do some testing in domain 1,area 1; Strategy | Function Testing
+Session 2, Do some testing in domain 2,area 2; Strategy | Functional Analysis
+Session 3, Do some testing in domain 3,area 3; Strategy | Exploration & Analysis
+Session 4, Do some testing in domain 4,area 4; Strategy | Exploration & Analysis
+Session 5, Do some testing in domain 5,area 5; Strategy | Function Testing
