@@ -100,19 +100,24 @@ while(! feof($fh))
 <div id="menu">
     <?php $admin=$sf_user->getAttribute('adminrole');
     if ($admin=="Admin"): ?> 
-    <td><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></td>
-        <td> | </td>
+   
       <td><a href="<?php echo url_for('sbtm/useradmin') ?>"><?php echo "User Admin" ?></a></td>
       <td> | </td>
       <td><a href="<?php echo url_for('sbtm/projectadmin') ?>"><?php echo "Project Admin" ?></a></td>
       <td> | </td>
       <?php endif ?>
+      
+      <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
+      <td> | </td>
        <td><a href="<?php echo url_for('sbtm/usermysession') ?>"><?php echo "My Session" ?></a></td>
         <td> | </td>
-       <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
-      <td> | </td>
-      <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
+         <?php $admin=$sf_user->getAttribute('adminrole');
+    if ($admin=="Admin"): ?> 
+         <td><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></td>
         <td> | </td>
+         <?php endif ?>
+       <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
+              <td> | </td>
       <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
        
 </div>
