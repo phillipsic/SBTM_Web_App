@@ -44,8 +44,15 @@ endforeach;
     $this->forward404Unless($request->isMethod(sfRequest::POST));
 
     $this->form = new SessionsForm();
-    //$this->form->setDefault('status_id',$request->getParameter('id'));
-     //$this->form->setDefault('project_id',$this->getUser()->getAttribute('project'));
+    $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+    $this->form->setDefault('status_id',1);
+     $this->form->setDefault('project_id',$dbprojectID);
     $this->processForm($request, $this->form);
 
     $this->setTemplate('new');
