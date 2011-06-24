@@ -25,9 +25,9 @@ function checkAll()
           <th id="sf_admin_list_batch_actions">
               <input type="checkbox" onclick="checkAll();" id="sf_admin_list_batch_checkbox">
           </th>
-          <th class="sf_admin_text sf_admin_list_th_id">
+          <!--th class="sf_admin_text sf_admin_list_th_id">
             Id
-          </th>
+          </th-->
           <th class="sf_admin_text sf_admin_list_th_name">
            Name
           </th>
@@ -55,8 +55,8 @@ function checkAll()
             <td>
             <input type="checkbox" class="sf_admin_batch_checkbox" value=<?php echo $project->getId() ?> name="ids[]">
             </td>
-            <td class="sf_admin_text sf_admin_list_td_id">
-            <a href="<?php echo url_for('ProjectCategory/show?id='.$project->getId()) ?>"><?php echo $project->getId() ?></a></td>
+            <!--td class="sf_admin_text sf_admin_list_td_id">
+            <a href="<?php echo url_for('ProjectCategory/show?id='.$project->getId()) ?>"><?php echo $project->getId() ?></a></td-->
             <td class="sf_admin_text sf_admin_list_td_name">
             <a href="<?php echo url_for('ProjectCategory/show?id='.$project->getId()) ?>"><?php echo $project->getName() ?></a></td>
             <td class="sf_admin_text sf_admin_list_td_name">

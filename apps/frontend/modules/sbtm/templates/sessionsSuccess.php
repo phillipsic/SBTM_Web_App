@@ -91,7 +91,7 @@ $admin=$sf_user->getAttribute('adminrole');?>
     <ul class="sf_admin_actions">
       <li class="sf_admin_action_new"><a href="<?php echo url_for('sessions/new') ?>">Add Session</a></li> 
 
-      <li class="sf_admin_action_upload"><a href="<?php echo url_for('sessions/uploads') ?>">Upload Sessions</a></li>    </ul>
+      <!--li class="sf_admin_action_upload"><a href="<?php echo url_for('sessions/uploads') ?>">Upload Sessions</a></li-->    </ul>
         <?php endif ?>
     </form>
   </div>
