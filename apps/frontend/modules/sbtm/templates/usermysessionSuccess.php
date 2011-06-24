@@ -53,14 +53,14 @@ $admin=$sf_user->getAttribute('adminrole');?>
 
             <td>
             <ul class="sf_admin_td_actions">
- <?php if ($admin=="Admin"): ?> 
+ 
             <!--li class="sf_admin_action_edit">
             <a href="<?php echo url_for('sessions/edit?id='.$session->getId()) ?>">Edit</a>
             </li-->  
             <li class="sf_admin_action_delete">
             <?php echo link_to('Cancel', 'sessions/cancel?id='.$session->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
             </li> 
-              <?php endif ?>
+              
                       
 
             <li class="sf_admin_action_upload">
