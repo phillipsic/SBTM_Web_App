@@ -12,5 +12,7 @@ class SessionsForm extends BaseSessionsForm
 {
   public function configure()
   {
+     
+        $this->useFields(array('sessionname', 'charter', 'areas', 'testnotes', 'ready', 'tester', 'strategy_id'));  
   }
 }

@@ -27,6 +27,8 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
       'tester'      => new sfWidgetFormInputText(),
       'status_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Status'), 'add_empty' => false)),
       'project_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProjectCategory'), 'add_empty' => false)),
+      'status_id'   =>  new sfWidgetFormInputHidden(),
+       'project_id'  => new sfWidgetFormInputHidden(),
       'strategy_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Strategy'), 'add_empty' => false)),
       //'created_at'  => new sfWidgetFormDateTime(),
      // 'updated_at'  => new sfWidgetFormDateTime(),
@@ -46,7 +48,7 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
       //'created_at'  => new sfValidatorDateTime(),
      // 'updated_at'  => new sfValidatorDateTime(),
     ));
-
+$this->widgetSchema->setHelp('tester', 'You can assign the session to the User, If not leave it blank');
     $this->validatorSchema->setPostValidator(
       new sfValidatorDoctrineUnique(array('model' => 'Sessions', 'column' => array('sessionname')))
     );

@@ -25,7 +25,18 @@ class sessionsActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
+    
     $this->form = new SessionsForm();
+    $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+    $this->form->setDefault('status_id',1);
+     $this->form->setDefault('project_id',$dbprojectID);
+
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -33,7 +44,8 @@ class sessionsActions extends sfActions
     $this->forward404Unless($request->isMethod(sfRequest::POST));
 
     $this->form = new SessionsForm();
-
+    //$this->form->setDefault('status_id',$request->getParameter('id'));
+     //$this->form->setDefault('project_id',$this->getUser()->getAttribute('project'));
     $this->processForm($request, $this->form);
 
     $this->setTemplate('new');
@@ -53,7 +65,7 @@ class sessionsActions extends sfActions
 
     $this->processForm($request, $this->form);
 
-    //$this->setTemplate('edit');
+    $this->setTemplate('edit');
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -103,6 +115,7 @@ $this->redirect('sbtm/managesession?id='.$dbprojectID);
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
+      
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
