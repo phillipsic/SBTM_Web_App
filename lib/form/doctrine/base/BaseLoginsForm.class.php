@@ -31,7 +31,7 @@ abstract class BaseLoginsForm extends BaseFormDoctrine
       'name'       => new sfValidatorString(array('max_length' => 255)),
       'username'   => new sfValidatorString(array('max_length' => 255)),
       'password'   => new sfValidatorString(array('max_length' => 255)),
-      'email'      => new sfValidatorString(array('max_length' => 255)),
+      'email'      => new sfValidatorEmail(array('max_length' => 255)),
       'role_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Role'))),
       'islocked'   => new sfValidatorBoolean(),
 
@@ -41,7 +41,12 @@ abstract class BaseLoginsForm extends BaseFormDoctrine
     ));
 
 
-
+$this->validatorSchema->setPostValidator(
+      new sfValidatorAnd(array(
+        new sfValidatorDoctrineUnique(array('model' => 'Logins', 'column' => array('name'))),
+        new sfValidatorDoctrineUnique(array('model' => 'Logins', 'column' => array('username'))),
+      ))
+    );
 $this->validatorSchema['password'] = new sfValidatorAnd(array(
 $this->validatorSchema['password'],
 new sfValidatorString(array('max_length' => 25)),
@@ -54,6 +59,8 @@ $this->mergePostValidator(new sfValidatorSchemaCompare('password',
 sfValidatorSchemaCompare::EQUAL, 'password_confirmation',
 array(),
 array('invalid' => 'Passwords do not match.')));
+
+
     $this->widgetSchema->setNameFormat('logins[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
