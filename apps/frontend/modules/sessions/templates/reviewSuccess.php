@@ -1,3 +1,5 @@
+<?php $final=$sf_user->getAttribute('final');
+?> 
 <form action="<?php echo url_for('sbtm/reviewsubmit') ?>" method="post">
 <table>
 <thead>
@@ -10,9 +12,10 @@
     <select name="status_action">
     <option value="">Choose an action</option>
     <?php foreach ($status as $stat): 
-    $value=$stat->getName();?> 
+    $value=$stat->getName();
+      if($final=='yes' && ($value == 'Submitted' || $value== 'Finalize')){?> 
     <option value="<?php echo $value?>"><?php echo $stat->getName()?></option>
-    <?php endforeach; ?> 
+    <?php } elseif ($final!='yes') {?><option value="<?php echo $value?>"><?php echo $stat->getName()?></option> <?php }  endforeach; ?> 
     </select>
     </th>
     

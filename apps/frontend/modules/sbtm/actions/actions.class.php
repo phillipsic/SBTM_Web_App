@@ -226,12 +226,13 @@ $this->getUser()->getAttributeHolder()->remove('error');
 if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
      
       $usertest=$this->getUser()->getAttribute('username');
-      $sessionupdate->setStatusId('2');
+      $sessionupdate->setStatusId('5');
       $sessionupdate->setTester($usertest);
       $sessionupdate->save();
       $urlRefresh = "sessions";
       header("Refresh: 1; URL=\"" . $urlRefresh . "\"");
     $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
+    //$this->getUser()->setAttribute('final','final');
 } else{
     $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
 }
