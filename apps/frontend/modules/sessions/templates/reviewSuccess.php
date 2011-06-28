@@ -1,6 +1,35 @@
 <?php $final=$sf_user->getAttribute('final');
 ?> 
-<form action="<?php echo url_for('sbtm/reviewsubmit') ?>" method="post">
+
+<script type='text/javascript'>
+
+function formValidator(){
+	// Make quick references to our fields
+	var status = document.getElementById('status_action');
+	// Check each input in the order that it appears in the form!
+
+				if(madeSelection(status, "Please Choose an action")){
+								return true;
+						}
+
+	
+	
+	return false;
+	
+}
+function madeSelection(elem, helperMsg){
+	if(elem.value == ""){
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+
+</script>
+
+<form action="<?php echo url_for('sbtm/reviewsubmit') ?>" method="post" onsubmit='return formValidator()'>
 <table>
 <thead>
 <tr> 
@@ -9,7 +38,7 @@
     </th>
       
     <th class="sf_admin_batch_actions_choice">
-    <select name="status_action">
+    <select name="status_action" id="status_action">
     <option value="">Choose an action</option>
     <?php foreach ($status as $stat): 
     $value=$stat->getName();
@@ -19,7 +48,7 @@
     </select>
     </th>
     
-    <th>        <input type="submit" value=" Submit " /></th>
+    <th>        <input type="submit" value=" Submit "  /></th>
     </tr>
     </thead>
 </table>
