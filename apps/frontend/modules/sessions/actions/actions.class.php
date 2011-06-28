@@ -122,10 +122,19 @@ $this->redirect('sbtm/managesession?id='.$dbprojectID);
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-      
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+       $params = $request->getParameter($form->getName());
+       $userfilename=$params['sessionname'];
+       $ses=substr($userfilename, -4);
+        if ($ses != ".ses") 
+        $params['sessionname']=$userfilename.'.ses';
+
+    $form->bind($params, $request->getFiles($form->getName()));
     if ($form->isValid())
     {
+       $userfilename=$form['sessionname']->getValue('sessionname');
+       $ses=substr($userfilename, -4);;
+      
+        
       $sessions = $form->save();
        $this->redirect('sbtm/sessions');
       //$this->redirect('sessions/edit?id='.$sessions->getId());
@@ -278,6 +287,8 @@ public function executeUploads()
 public function executeReview(sfWebRequest $request)
 {
 $dirname = $this->getUser()->getAttribute('project'); 
+$final=$request->getParameter('final');
+$this->getUser()->setAttribute('final',$final);
 $this->status = Doctrine_Core::getTable('Status')
       ->createQuery('a')
       ->execute();
