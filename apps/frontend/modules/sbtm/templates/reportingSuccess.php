@@ -1,5 +1,6 @@
 
 <div id="sf_admin_container">
+    <titles>Reporting</titles>
 <tr>
 <th>
 <ul class="sf_admin_actions">

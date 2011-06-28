@@ -131,10 +131,7 @@ $this->redirect('sbtm/managesession?id='.$dbprojectID);
     $form->bind($params, $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-       $userfilename=$form['sessionname']->getValue('sessionname');
-       $ses=substr($userfilename, -4);;
-      
-        
+
       $sessions = $form->save();
        $this->redirect('sbtm/sessions');
       //$this->redirect('sessions/edit?id='.$sessions->getId());

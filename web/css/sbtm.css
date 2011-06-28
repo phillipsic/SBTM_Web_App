@@ -10,7 +10,18 @@
   border-bottom: 1px solid #aaa;
   background-color: #fff;
 }
-
+#sf_admin_container titles {
+ font-size:150%;
+ margin:0 0px;
+ line-height:1em;
+ color:#8bb544;
+ font-weight:bold;
+ letter-spacing:-.05em;
+ position:relative;
+ width:80%;
+ padding-top:1px;
+ } 
+ 
 #content
 {
   padding: 25px;

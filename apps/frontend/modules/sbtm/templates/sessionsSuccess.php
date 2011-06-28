@@ -18,6 +18,7 @@ function checkAll()
 $admin=$sf_user->getAttribute('adminrole');?> 
 <div id="sf_admin_container">
     <form method="post" action="">
+        <titles>Sessions</titles>
     <div class="sf_admin_list" style="overflow:auto; width:900px; height: 350px;">
       <table  border="5">
            <?php if ($sessions->count()>0){ ?>

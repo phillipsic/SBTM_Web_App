@@ -17,6 +17,7 @@ function checkAll()
 
 <div id="sf_admin_container">
     <form method="post" action="">
+        <titles>Project Admin</titles>
     <div class="sf_admin_list">
       <table  border="5">
           <?php if ($project_category->count()>0){ ?>
