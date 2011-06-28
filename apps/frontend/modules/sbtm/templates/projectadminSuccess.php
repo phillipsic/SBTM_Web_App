@@ -70,10 +70,13 @@ function checkAll()
             <ul class="sf_admin_td_actions">
             <li class="sf_admin_action_edit">
             <a href="<?php echo url_for('Projectcategory/edit?id='.$project->getId()) ?>">Edit</a>
-            </li>  
+            </li> 
+            <?php if($project->getName()!= $sf_user->getAttribute('project')){ ?>
             <li class="sf_admin_action_delete">
             <?php echo link_to('Delete', 'Projectcategory/delete?id='.$project->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
             </li> 
+            <?php } ?>
+            
             </ul>
             </td>
           </tr>

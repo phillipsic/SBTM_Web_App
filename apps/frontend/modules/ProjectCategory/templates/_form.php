@@ -15,7 +15,7 @@
                &nbsp;<a href="<?php echo url_for('sbtm/logout') ?>">
              <?php }?>
               Cancel</a>
-          <?php if (!$form->getObject()->isNew()): ?>
+          <?php if (!$form->getObject()->isNew() && $form->getObject()->getName()!=$sf_user->getAttribute('project')): ?>
             &nbsp;<?php echo link_to('Delete', 'ProjectCategory/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
           <?php endif; ?>
           <input type="submit" value="Save" />
