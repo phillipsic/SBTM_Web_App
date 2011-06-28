@@ -317,8 +317,10 @@ $this->logMessage($request->getparameter('status_action').'sithik'.$dbstatID);
 }
 
 
-
-$this->redirect('sbtm/adminmysession');
+if($this->getUser()->getAttribute('final')=='yes')
+$this->redirect('sbtm/usermysession');
+else
+   $this->redirect('sbtm/adminmysession'); 
 }
 
 
