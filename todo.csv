@@ -1,6 +1,6 @@
-Session Name,Charter,Areas
-Session 1, Do some testing in domain 1,area 1; Strategy | Function Testing
-Session 2, Do some testing in domain 2,area 2; Strategy | Functional Analysis
-Session 3, Do some testing in domain 3,area 3; Strategy | Exploration & Analysis
-Session 4, Do some testing in domain 4,area 4; Strategy | Exploration & Analysis
-Session 5, Do some testing in domain 5,area 5; Strategy | Function Testing
+Session Name,Charter,Areas,Strategy Type
+Session 1, Do some testing in domain 1,area 1,Function Testing
+Session 2, Do some testing in domain 2,area 2,Functional Analysis
+Session 3, Do some testing in domain 3,area 3,Exploration & Analysis
+Session 4, Do some testing in domain 4,area 4,Exploration & Analysis
+Session 5, Do some testing in domain 5,area 5,Function Testing
