@@ -44,7 +44,7 @@ function madeSelection(elem, helperMsg){
     $value=$stat->getName();
       if($final=='yes' && ($value == 'Submitted' || $value== 'Finalize')){?> 
     <option value="<?php echo $value?>"><?php echo $stat->getName()?></option>
-    <?php } elseif ($final!='yes') {?><option value="<?php echo $value?>"><?php echo $stat->getName()?></option> <?php }  endforeach; ?> 
+    <?php } elseif ($final!='yes' && ($value == 'Approved' || $value== 'Finalize') ) {?><option value="<?php echo $value?>"><?php echo $stat->getName()?></option> <?php }  endforeach; ?> 
     </select>
     </th>
     
