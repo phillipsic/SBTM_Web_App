@@ -1,4 +1,5 @@
 <div id="sf_admin_container">   
+    <titles>Upload sessions for <?php echo $sf_user->getAttribute('projectname') ?></titles>
 <form enctype="multipart/form-data" action="<?php echo url_for('sessions/upload') ?>" method="POST">
 <div class="sf_admin_list">
     <table>

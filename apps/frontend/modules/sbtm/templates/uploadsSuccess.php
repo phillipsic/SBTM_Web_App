@@ -4,7 +4,8 @@
             echo $sf_user->getAttribute('error'); ?>
           </div>
         <?php endif ?>
-<div id="sf_admin_container">   
+<div id="sf_admin_container"> 
+    <titles>Upload completed/Finalize session</titles>
 <form enctype="multipart/form-data" action="<?php echo url_for('sbtm/upload') ?>" method="POST">
 <div class="sf_admin_list">
     <table>

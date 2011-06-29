@@ -349,7 +349,18 @@ endforeach;
   }
 
 public function executeManagesession(sfWebRequest $request)
-  {$this->getUser()->setAttribute('dropid',$request->getparameter('id'));
+  {
+    $this->getUser()->setAttribute('dropid',$request->getparameter('id'));
+    
+    $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.id = ?',$request->getparameter('id') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getName();
+$this->getUser()->setAttribute('projectname',$dbprojectID);
+endforeach;
+
      $this->sessions = Doctrine_Core::getTable('Sessions')
       ->createQuery('a')
            ->where('a.project_id = ?',$request->getparameter('id'))

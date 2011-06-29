@@ -1,4 +1,5 @@
 <div id="sf_admin_container">
+    <titles>User Details</titles>
 <div class="sf_admin_list">
 <table>
   <tbody>

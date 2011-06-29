@@ -17,6 +17,7 @@ function checkAll()
 <?php $admin=$sf_user->getAttribute('adminrole');
 $admin=$sf_user->getAttribute('adminrole');?> 
 <div id="sf_admin_container">
+     <titles>Manage Sessions of <?php echo $sf_user->getAttribute('projectname') ?></titles>
     <form method="post" action="<?php echo url_for('sessions/statusready') ?>">
     <div class="sf_admin_list" style="overflow:auto; width:900px; height: 350px;">
       <table  border="5">
