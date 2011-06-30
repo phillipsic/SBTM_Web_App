@@ -27,14 +27,92 @@ class sbtmActions extends sfActions
   }
   public function executeBurndownchart(sfWebRequest $request)
   {
-      $response = $this->getResponse();
-
-    // HTTP headers
-    $response->setContentType('image/png');
+    
 
 
   }
+  
+  public function executeLineChartData()
+  {
+    srand((double)microtime()*1000000);
 
+//
+// NOTE: how we are filling 3 arrays full of data,
+//       one for each line on the graph
+//
+$data_1 = array();
+$data_2 = array();
+$data_3 = array();
+for( $i=0; $i<12; $i++ )
+{
+  $data_1[] = rand(14,19);
+  $data_2[] = rand(8,13);
+  $data_3[] = rand(1,7);
+}
+
+$g = new stGraph();
+$g->title( $this->getUser()->getAttribute('project'), '{font-size: 20px; color: #736AFF}' );
+
+// we add 3 sets of data:
+$g->set_data( $data_1 );
+$g->set_data( $data_2 );
+$g->set_data( $data_3 );
+
+// we add the 3 line types and key labels
+$g->line( 3, '0x9933CC', 'Todo', 10 );
+$g->line_dot( 3, 4, '0xCC3399', 'Total', 10);    // <-- 3px thick + dots
+$g->line_hollow( 3, 4, '0x80a033', 'Target', 10 );
+
+$g->set_x_labels( array( 'January','February','March','April','May','June','July','August','Spetember','October','November','December' ) );
+$g->set_x_label_style( 10, '0x000000', 0, 2 );
+
+$g->set_y_max( 25 );
+$g->y_label_steps( 5 );
+$g->set_y_legend( 'Sessions', 12, '#736AFF' );
+echo $g->render();
+
+return sfView::NONE;
+  }
+public function executePieChartData()
+	{
+		$chatData = array();
+		/*for( $i = 0; $i < 3; $i++ )
+		{
+			$data[] = rand(5,20);
+		}*/
+$todosessions = Doctrine_Core::getTable('Sessions')
+                 ->createQuery('a')
+                 ->where('a.status_id = 1')
+                 ->andWhereIn('a.updated_dt < sysdate ')
+                 ->execute();
+$this->logMessage($todosessions->count().'Count');
+$data[0]=$todosessions->count();
+$data[1]=$todosessions->count();
+$data[2]=$todosessions->count();
+		//Creating a stGraph object		
+		$g = new stGraph();
+
+		//set background color
+		$g->bg_colour = '#E4F5FC';
+
+		//Set the transparency, line colour to separate each slice etc.
+		$g->pie(80,'#78B9EC','{font-size: 12px; color: #78B9EC;');
+
+		//array two arrray one containing data while other contaning labels 
+		$g->pie_values($data, array('Todo','Total','Target'));
+		
+		//Set the colour for each slice. Here we are defining three colours 
+		//while we need 7 colours. So, the same colours will be 
+		//repeated for the all remaining slices in the same order  
+		$g->pie_slice_colours( array('#d01f3c','#356aa0','#c79810') );
+
+		//To display value as tool tip
+		$g->set_tool_tip( '#val#%' );
+
+		$g->title( $this->getUser()->getAttribute('project'), '{font-size:18px; color: #18A6FF}' );
+		echo $g->render();
+		return sfView::NONE;
+	}
 
   public function executeLogout(sfWebRequest $request)
   {
