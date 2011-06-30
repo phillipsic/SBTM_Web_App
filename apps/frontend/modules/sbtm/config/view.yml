@@ -28,7 +28,5 @@ sessionlistSuccess:
 managesessionSuccess:
   stylesheets: [sbtm.css]
 burndownchartSuccess:
-  http_metas:
-    Content-type: image/png
   stylesheets: [sbtm.css]
-  has_layout:     false
+  has_layout:     true
