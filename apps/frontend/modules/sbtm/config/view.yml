@@ -29,4 +29,3 @@ managesessionSuccess:
   stylesheets: [sbtm.css]
 burndownchartSuccess:
   stylesheets: [sbtm.css]
-  has_layout:     true

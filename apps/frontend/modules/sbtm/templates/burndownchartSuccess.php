@@ -1,3 +1,6 @@
+<div id="sf_admin_container">
+<titles>Burn Down Chart Report</titles>
+
 <table  border="2">
       <tbody>
              <tr class="sf_admin_row odd">
@@ -8,5 +11,6 @@
           </tr>
         </tbody>
     </table>
+</div>
 
 

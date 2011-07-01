@@ -40,15 +40,93 @@ class sbtmActions extends sfActions
 // NOTE: how we are filling 3 arrays full of data,
 //       one for each line on the graph
 //
+    $date = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($date as $projectid):
+   $dbprojectID =$projectid->getId();
+   $dbstartdate=$projectid->getStartdate();
+$dbenddate=$projectid->getEnddate();
+endforeach;
+$q = Doctrine_Query::create()
+  ->select('((DATEDIFF(PC.enddate,PC.startdate)) - ((WEEK(PC.enddate) - WEEK(PC.startdate))*2) - (CASE WHEN WEEKDAY(PC.startdate) = 6 THEN 1 ELSE 0 END) - (CASE WHEN WEEKDAY(PC.enddate) = 5 THEN 1 ELSE 0 END)) AS workdays')
+  ->from('ProjectCategory PC')
+  ->where('PC.name = ?',$this->getUser()->getAttribute('project') );
+ 
+$executequery = $q->fetchArray();
+ $workday=$executequery[0]['workdays'];
+
+ 
+ 
+ $sessions = Doctrine_Core::getTable('Sessions')
+      ->createQuery('a')
+           ->where('a.project_id = ?',$dbprojectID)
+     ->execute();
+ $sessions->count();
+ 
+
+ $start=strtotime($dbstartdate);
+$now=strtotime($dbenddate);
+$sysdate=strtotime(date("d F Y H:i:s"));
+$i=0;
 $data_1 = array();
 $data_2 = array();
 $data_3 = array();
-for( $i=0; $i<12; $i++ )
-{
-  $data_1[] = rand(14,19);
-  $data_2[] = rand(8,13);
-  $data_3[] = rand(1,7);
+while($start<$now)
+    {
+     $start=$start+(60*60*24*1);
+    if(date("Y-m-d H:i:s",$start)<=date("Y-m-d H:i:s",$sysdate)){
+    $this->logMessage(date("Y-m-d H:i:s",$start).'date'.date("Y-m-d H:i:s",$sysdate));
+   
+    
+    //todo check
+    $todosessions = Doctrine_Core::getTable('Sessions')
+                 ->createQuery('a')
+            ->where('a.project_id = ?',$dbprojectID)
+                 ->andWhere('a.status_id = 1')
+                 ->andWhere('a.updated_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+                 ->execute();
+    $totalsessions = Doctrine_Core::getTable('Sessions')
+                 ->createQuery('a')
+            ->where('a.project_id = ?',$dbprojectID)
+                 ->andWhere('a.updated_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+                 ->execute();
+    $first_session=$todosessions->count();
+    if($todosessions->count()>0){
+$data_1[$i]= $todosessions->count();
+$target_=$first_session-($first_session/$workday);
+$data_3[$i] = $target_;
+$workday--;
 }
+    else{
+      $data_1[$i]= 'null'; 
+      $data_3[$i] = 'null';
+      }
+    
+    if($totalsessions->count()>0)
+$data_2[$i]= $totalsessions->count();
+else
+    $data_2[$i]= 'null';
+
+
+//if($todosessions->count()>0 && $target_>0){
+//$this->logMessage($target_.'target'.$workday.'eork'.$todosessions->count().'Count');    
+
+//}
+//else
+    //$data_3[$i] =='null';
+
+
+    }
+    //else{
+      //$data_1[$i]=0;
+      //$data_2[$i]=0;
+   // }
+    $moth[$i] =date('d-M',$start);
+    $i++;
+}
+ 
 
 $g = new stGraph();
 $g->title( $this->getUser()->getAttribute('project'), '{font-size: 20px; color: #736AFF}' );
@@ -63,11 +141,14 @@ $g->line( 3, '0x9933CC', 'Todo', 10 );
 $g->line_dot( 3, 4, '0xCC3399', 'Total', 10);    // <-- 3px thick + dots
 $g->line_hollow( 3, 4, '0x80a033', 'Target', 10 );
 
-$g->set_x_labels( array( 'January','February','March','April','May','June','July','August','Spetember','October','November','December' ) );
-$g->set_x_label_style( 10, '0x000000', 0, 2 );
+$g->set_x_labels( $moth );
 
+$g->set_x_label_style( 10, '0x000000', 0, 10 );
+$g->set_x_legend(date("Y",$start));
+$g->set_tool_tip( '#key#: #val# (#x_label#, #x_legend#)<br>' );
 $g->set_y_max( 25 );
-$g->y_label_steps( 5 );
+$g->y_label_steps( 10 );
+$g->y_label_steps(5);
 $g->set_y_legend( 'Sessions', 12, '#736AFF' );
 echo $g->render();
 
@@ -76,19 +157,90 @@ return sfView::NONE;
 public function executePieChartData()
 	{
 		$chatData = array();
-		/*for( $i = 0; $i < 3; $i++ )
-		{
-			$data[] = rand(5,20);
-		}*/
+$this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+          $this->sessions = Doctrine_Core::getTable('Sessions')
+      ->createQuery('a')
+           ->where('a.project_id = ?',$dbprojectID)
+     ->execute();              
 $todosessions = Doctrine_Core::getTable('Sessions')
                  ->createQuery('a')
-                 ->where('a.status_id = 1')
+        ->where('a.project_id = ?',$dbprojectID)
+                 ->andwhere('a.status_id = 1')
                  ->andWhereIn('a.updated_dt < sysdate ')
                  ->execute();
-$this->logMessage($todosessions->count().'Count');
-$data[0]=$todosessions->count();
-$data[1]=$todosessions->count();
-$data[2]=$todosessions->count();
+$q = Doctrine_Query::create()
+  ->select('u.name as name')
+    ->addSelect('COUNT(p.id) as count')
+    ->from('STATUS u')
+    ->leftJoin('sessions p')
+        ->where('u.id = p.status_id')
+    ->groupBy('u.id');
+ 
+$executequery = $q->fetchArray();
+foreach ($executequery as $exe) {
+  switch ($exe['name']) {
+    case 'Todo':
+        $this->logMessage($exe['name'].'todo');
+        if($exe['count']>0){
+        $data[0]=$exe['count'];
+        $sessionname[0]='Todo Sessions';
+        }
+        else
+          $data[0]=0  ;
+        break;
+    case 'Submitted':
+        $this->logMessage($exe['name'].'sub');
+        if($exe['count']>0){
+        $data[1]=$exe['count'];
+        $sessionname[1]='Submitted sessions';
+        }
+        else
+          $data[1]=0  ;
+        break;
+    case 'Running':
+        $this->logMessage($exe['name'].'running');
+        if($exe['count']>0){
+        $data[2]=$exe['count'];
+        $sessionname[2]='Running Sessions';
+        }
+        else
+          $data[2]=0  ;
+        break;
+    case 'Approved':
+        $this->logMessage($exe['name'].'approved');
+        if($exe['count']>0){
+        $data[3]=$exe['count'];
+        $sessionname[3]='Approved Sessions';
+        }
+        else
+          $data[3]=0  ;
+        break;
+    case 'Finalize':
+        $this->logMessage($exe['name'].'final');
+        if($exe['count']>0){
+        $data[4]=$exe['count'];
+        $sessionname[4]='Finalize Sessions';
+        }
+        else
+          $data[4]=0  ;
+        break;
+}
+}
+
+
+
+//$this->logMessage($todosessions->count().'Count');
+//$data[0]=$todosessions->count();
+//$data[1]=$this->sessions->count();
+//$data[2]=$this->sessions->count()-$todosessions->count();
+//$data[3]=$this->sessions->count();
+//$data[4]=$this->sessions->count()-$todosessions->count();
 		//Creating a stGraph object		
 		$g = new stGraph();
 
@@ -99,7 +251,7 @@ $data[2]=$todosessions->count();
 		$g->pie(80,'#78B9EC','{font-size: 12px; color: #78B9EC;');
 
 		//array two arrray one containing data while other contaning labels 
-		$g->pie_values($data, array('Todo','Total','Target'));
+		$g->pie_values($data, $sessionname);
 		
 		//Set the colour for each slice. Here we are defining three colours 
 		//while we need 7 colours. So, the same colours will be 
@@ -107,7 +259,7 @@ $data[2]=$todosessions->count();
 		$g->pie_slice_colours( array('#d01f3c','#356aa0','#c79810') );
 
 		//To display value as tool tip
-		$g->set_tool_tip( '#val#%' );
+		//$g->set_tool_tip( '#val#%' );
 
 		$g->title( $this->getUser()->getAttribute('project'), '{font-size:18px; color: #18A6FF}' );
 		echo $g->render();

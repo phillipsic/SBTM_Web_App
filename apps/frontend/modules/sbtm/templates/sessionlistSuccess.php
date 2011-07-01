@@ -1,5 +1,6 @@
 <div id="sf_admin_container">
     <form method="post" action="">
+        <titles>Sessions List Report</titles>
     <div class="sf_admin_list" style="overflow:auto; width:770px; height: 200px;">
       <table  border="5">
           <?php if ($approved_sessions->count()>0){ ?>

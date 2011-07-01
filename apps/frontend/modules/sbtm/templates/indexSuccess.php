@@ -11,7 +11,8 @@
     <thead>
         <tr>
 <th class="sf_admin_text sf_admin_list_th_name">
- SBTM Web Application 
+ SBTM Web Application <?php echo date("d-M", time()); ?>
+
 </th>
 <th>
         </th>
