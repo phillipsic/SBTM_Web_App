@@ -103,7 +103,9 @@ while(! feof($fh))
    
       <td><a href="<?php echo url_for('sbtm/useradmin') ?>"><?php echo "User Admin" ?></a></td>
       <td> | </td>
-      <td><a href="<?php echo url_for('sbtm/projectadmin') ?>"><?php echo "Project Admin" ?></a></td>
+      <td><!--a href="<?php echo url_for('sbtm/projectadmin') ?>"><?php echo "Project Admin" ?></a-->
+      <a href="<?php echo url_for('ProjectCategory/show?id='.$sf_user->getAttribute('projectid')) ?>"><?php echo "Project Admin" ?></a>
+      </td>
       <td> | </td>
       <?php endif ?>
       

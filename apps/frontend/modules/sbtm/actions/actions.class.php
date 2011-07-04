@@ -70,6 +70,7 @@ $executequery = $q->fetchArray();
 $now=strtotime($dbenddate);
 $sysdate=strtotime(date("d F Y H:i:s"));
 $i=0;
+$flag=true;
 $data_1 = array();
 $data_2 = array();
 $data_3 = array();
@@ -92,10 +93,20 @@ while($start<$now)
             ->where('a.project_id = ?',$dbprojectID)
                  ->andWhere('a.updated_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
                  ->execute();
-    $first_session=$todosessions->count();
+    
     if($todosessions->count()>0){
+        if($flag){
+        $first_target=$todosessions->count()-($todosessions->count()/$workday);
+        }
 $data_1[$i]= $todosessions->count();
-$target_=$first_session-($first_session/$workday);
+if($flag)
+{
+    $target_=$first_target;
+    $flag=false;
+}
+else
+$target_=$first_target-($first_target/$workday);
+
 $data_3[$i] = $target_;
 $workday--;
 }
@@ -109,20 +120,16 @@ $data_2[$i]= $totalsessions->count();
 else
     $data_2[$i]= 'null';
 
-
-//if($todosessions->count()>0 && $target_>0){
-//$this->logMessage($target_.'target'.$workday.'eork'.$todosessions->count().'Count');    
-
-//}
-//else
-    //$data_3[$i] =='null';
-
-
     }
-    //else{
-      //$data_1[$i]=0;
-      //$data_2[$i]=0;
-   // }
+    elseif(date("Y-m-d H:i:s",$start)>date("Y-m-d H:i:s",$sysdate)){
+      $target_=$first_target-($first_target/$workday);
+
+$data_3[$i] = $target_;
+$workday--;  
+    }
+    else{
+       $workday--; 
+    }
     $moth[$i] =date('d-M',$start);
     $i++;
 }
@@ -356,7 +363,14 @@ foreach ($executequery as $exe) {
         else{
 
             $this->getUser()->setAuthenticated(true);
-            
+            $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+$this->getUser()->setAttribute('projectid', $dbprojectID);
             }
 
 
