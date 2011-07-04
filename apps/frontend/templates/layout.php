@@ -118,8 +118,10 @@ while(! feof($fh))
          <td><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></td>
         <td> | </td>
          <?php endif ?>
+        <?php if ($admin!="Reviewer"): ?>
        <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
               <td> | </td>
+              <?php endif ?>
       <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
        
 </div>
