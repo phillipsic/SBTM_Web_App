@@ -108,13 +108,14 @@ while(! feof($fh))
       </td>
       <td> | </td>
       <?php endif ?>
-      
+       <?php if ($admin!="Reviewer"): ?>
       <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
       <td> | </td>
+        <?php endif ?>
        <td><a href="<?php echo url_for('sbtm/usermysession') ?>"><?php echo "My Session" ?></a></td>
         <td> | </td>
          <?php $admin=$sf_user->getAttribute('adminrole');
-    if ($admin=="Admin"): ?> 
+    if ($admin=="Admin" || $admin=="Reviewer"): ?> 
          <td><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></td>
         <td> | </td>
          <?php endif ?>
