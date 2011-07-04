@@ -119,6 +119,34 @@ foreach ($this->project_id as $projectid):
 endforeach;
 $this->redirect('sbtm/managesession?id='.$dbprojectID);
   }
+  
+  public function executeCopysessions(sfWebRequest $request)
+  {
+      $this->project = $request->getParameter('project_action');
+      $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->project )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+      $this->project_id1 = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id1 as $projectid1):
+   $dbprojectID1 =$projectid1->getId();
+endforeach;
+$q = Doctrine_Query::create()
+    ->update('Sessions')
+    ->set('project_id', $dbprojectID)
+    ->where('status_id!=?','4')
+        ->andwhere('project_id = ?',$dbprojectID1);
+
+$rows = $q->execute();
+
+$this->redirect('sbtm/sessionlist');
+  }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {

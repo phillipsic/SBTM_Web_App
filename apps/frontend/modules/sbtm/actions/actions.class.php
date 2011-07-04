@@ -50,8 +50,9 @@ foreach ($date as $projectid):
 $dbenddate=$projectid->getEnddate();
 endforeach;
 $q = Doctrine_Query::create()
-  ->select('((DATEDIFF(PC.enddate,PC.startdate)) - ((WEEK(PC.enddate) - WEEK(PC.startdate))*2) - (CASE WHEN WEEKDAY(PC.startdate) = 6 THEN 1 ELSE 0 END) - (CASE WHEN WEEKDAY(PC.enddate) = 5 THEN 1 ELSE 0 END)) AS workdays')
-  ->from('ProjectCategory PC')
+  //->select('((DATEDIFF(PC.enddate,PC.startdate)) - ((WEEK(PC.enddate) - WEEK(PC.startdate))*2) - (CASE WHEN WEEKDAY(PC.startdate) = 6 THEN 1 ELSE 0 END) - (CASE WHEN WEEKDAY(PC.enddate) = 5 THEN 1 ELSE 0 END)) AS workdays')
+  ->select('(DATEDIFF(PC.enddate,PC.startdate))  AS workdays')
+        ->from('ProjectCategory PC')
   ->where('PC.name = ?',$this->getUser()->getAttribute('project') );
  
 $executequery = $q->fetchArray();
@@ -74,8 +75,11 @@ $flag=true;
 $data_1 = array();
 $data_2 = array();
 $data_3 = array();
+$this->logMessage($workday.'working days from DB');
 while($start<$now)
     {
+    
+    $this->logMessage($workday.'working days inside loops');
      $start=$start+(60*60*24*1);
     if(date("Y-m-d H:i:s",$start)<=date("Y-m-d H:i:s",$sysdate)){
     $this->logMessage(date("Y-m-d H:i:s",$start).'date'.date("Y-m-d H:i:s",$sysdate));
@@ -96,7 +100,7 @@ while($start<$now)
     
     if($todosessions->count()>0){
         if($flag){
-        $first_target=$todosessions->count()-($todosessions->count()/$workday);
+        $first_target=round(($todosessions->count()-($todosessions->count()/$workday)),1);
         }
 $data_1[$i]= $todosessions->count();
 if($flag)
@@ -105,10 +109,10 @@ if($flag)
     $flag=false;
 }
 else
-$target_=$first_target-($first_target/$workday);
+$target_=round(($first_target-($first_target/$workday)),1);
 
 $data_3[$i] = $target_;
-$workday--;
+//$workday--;
 }
     else{
       $data_1[$i]= 'null'; 
@@ -122,16 +126,17 @@ else
 
     }
     elseif(date("Y-m-d H:i:s",$start)>date("Y-m-d H:i:s",$sysdate)){
-      $target_=$first_target-($first_target/$workday);
+      $target_=round(($first_target-($first_target/$workday)),1);
 
 $data_3[$i] = $target_;
-$workday--;  
+//$workday--;  
     }
     else{
-       $workday--; 
+       //$workday--; 
     }
     $moth[$i] =date('d-M',$start);
     $i++;
+    $workday--; 
 }
  
 
@@ -589,6 +594,10 @@ endforeach;
             ->where('a.status_id!=?','4')
             ->andWhere('a.project_id = ?',$dbprojectID)
      ->execute();
+    
+    $this->project_category = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+      ->execute();
 
   }
 
