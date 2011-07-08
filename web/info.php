@@ -1,12 +1,12 @@
-<?PHP
 
-$myFile = "testFile.txt";
-$fh = fopen($myFile, 'w') or die("can't open file");
-$stringData = "Bobby Bopper\n";
-fwrite($fh, $stringData);
-$stringData = "Tracy Tanner\n";
-fwrite($fh, $stringData);
-fclose($fh);
+<?php
+$start=strtotime("01 January 2010");
+$now=strtotime(date("d F Y"));
 
+while($now>=$start)
+{
+    echo "<option value=\"$now\">" . date('Y-m-d H:i:s', $now) . "</option>\n";
 
+    $now=$now-(60*60*24*(365/12));
+}
 ?>

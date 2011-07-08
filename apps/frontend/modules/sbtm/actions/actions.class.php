@@ -17,10 +17,25 @@ class sbtmActions extends sfActions
      $this->project_category = Doctrine_Core::getTable('ProjectCategory')
       ->createQuery('a')
       ->execute();
-    
-
   }
 
+  public function executeChangesessions(sfWebRequest $request)
+  {
+     $this->project = $request->getParameter('id');
+    
+    $this->getUser()->setAttribute('project', $this->project);
+    
+     $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+$this->getUser()->setAttribute('projectid', $dbprojectID);
+$this->setTemplate('login');
+  }
+  
   public function executeReporting(sfWebRequest $request)
   {
 

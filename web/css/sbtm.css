@@ -1,14 +1,46 @@
 #job h1
 {
 }
+#nav {
+       padding: 10px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #aaa;
+  background: #141414;
+        }
 
+#nav ul{
+width: 100%;
+/*background: url(../images/chromebg2.gif) center center repeat-x; /*THEME CHANGE HERE*/
+padding: 4px 0;
+margin: 0;
+ /*set value to "left", "center", or "right"*/
+}
+#nav ul li{
+display: inline;
+}
+       
+#nav ul li a{
+padding: 9px 0 0 10px;
+height: 23px;
+margin: 0;
+font-size: 12px;
+text-decoration: none;
+color: #FFF;
+border-bottom: 1px solid #090909; /*THEME CHANGE HERE*/
+}
+
+#nav ul li a:hover, .chromestyle ul li a.selected{ /*script dynamically adds a class of "selected" to the current active menu item*/
+background-color: #242424;
+    /*background: url(../images/chromebg2-over.gif) center center repeat-x; /*THEME CHANGE HERE*/
+}
 #menu
 {
   padding: 10px;
   padding-left: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid #aaa;
-  background-color: #fff;
+  background: #141414;
 }
 #sf_admin_container titles {
  font-size:150%;
