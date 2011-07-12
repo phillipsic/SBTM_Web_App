@@ -39,7 +39,7 @@
         </tbody>
     </table>
   </div>
-        <?php if ($progress_sessions->count()>0){ ?>
+        <?php if ($progress_sessions->count()>0 &&  ($sf_user->getAttribute('adminrole')=="Admin")){ ?>
         <div>
      <th>
            Copy Unfinished sessions to 
