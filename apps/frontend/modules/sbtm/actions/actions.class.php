@@ -72,7 +72,7 @@ $q = Doctrine_Query::create()
  
 $executequery = $q->fetchArray();
  $workday=$executequery[0]['workdays'];
-
+$test=23;
  
  
  $sessions = Doctrine_Core::getTable('Sessions')
@@ -105,7 +105,7 @@ while($start<$now)
                  ->createQuery('a')
             ->where('a.project_id = ?',$dbprojectID)
                  ->andWhere('a.status_id = 1')
-                 ->andWhere('a.updated_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+                 ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
                  ->execute();
     $totalsessions = Doctrine_Core::getTable('Sessions')
                  ->createQuery('a')
@@ -123,8 +123,10 @@ if($flag)
     $target_=$first_target;
     $flag=false;
 }
-else
+else{
 $target_=round(($first_target-($first_target/$workday)),1);
+
+}
 
 $data_3[$i] = $target_;
 //$workday--;
@@ -207,6 +209,7 @@ $q = Doctrine_Query::create()
     ->from('STATUS u')
     ->leftJoin('sessions p')
         ->where('u.id = p.status_id')
+        ->andwhere('p.project_id = ?',$dbprojectID)
     ->groupBy('u.id');
  
 $executequery = $q->fetchArray();
