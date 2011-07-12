@@ -81,7 +81,7 @@ if($this->getUser()->getAttribute('new')=='yes'){
 //                   $this->logMessage($val.'sithik'.$form->getValue('name'), 'err');
   
 
-      $this->redirect('sbtm/projectadmin');
+      $this->redirect('ProjectCategory/show?id='.$this->getUser()->getAttribute('projectid'));
       //$this->redirect('ProjectCategory/edit?id='.$project_category->getId());
     }
   }
