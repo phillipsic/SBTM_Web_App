@@ -14,7 +14,7 @@ class Sessions extends BaseSessions
 {
 public function getFileSlug()
 {
-  return sbtm::slugify($this->getSessionname());
+  return sbtm::slugify(trim($this->getSessionname()));
 }
 
 public function getFilenmaeSlug($text)
