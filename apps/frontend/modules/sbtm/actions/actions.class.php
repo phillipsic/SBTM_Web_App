@@ -518,6 +518,86 @@ else{
 $this->getUser()->setAttribute('id',$request->getParameter('id'));
 }
 
+
+public function executeDatafiles(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+    $filename = "uploads/{$dirname}/datafiles"; 
+    if (!file_exists($filename)) { 
+       mkdir("uploads/{$dirname}/datafiles/", 0777); 
+        } 
+    $filenames=array();
+$source_path = "uploads/{$dirname}/datafiles";
+    $dir = realpath($source_path);
+$files = scandir($dir);
+$i=0;
+foreach ($files as $file) {
+if (substr($file, 0, 1) != '.') {
+$filenames[$i]=$file;
+$i++;
+}
+    } 
+
+    $this->getUser()->setAttribute('files',$filenames); 
+     
+}
+public function executeUploaddatafiles(sfWebRequest $request)
+{
+
+}
+public function executeUploaddata(sfWebRequest $request)
+{
+       $dirname = $this->getUser()->getAttribute('project'); 
+    $filename = "uploads/{$dirname}/datafiles/"; 
+    
+    if (!file_exists($filename)) { 
+       mkdir("uploads/{$dirname}/datafiles/", 0777); 
+
+    } 
+$target_path = "uploads/{$dirname}/datafiles/";
+$target_path = $target_path .basename( $_FILES['uploadedfile']['name']);
+$this->logMessage("sithik".$target_path);
+if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+    $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
+} else{
+    $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
+}
+$this->redirect('sbtm/datafiles');
+    
+}
+public function executeDownloaddatafiles(sfWebRequest $request) {
+      
+            $myFile = $request->getParameter('name');
+           $fullPath = "uploads/Drop 1/datafiles/".$myFile; // change the path to fit your websites document structure
+//$fullPath = $path.$_GET['download_file'];
+ 
+if ($fd = fopen ($fullPath, "r")) {
+    $fsize = filesize($fullPath);
+    $path_parts = pathinfo($fullPath);
+    $ext = strtolower($path_parts["extension"]);
+    switch ($ext) {
+        case "pdf":
+        header("Content-type: application/pdf"); // add here more headers for diff. extensions
+        header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\""); // use 'attachment' to force a download
+        break;
+        default;
+        header("Content-type: application/octet-stream");
+        header("Content-Disposition: filename=\"".$path_parts["basename"]."\"");
+    }
+    header("Content-length: $fsize");
+    header("Cache-control: private"); //use this to open files directly
+    while(!feof($fd)) {
+        $buffer = fread($fd, 2048);
+        echo $buffer;
+    }
+}
+fclose ($fd);
+exit;
+
+	    return sfView::NONE;
+            
+            
+	}
  public function executeUsermysession(sfWebRequest $request)
   {
      $this->project_id = Doctrine_Core::getTable('ProjectCategory')

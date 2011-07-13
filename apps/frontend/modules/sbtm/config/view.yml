@@ -17,6 +17,10 @@ sessionsSuccess:
   stylesheets: [sbtm.css]
 uploadsSuccess:
   stylesheets: [sbtm.css]
+datafilesSuccess:
+  stylesheets: [sbtm.css]
+uploaddatafilesSuccess:
+  stylesheets: [sbtm.css]
 usermysessionSuccess:
   stylesheets: [sbtm.css]
 adminmysessionSuccess:

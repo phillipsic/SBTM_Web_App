@@ -142,6 +142,8 @@ cssdropdown.startchrome("chromemenu")
          <li> | </li>
          <?php endif ?>
         <?php if ($admin!="Reviewer"): ?>
+         <li><a href="<?php echo url_for('sbtm/datafiles') ?>"><?php echo "Data Files" ?></a></li>
+         <li> | </li>
         <li><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></li>
                <li> | </li>
               <?php endif ?>
