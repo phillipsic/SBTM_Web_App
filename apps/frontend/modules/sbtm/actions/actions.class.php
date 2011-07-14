@@ -107,10 +107,11 @@ while($start<$now)
                  ->andWhere('a.status_id = 1')
                  ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
                  ->execute();
+
     $totalsessions = Doctrine_Core::getTable('Sessions')
                  ->createQuery('a')
             ->where('a.project_id = ?',$dbprojectID)
-                 ->andWhere('a.updated_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+                 ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
                  ->execute();
     
     if($todosessions->count()>0){
@@ -568,8 +569,9 @@ $this->redirect('sbtm/datafiles');
 public function executeDownloaddatafiles(sfWebRequest $request) {
       
             $myFile = $request->getParameter('name');
-           $fullPath = "uploads/Drop 1/datafiles/".$myFile; // change the path to fit your websites document structure
-//$fullPath = $path.$_GET['download_file'];
+           //$path = "uploads/Drop 1/datafiles/".$myFile; // change the path to fit your websites document structure
+           $path = $_SERVER['DOCUMENT_ROOT']."/uploads/Drop 1/datafiles/"; // change the path to fit your websites document structure
+$fullPath = $path.$myFile;
  
 if ($fd = fopen ($fullPath, "r")) {
     $fsize = filesize($fullPath);
