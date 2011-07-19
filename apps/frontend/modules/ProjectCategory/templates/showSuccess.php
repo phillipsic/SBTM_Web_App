@@ -2,6 +2,7 @@
      <form method="post" action="<?php echo url_for('sessions/copysessions') ?>">
      <titles>Project Details</titles>
 <div class="sf_admin_list">
+    
 <table>
   <tbody>
     <tr class="sf_admin_row odd">
@@ -26,8 +27,13 @@
     </tr>
   </tbody>
 </table>
+        
+        
 </div>
-   
+   <ul class="sf_admin_actions">
+        <li class="sf_admin_action_next"><a href="<?php echo url_for('sbtm/managecoverage?id='.$project_category->getId()) ?>">Manage coverage.ini</a></li>
+        <li class="sf_admin_action_next"><a href="<?php echo url_for('sbtm/managetemplate?id='.$project_category->getId()) ?>">Manage Template</a></li>
+        </ul>
 <ul class="sf_admin_actions">
       <!--li class="sf_admin_action_previous"><a href="<?php echo url_for('sbtm/projectadmin') ?>">Back</a></li-->    
 <li class="sf_admin_action_next"><a href="<?php echo url_for('sbtm/managesession?id='.$project_category->getId()) ?>">Manage session</a></li>

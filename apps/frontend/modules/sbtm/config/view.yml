@@ -19,6 +19,22 @@ uploadsSuccess:
   stylesheets: [sbtm.css]
 datafilesSuccess:
   stylesheets: [sbtm.css]
+managecoverageSuccess:
+  stylesheets: [sbtm.css]
+managetemplateSuccess:
+  stylesheets: [sbtm.css]
+uploadcoveragefilesSuccess:
+  stylesheets: [sbtm.css]
+viewcoverageSuccess:
+  stylesheets: [sbtm.css]
+editcoverageSuccess:
+  stylesheets: [sbtm.css]
+viewtemplateSuccess:
+  stylesheets: [sbtm.css]
+edittemplateSuccess:
+  stylesheets: [sbtm.css]
+uploadtemplatefilesSuccess:
+  stylesheets: [sbtm.css]
 uploaddatafilesSuccess:
   stylesheets: [sbtm.css]
 usermysessionSuccess:

@@ -18,6 +18,173 @@ class sbtmActions extends sfActions
       ->createQuery('a')
       ->execute();
   }
+  
+  public function executeManagecoverage(sfWebRequest $request)
+  {
+     
+   $dirname = $this->getUser()->getAttribute('project'); 
+   $this->logMessage($dirname.'directory name');
+    $filename = "uploads/{$dirname}/coverage"; 
+    if (!file_exists($filename)) { 
+       mkdir("uploads/{$dirname}/coverage/", 0777); 
+        } 
+    $filenames=array();
+$source_path = "uploads/{$dirname}/coverage";
+    $dir = realpath($source_path);
+$files = scandir($dir);
+$i=0;
+foreach ($files as $file) {
+if (substr($file, 0, 1) != '.') {
+$filenames[$i]=$file;
+$i++;
+}
+    } 
+
+    $this->getUser()->setAttribute('covfiles',$filenames);
+  }
+  
+  public function executeManagetemplate(sfWebRequest $request)
+  {
+     
+   $dirname = $this->getUser()->getAttribute('project'); 
+   $this->logMessage($dirname.'directory name');
+    $filename = "uploads/{$dirname}/template"; 
+    if (!file_exists($filename)) { 
+       mkdir("uploads/{$dirname}/template/", 0777); 
+        } 
+    $filenames=array();
+$source_path = "uploads/{$dirname}/template";
+    $dir = realpath($source_path);
+$files = scandir($dir);
+$i=0;
+foreach ($files as $file) {
+if (substr($file, 0, 1) != '.') {
+$filenames[$i]=$file;
+$i++;
+}
+    } 
+
+    $this->getUser()->setAttribute('temfiles',$filenames);
+  }
+  
+  public function executeUploadcoveragefiles(sfWebRequest $request)
+{
+
+}
+ public function executeUploadtemplatefiles(sfWebRequest $request)
+{
+
+}
+public function executeUploadcoverage(sfWebRequest $request)
+{
+       $dirname = $this->getUser()->getAttribute('project'); 
+    $filename = "uploads/{$dirname}/coverage/"; 
+    
+    if (!file_exists($filename)) { 
+       mkdir("uploads/{$dirname}/coverage/", 0777); 
+
+    } 
+$target_path = "uploads/{$dirname}/coverage/";
+$target_path = $target_path .basename( $_FILES['uploadedfile']['name']);
+$this->logMessage("sithik".$target_path);
+if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+    $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
+} else{
+    $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
+}
+$this->redirect('sbtm/managecoverage');
+    
+}
+
+public function executeUploadtemplate(sfWebRequest $request)
+{
+       $dirname = $this->getUser()->getAttribute('project'); 
+    $filename = "uploads/{$dirname}/template/"; 
+    
+    if (!file_exists($filename)) { 
+       mkdir("uploads/{$dirname}/template/", 0777); 
+
+    } 
+$target_path = "uploads/{$dirname}/template/";
+$target_path = $target_path .basename( $_FILES['uploadedfile']['name']);
+$this->logMessage("sithik".$target_path);
+if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+    $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
+} else{
+    $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
+}
+$this->redirect('sbtm/managetemplate');
+    
+}
+public function executeDeletecoverage(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+$filename = "uploads/{$dirname}/coverage/"; 
+unlink($filename.$request->getParameter('name'));
+$this->redirect('sbtm/managecoverage');
+}
+public function executeDeletetemplate(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+$filename = "uploads/{$dirname}/template/"; 
+unlink($filename.$request->getParameter('name'));
+$this->redirect('sbtm/managetemplate');
+}
+public function executeViewcoverage(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+$myFile = "uploads/{$dirname}/coverage/".$request->getParameter('name');
+$theData = file_get_contents($myFile);
+$this->getUser()->setAttribute('theData',$theData);
+}
+public function executeViewtemplate(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+$myFile = "uploads/{$dirname}/template/".$request->getParameter('name');
+$theData = file_get_contents($myFile);
+$this->getUser()->setAttribute('theData',$theData);
+}
+public function executeEditcoverage(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+$myFile = "uploads/{$dirname}/coverage/".$request->getParameter('name');
+$this->getUser()->setAttribute('covfilename', $request->getParameter('name'));
+$theData = file_get_contents($myFile);
+$this->getUser()->setAttribute('theData',$theData);
+}
+public function executeEdittemplate(sfWebRequest $request)
+{
+$dirname = $this->getUser()->getAttribute('project'); 
+$myFile = "uploads/{$dirname}/template/".$request->getParameter('name');
+$this->getUser()->setAttribute('temfilename', $request->getParameter('name'));
+$theData = file_get_contents($myFile);
+$this->getUser()->setAttribute('theData',$theData);
+}
+public function executeCoveragesubmit(sfWebRequest $request)
+{
+      $dirname = $this->getUser()->getAttribute('project'); 
+      $target_path = "uploads/{$dirname}/coverage/";
+$target_path = $target_path . $this->getUser()->getAttribute('covfilename');
+if(file_put_contents($target_path, $request->getParameter('quote'))) {
+       $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
+} else{
+    $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
+}
+   $this->redirect('sbtm/managetemplate'); 
+}
+public function executeTemplatesubmit(sfWebRequest $request)
+{
+      $dirname = $this->getUser()->getAttribute('project'); 
+      $target_path = "uploads/{$dirname}/template/";
+$target_path = $target_path . $this->getUser()->getAttribute('temfilename');
+if(file_put_contents($target_path, $request->getParameter('quote'))) {
+       $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
+} else{
+    $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
+}
+   $this->redirect('sbtm/managetemplate'); 
+}
+
 
   public function executeChangesessions(sfWebRequest $request)
   {
