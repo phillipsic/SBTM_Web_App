@@ -145,7 +145,8 @@ $q = Doctrine_Query::create()
 
 $rows = $q->execute();
 
-$this->redirect('sbtm/sessionlist');
+//$this->redirect('sbtm/sessionlist');
+$this->redirect('Projectcategory/show?id='.$this->getUser()->getAttribute('projectid'));
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)

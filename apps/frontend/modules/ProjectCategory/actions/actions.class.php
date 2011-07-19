@@ -21,6 +21,24 @@ class ProjectCategoryActions extends sfActions
   {
     $this->project_category = Doctrine_Core::getTable('ProjectCategory')->find(array($request->getParameter('id')));
     $this->forward404Unless($this->project_category);
+    
+ $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+
+    
+    $this->progress_sessions = Doctrine_Core::getTable('Sessions')
+      ->createQuery('a')
+            ->where('a.status_id!=?','4')
+            ->andWhere('a.project_id = ?',$dbprojectID)
+     ->execute();   
+    $this->project_category1 = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+      ->execute();
   }
 
   public function executeNew(sfWebRequest $request)

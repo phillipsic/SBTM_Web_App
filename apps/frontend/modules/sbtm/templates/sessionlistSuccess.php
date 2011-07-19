@@ -39,24 +39,7 @@
         </tbody>
     </table>
   </div>
-        <?php if ($progress_sessions->count()>0 &&  ($sf_user->getAttribute('adminrole')=="Admin")){ ?>
-        <div>
-     <th>
-           Copy Unfinished sessions to 
-          </th>
-       <th class="sf_admin_batch_actions_choice">
-           <select name="project_action">
-    <?php foreach ($project_category as $project): 
-    $value=$project->getName();?> 
-    <option value="<?php echo $value?>"><?php echo $project->getName()?></option>
-    <?php endforeach; ?> 
-    </select>
-    </th>
-    
-    <th>        <input type="submit" value=" Go " /></th> 
-        
-        </div>
-        <?php } ?>
+       
         <div class="sf_admin_list" style="overflow:auto; width:770px; height: 200px;">
       <table  border="5">
           <?php if ($progress_sessions->count()>0){ ?>

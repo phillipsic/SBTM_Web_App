@@ -1,4 +1,5 @@
 <div id="sf_admin_container">
+     <form method="post" action="<?php echo url_for('sessions/copysessions') ?>">
      <titles>Project Details</titles>
 <div class="sf_admin_list">
 <table>
@@ -34,10 +35,27 @@
             <li class="sf_admin_action_edit">
             <a href="<?php echo url_for('Projectcategory/edit?id='.$project_category->getId()) ?>">Edit</a>
             </li> 
+            <li><?php if ($progress_sessions->count()>0 &&  ($sf_user->getAttribute('adminrole')=="Admin")){ ?>
+     <th>
+           Copy Unfinished sessions to 
+          </th>
+       <th class="sf_admin_batch_actions_choice">
+           <select name="project_action">
+    <?php foreach ($project_category1 as $project): 
+    $value=$project->getName();?> 
+    <option value="<?php echo $value?>"><?php echo $project->getName()?></option>
+    <?php endforeach; ?> 
+    </select>
+    </th>
+    
+    <th>        <input type="submit" value=" Go " /></th> 
         
+
+        <?php } ?></li>
             </ul>   
 
 <!--a href="<?php echo url_for('ProjectCategory/edit?id='.$project_category->getId()) ?>">Edit</a-->
 &nbsp;
 <!--a href="<?php echo url_for('sbtm/projectadmin') ?>">Back</a-->
+  </form>
 </div>
