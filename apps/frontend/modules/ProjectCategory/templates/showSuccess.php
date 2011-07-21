@@ -43,7 +43,7 @@
             </li> 
             <li><?php if ($progress_sessions->count()>0 &&  ($sf_user->getAttribute('adminrole')=="Admin")){ ?>
      <th>
-           Copy Unfinished sessions to 
+           Move Unfinished sessions to 
           </th>
        <th class="sf_admin_batch_actions_choice">
            <select name="project_action">

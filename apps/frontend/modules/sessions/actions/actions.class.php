@@ -140,7 +140,7 @@ endforeach;
 $q = Doctrine_Query::create()
     ->update('Sessions')
     ->set('project_id', $dbprojectID)
-    ->where('status_id!=?','4')
+    ->where('status_id=?','1')
         ->andwhere('project_id = ?',$dbprojectID1);
 
 $rows = $q->execute();
