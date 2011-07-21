@@ -54,10 +54,13 @@ $admin=$sf_user->getAttribute('adminrole');?>
 
             <td>
             <ul class="sf_admin_td_actions">
- <?php if ($admin=="Admin"): ?> 
+ <?php if ($admin=="Admin" || $admin=="Reviewer"): ?> 
+               
             <li class="sf_admin_action_tick">
             <a href="<?php echo url_for('sessions/review?name='.$session->getSessionname().'&id='.$session->getId()) ?>">Review</a>
             </li>  
+            <?php endif ?>
+            <?php if ($admin=="Admin"  ): ?> 
             <li class="sf_admin_action_delete">
             <?php echo link_to('Delete', 'sessions/delete?id='.$session->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
             </li> 
