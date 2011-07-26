@@ -819,6 +819,270 @@ if(file_put_contents($target_path, $request->getParameter('quote'))) {
     foreach ($stat_id as $statid):
    $dbstatID =$statid->getId();
 endforeach;
+$admin_mail=array();
+$user_mail=array();
+$adi=0;
+$usi=0;
+$flag=0;
+if($request->getparameter('status_action')=='Submitted'){
+    $flag=1;
+     $this->admin = Doctrine_Core::getTable('Logins')
+      ->createQuery('a')
+             ->where('a.role_id = ?',1)
+     ->execute();
+     
+     foreach ($this->admin as $adm):
+   $admin_mail[$adi] =$adm->getEmail();
+     $adi++;
+endforeach;
+     $sub="Session Submitted for Review";
+                              $subject= '<h1 class="h1">Session Submitted for Review</h1>
+                                                                <strong>Dear Admin/Reviewer:</strong> <br />Session '.$this->getUser()->getAttribute('filename').' submitted for Reviewing kindly take a look at the session by logging in to SBTM web application!
+                                                                <br />
+                                                                <br />
+                                                                To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
+                                                                ';} 
+                                                                else if($request->getparameter('status_action')=='Finalize') {
+                                                                    $this->sessu = Doctrine_Core::getTable('Sessions')
+                                                                     ->createQuery('a')
+                                                                     ->where('a.sessionname = ?', $this->getUser()->getAttribute('filename'))
+                                                                     ->execute();
+                                                                     foreach ($this->sessu as $seusr):
+   $sesuser =$seusr->getTester();
+endforeach;
+                                                                     $this->users = Doctrine_Core::getTable('Logins')
+                                                                     ->createQuery('a')
+                                                                     ->whereIn('a.name ', array($this->getUser()->getAttribute('username'),$sesuser))
+                                                                     ->execute();
+                                                                     foreach ($this->users as $usr):
+   $user_mail[$usi] =$usr->getEmail();
+     $usi++;
+endforeach;
+
+     $sub="Session in Finalize State";                                                       
+$subject=        '
+                                                                     <h1 class="h1">Session in Finalize State</h1>
+                                                                <strong>Dear User:</strong> <br />Session '.$this->getUser()->getAttribute('filename').' in Finalize Status kindly take a look at the session by logging in to SBTM web application!
+                                                                <br />
+                                                                <br />
+                                                                To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
+                                                                
+';}
+$transport = Swift_SmtpTransport::newInstance('10.165.133.27', 25)
+  ;
+$mailer = Swift_Mailer::newInstance($transport);
+$message = Swift_Message::newInstance($sub)
+  ->setFrom(array('Ian.Phillips@comverse.com' => 'SBTM ADMIN'));
+   if($flag==1){
+  $message->setTo($admin_mail);}
+   else{
+       $message->setTo($user_mail);
+    
+       }
+  $message->setBody('<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ 
+
+<style type="text/css">
+/* Client-specific Styles */
+#outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
+body{width:100% !important;} .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+body{-webkit-text-size-adjust:none;} /* Prevent Webkit platforms from changing default text sizes. */
+
+body{margin:0; padding:0;}
+img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+table td{border-collapse:collapse;}
+#backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
+
+
+body, #backgroundTable{
+/*@editable*/ background-color:#FAFAFA;
+}
+
+/**
+* @tab Page
+* @section email border
+* @tip Set the border for your email.
+*/
+#templateContainer{
+/*@editable*/ border: 1px solid #DDDDDD;
+}
+
+/**
+* @tab Page
+* @section heading 1
+* @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+* @style heading 1
+*/
+h1, .h1{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:34px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+/**
+* @tab Page
+* @section heading 2
+* @tip Set the styling for all second-level headings in your emails.
+* @style heading 2
+*/
+h2, .h2{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:30px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+/**
+* @tab Page
+* @section heading 3
+* @tip Set the styling for all third-level headings in your emails.
+* @style heading 3
+*/
+h3, .h3{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:26px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+
+h4, .h4{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:22px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+
+#templateHeader{
+/*@editable*/ background-color:#FFFFFF;
+/*@editable*/ border-bottom:0;
+}
+
+.headerContent{
+/*@editable*/ color:#202020;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:34px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+/*@editable*/ padding:0;
+/*@editable*/ text-align:center;
+/*@editable*/ vertical-align:middle;
+}
+
+.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
+/*@editable*/ color:#336699;
+/*@editable*/ font-weight:normal;
+/*@editable*/ text-decoration:underline;
+}
+
+#headerImage{
+height:auto;
+max-width:600px !important;
+}
+
+
+#templateContainer, .bodyContent{
+/*@editable*/ background-color:#FFFFFF;
+}
+
+
+.bodyContent div{
+/*@editable*/ color:#505050;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:14px;
+/*@editable*/ line-height:150%;
+/*@editable*/ text-align:left;
+}
+
+
+.bodyContent div a:link, .bodyContent div a:visited, /* Yahoo! Mail Override */ .bodyContent div a .yshortcuts /* Yahoo! Mail Override */{
+/*@editable*/ color:#336699;
+/*@editable*/ font-weight:normal;
+/*@editable*/ text-decoration:underline;
+}
+
+.bodyContent img{
+display:inline;
+height:auto;
+}
+
+
+</style>
+</head>
+<center>
+         
+                        <!-- // End Template Preheader \\ -->
+                     <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
+                         
+                         <tr>
+                             <td align="center" valign="top">
+                                    <!-- // Begin Template Body \\ -->
+                                 <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+                                     <tr>
+                                            <td valign="top" class="bodyContent">
+                                
+                                                <!-- // Begin Module: Standard Content \\ -->
+                                                <table border="0" cellpadding="20" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td valign="top">
+                                                            <div mc:edit="std_content00">
+                                                            '.$subject.'
+                                                            
+</div>
+</td>
+                                                    </tr>
+                                                </table>
+                                                <!-- // End Module: Standard Content \\ -->
+                                                
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- // End Template Body \\ -->
+                                </td>
+                            </tr>
+                         <tr>
+                             
+                            </tr>
+                        </table>
+                        <br />
+                    </td>
+                </tr>
+            </table>
+        </center>','text/html')
+  ;
+$result = $mailer->send($message);
+$this->logMessage($usre_mail.'sithik');
 $this->logMessage($request->getparameter('status_action').'sithik'.$dbstatID);
     $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));
       $usertest=$this->getUser()->getAttribute('username');
