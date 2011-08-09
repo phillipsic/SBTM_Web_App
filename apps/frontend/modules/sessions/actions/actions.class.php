@@ -244,7 +244,88 @@ $this->redirect('Projectcategory/show?id='.$this->getUser()->getAttribute('proje
             
             
 	}
-        
+   /*public function executeDownload(sfWebRequest $request) {
+      
+      $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id')));
+      $usertest=$this->getUser()->getAttribute('username');
+      $sessionupdate->setStatusId('3');
+      $sessionupdate->setTester($usertest);
+      $sessionupdate->save();
+      $urlRefresh = "sessions";
+      header("Refresh: 1; URL=\"" . $urlRefresh . "\"");
+      $dirname = $this->getUser()->getAttribute('project');
+      $filename = "uploads/{$dirname}/template"; 
+       if (!file_exists($filename)) { 
+       mkdir("uploads/{$dirname}/template/", 0777); 
+        } 
+      $filenames=array();
+      $source_path = "uploads/{$dirname}/template";
+     $dir = realpath($source_path);
+     $files = scandir($dir);
+      $i=0;
+      foreach ($files as $file) {
+     if (substr($file, 0, 1) != '.') {
+     $filenames[$i]=$file;
+     $i++;
+     }
+     } 
+
+      $linebreaker="\n";
+      
+	    $this->sessions = Doctrine::getTable('Sessions')->find($request->getParameter('id'));
+            $filename=$this->sessions->getSessionname();
+            $myFile = $this->sessions->getFileSlug();
+            copy($source_path.'/'.$filenames[0],$myFile);
+            $fh = fopen($myFile, 'w') or die("can't open file");
+            
+            $char="/CHARTERS/i";
+            $area="/AREAS/i";
+            $testnotes="/TEST NOTES/i";
+            $line=fgets($file);
+            $stringData=null;
+            while(!feof($file))
+  {
+            if (preg_match($char,$line)) {
+                $stringData+=$line.$linebreaker;
+                 $stringData+=fgets($file).$linebreaker;
+                $stringData+=$this->sessions->getCharter().$linebreaker;
+            } 
+            else if (preg_match($area,$line)) {
+                $stringData+=$line.$linebreaker;
+                $stringData+=fgets($file).$linebreaker;
+                $stringData+=$this->sessions->getAreas().$linebreaker;
+            } 
+            else if (preg_match($testnotes, $line)) {
+                $stringData+=$line.$linebreaker;
+                $stringData+=fgets($file).$linebreaker;
+                $stringData+=$this->sessions->getTestnotes().$linebreaker;
+            } 
+            else
+               $stringData+=$line.$linebreaker;
+  }
+           $this->logMessage( $stringData);
+            fwrite($fh, $stringData);
+            //$count = $this->sessions->columnCount()."\n";
+            //for ( $column = 0; $counter <= $count; $column++) {
+           // fwrite($fh, $this->sessions->get($column+1));
+           // }
+            fclose($fh);
+	    $response = $this->getContext()->getResponse();
+	    $response->clearHttpHeaders();
+	    $response->addCacheControlHttpHeader('Cache-control', 'must-revalidate, post-check=0, pre-check=0');
+	    $response->setContentType('application/octet-stream', true);
+	    $response->setHttpHeader('Content-transfer-encoding', 'binary');
+	    $response->setHttpHeader('Content-Disposition', 'attachement; filename=' . $this->sessions->getFileSlug() );
+	    $response->sendHttpHeaders();
+	    $response->setContent(file_get_contents('./'.$myFile, true));
+            unlink('./'.$myFile);
+            
+            
+
+	    return sfView::NONE;
+            
+            
+	}    */ 
         
 public function executeUpload(sfWebRequest $request)
 {
@@ -320,6 +401,7 @@ $this->status = Doctrine_Core::getTable('Status')
       ->execute();
  $name=sbtm::slugify($request->getParameter('name'));
  $this->getUser()->setAttribute('filename',$name);
+ $this->getUser()->setAttribute('filename1',$request->getParameter('name'));
  $this->getUser()->setAttribute('id',$request->getParameter('id'));
 $myFile = "uploads/{$dirname}/".$name;
 $this->logMessage($myFile, 'err');

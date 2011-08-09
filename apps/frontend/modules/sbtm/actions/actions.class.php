@@ -837,7 +837,7 @@ if($request->getparameter('status_action')=='Submitted'){
 endforeach;
      $sub="Session Submitted for Review";
                               $subject= '<h1 class="h1">Session Submitted for Review</h1>
-                                                                <strong>Dear Admin/Reviewer:</strong> <br />Project : '.$this->getUser()->getAttribute('project').'<br />Session '.$this->getUser()->getAttribute('filename').' submitted for Reviewing kindly take a look at the session by logging in to SBTM web application!
+                                                                <strong>Dear Admin/Reviewer:</strong> <br />Project : '.$this->getUser()->getAttribute('project').'<br />Session '.$this->getUser()->getAttribute('filename1').' submitted for Reviewing kindly take a look at the session by logging in to SBTM web application!
                                                                 <br />
                                                                 <br />
                                                                 To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
@@ -845,14 +845,14 @@ endforeach;
                                                                 else if($request->getparameter('status_action')=='Finalize') {
                                                                     $this->sessu = Doctrine_Core::getTable('Sessions')
                                                                      ->createQuery('a')
-                                                                     ->where('a.sessionname = ?', $this->getUser()->getAttribute('filename'))
+                                                                     ->where('a.sessionname = ?', $this->getUser()->getAttribute('filename1'))
                                                                      ->execute();
                                                                      foreach ($this->sessu as $seusr):
    $sesuser =$seusr->getTester();
 endforeach;
                                                                      $this->users = Doctrine_Core::getTable('Logins')
                                                                      ->createQuery('a')
-                                                                     ->whereIn('a.name ', array($this->getUser()->getAttribute('username'),$sesuser))
+                                                                     ->whereIn('a.username ', array($this->getUser()->getAttribute('username'),$sesuser))
                                                                      ->execute();
                                                                      foreach ($this->users as $usr):
    $user_mail[$usi] =$usr->getEmail();
@@ -862,7 +862,7 @@ endforeach;
      $sub="Session in Finalize State";                                                       
 $subject=        '
                                                                      <h1 class="h1">Session in Finalize State</h1>
-                                                                <strong>Dear User:</strong> <br />Project : '.$this->getUser()->getAttribute('project').'<br />Session '.$this->getUser()->getAttribute('filename').' in Finalize Status kindly take a look at the session by logging in to SBTM web application!
+                                                                <strong>Dear User:</strong> <br />Project : '.$this->getUser()->getAttribute('project').'<br />Session '.$this->getUser()->getAttribute('filename1').' in Finalize Status kindly take a look at the session by logging in to SBTM web application!
                                                                 <br />
                                                                 <br />
                                                                 To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
