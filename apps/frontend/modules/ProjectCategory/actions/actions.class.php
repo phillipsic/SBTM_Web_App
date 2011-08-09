@@ -95,6 +95,14 @@ endforeach;
 if($this->getUser()->getAttribute('new')=='yes'){
           $this->getUser()->setAttribute('project',$form->getValue('name'));
           $this->getUser()->getAttributeHolder()->remove('new');
+          $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+      ->createQuery('a')
+              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+     ->execute();
+foreach ($this->project_id as $projectid):
+   $dbprojectID =$projectid->getId();
+endforeach;
+$this->getUser()->setAttribute('projectid',$dbprojectID);
           }
 //                   $this->logMessage($val.'sithik'.$form->getValue('name'), 'err');
   
