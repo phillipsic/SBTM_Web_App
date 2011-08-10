@@ -216,118 +216,110 @@ $this->setTemplate('login');
   
   public function executeLineChartData()
   {
-    srand((double)microtime()*1000000);
-
-//
-// NOTE: how we are filling 3 arrays full of data,
-//       one for each line on the graph
-//
-    $date = Doctrine_Core::getTable('ProjectCategory')
-      ->createQuery('a')
-              ->where('a.name = ?',$this->getUser()->getAttribute('project') )
-     ->execute();
-foreach ($date as $projectid):
-   $dbprojectID =$projectid->getId();
-   $dbstartdate=$projectid->getStartdate();
-$dbenddate=$projectid->getEnddate();
-endforeach;
-$q = Doctrine_Query::create()
-  //->select('((DATEDIFF(PC.enddate,PC.startdate)) - ((WEEK(PC.enddate) - WEEK(PC.startdate))*2) - (CASE WHEN WEEKDAY(PC.startdate) = 6 THEN 1 ELSE 0 END) - (CASE WHEN WEEKDAY(PC.enddate) = 5 THEN 1 ELSE 0 END)) AS workdays')
-  ->select('(DATEDIFF(PC.enddate,PC.startdate))  AS workdays')
+        srand((double)microtime()*1000000);
+        $date = Doctrine_Core::getTable('ProjectCategory')
+        ->createQuery('a')
+        ->where('a.name = ?',$this->getUser()->getAttribute('project') )
+        ->execute();
+        foreach ($date as $projectid):
+        $dbprojectID =$projectid->getId();
+        $dbstartdate=$projectid->getStartdate();
+        $dbenddate=$projectid->getEnddate();
+        endforeach;
+        $q = Doctrine_Query::create()
+        ->select('(DATEDIFF(PC.enddate,PC.startdate))  AS workdays')  
         ->from('ProjectCategory PC')
-  ->where('PC.name = ?',$this->getUser()->getAttribute('project') );
+        ->where('PC.name = ?',$this->getUser()->getAttribute('project') );
  
-$executequery = $q->fetchArray();
- $workday=$executequery[0]['workdays'];
-$test=23;
- 
- 
- $sessions = Doctrine_Core::getTable('Sessions')
-      ->createQuery('a')
-           ->where('a.project_id = ?',$dbprojectID)
-     ->execute();
- $sessions->count();
- 
+        $executequery = $q->fetchArray();
+        $workday=$executequery[0]['workdays']+1;
 
- $start=strtotime($dbstartdate);
-$now=strtotime($dbenddate);
-$sysdate=strtotime(date("d F Y H:i:s"));
-$i=0;
-$flag=true;
-$data_1 = array();
-$data_2 = array();
-$data_3 = array();
-$this->logMessage($workday.'working days from DB');
-while($start<$now)
-    {
+        $this->logMessage($workday."sithik"); 
+ 
+        $sessions = Doctrine_Core::getTable('Sessions')
+        ->createQuery('a')
+        ->where('a.project_id = ?',$dbprojectID)
+        ->execute();
+        $sessions->count();
+        $start=strtotime($dbstartdate);
+        $now=strtotime($dbenddate);
+        $sysdate=strtotime(date("d F Y H:i:s"));
+        $i=0;
+        $flag=true;
+        $data_1 = array();
+        $data_2 = array();
+        $data_3 = array();
+        $firstday=$start;
+        $this->logMessage($workday.'work');
+        while($start<=$now)
+        {
+        $inside=$start;
+        //$this->logMessage(date("Y-m-d",$firstday).'sithik'.date("Y-m-d",$inside));
+        $start=$start+(60*60*24*1);
+        if(date("Y-m-d H:i:s",$start)<=date("Y-m-d H:i:s",$sysdate)|| (date("Y-m-d",$firstday)==date("Y-m-d",$inside)) ){
+        //    $this->logMessage(date("Y-m-d H:i:s",$start).'date'.date("Y-m-d H:i:s",$sysdate));
+        //todo check
+        $todosessions = Doctrine_Core::getTable('Sessions')
+        ->createQuery('a')
+        ->where('a.project_id = ?',$dbprojectID)
+        ->andWhere('a.status_id = 1')
+        ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+        ->execute();
+        $totalsessions = Doctrine_Core::getTable('Sessions')
+        ->createQuery('a')
+        ->where('a.project_id = ?',$dbprojectID)
+        ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+        ->execute();
     
-    $this->logMessage($workday.'working days inside loops');
-     $start=$start+(60*60*24*1);
-    if(date("Y-m-d H:i:s",$start)<=date("Y-m-d H:i:s",$sysdate)){
-    $this->logMessage(date("Y-m-d H:i:s",$start).'date'.date("Y-m-d H:i:s",$sysdate));
-   
-    
-    //todo check
-    $todosessions = Doctrine_Core::getTable('Sessions')
-                 ->createQuery('a')
-            ->where('a.project_id = ?',$dbprojectID)
-                 ->andWhere('a.status_id = 1')
-                 ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
-                 ->execute();
-
-    $totalsessions = Doctrine_Core::getTable('Sessions')
-                 ->createQuery('a')
-            ->where('a.project_id = ?',$dbprojectID)
-                 ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
-                 ->execute();
-    
-    if($todosessions->count()>0){
+        if($todosessions->count()>0){
         if($flag){
-        $first_target=round(($todosessions->count()-($todosessions->count()/$workday)),1);
+        $first_target=$todosessions->count()-($todosessions->count()/$workday);
         }
-$data_1[$i]= $todosessions->count();
-if($flag)
-{
-    $target_=$first_target;
-    $flag=false;
-}
-else{
-$target_=round(($first_target-($first_target/$workday)),1);
+        $data_1[$i]= $todosessions->count();
+        if($flag)
+        {
+            $target_=$first_target;
+            $flag=false;
+        }
+        else{
+            $this->logMessage($target_ .'target1'. $workday);
+            $target_=$target_-($target_/$workday);
+        }
+        $this->logMessage($target_ .'target2'. $workday);
+        $data_3[$i] = $target_;
+        $this->logMessage($data_3[$i].'i1'.$i);
+        //$workday--;
+        }else{
+              $data_1[$i]= 'null'; 
+              $data_3[$i] = 'null';
+              }
 
-}
+            if($totalsessions->count()>0)
+                $data_2[$i]= $totalsessions->count();
+            else
+                $data_2[$i]= 'null';
 
-$data_3[$i] = $target_;
-//$workday--;
+            }
+            else if(date("Y-m-d H:i:s",$start)>date("Y-m-d H:i:s",$sysdate)){
+                $i++;
+              $target_=$target_-($target_/$workday);
+              $data_3[$i] = $target_;
+              $this->logMessage($data_3[$i].'i'.$i);
+            }
+            
+            $this->logMessage($data_3[$i].'i1'.$i);
+            $moth[$i] =date('d-M',$inside);
+            $i++;
+            $workday--;
 }
-    else{
-      $data_1[$i]= 'null'; 
-      $data_3[$i] = 'null';
-      }
-    
-    if($totalsessions->count()>0)
-$data_2[$i]= $totalsessions->count();
-else
-    $data_2[$i]= 'null';
-
-    }
-    elseif(date("Y-m-d H:i:s",$start)>date("Y-m-d H:i:s",$sysdate)){
-      $target_=round(($first_target-($first_target/$workday)),1);
-
-$data_3[$i] = $target_;
-//$workday--;  
-    }
-    else{
-       //$workday--; 
-    }
-    $moth[$i] =date('d-M',$start);
-    $i++;
-    $workday--; 
-}
+ 
  
 
 $g = new stGraph();
 $g->title( $this->getUser()->getAttribute('project'), '{font-size: 20px; color: #736AFF}' );
-
+foreach ($data_3 as $dat):
+$this->logMessage($dat+'value');
+endforeach;
 // we add 3 sets of data:
 $g->set_data( $data_1 );
 $g->set_data( $data_2 );
@@ -339,17 +331,16 @@ $g->line_dot( 3, 4, '0xCC3399', 'Total', 10);    // <-- 3px thick + dots
 $g->line_hollow( 3, 4, '0x80a033', 'Target', 10 );
 
 $g->set_x_labels( $moth );
-
 $g->set_x_label_style( 10, '0x000000', 0, 10 );
 $g->set_x_legend(date("Y",$start));
 $g->set_tool_tip( '#key#: #val# (#x_label#, #x_legend#)<br>' );
-$g->set_y_max( 25 );
+$g->set_y_max( 80 );
 $g->y_label_steps( 10 );
-$g->y_label_steps(5);
 $g->set_y_legend( 'Sessions', 12, '#736AFF' );
 echo $g->render();
 
 return sfView::NONE;
+
   }
 public function executePieChartData()
 	{
@@ -692,7 +683,7 @@ public function executeDatafiles(sfWebRequest $request)
 $dirname = $this->getUser()->getAttribute('project'); 
     $filename = "uploads/{$dirname}/datafiles"; 
     if (!file_exists($filename)) { 
-       mkdir("uploads/{$dirname}/datafiles/", 0777); 
+       mkdir("uploads/{$dirname}/datafiles/", 0777,true);
         } 
     $filenames=array();
 $source_path = "uploads/{$dirname}/datafiles";
@@ -719,7 +710,7 @@ public function executeUploaddata(sfWebRequest $request)
     $filename = "uploads/{$dirname}/datafiles/"; 
     
     if (!file_exists($filename)) { 
-       mkdir("uploads/{$dirname}/datafiles/", 0777); 
+       mkdir("uploads/{$dirname}/datafiles/", 0777,true); 
 
     } 
 $target_path = "uploads/{$dirname}/datafiles/";
