@@ -206,8 +206,8 @@ $this->redirect('Projectcategory/show?id='.$this->getUser()->getAttribute('proje
             $fh = fopen($myFile, 'w') or die("can't open file");
             $stringData = $chart.$linebreaker.$extra.$linebreaker.
             $this->sessions->getCharter().$linebreaker.$linebreaker.
-                    $area.$linebreaker.$extra.$linebreaker.
-            $this->sessions->getAreas().$linebreaker.$linebreaker.
+                    $area.$linebreaker.$extra.$linebreaker.str_replace(";", $linebreaker, $this->sessions->getAreas())
+            .$linebreaker.$linebreaker.
                     $start.$linebreaker.$extra.$linebreaker.
             $linebreaker.$linebreaker.
                     $tester.$linebreaker.$extra.$linebreaker.
