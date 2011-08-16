@@ -21,4 +21,6 @@ public function getFilenmaeSlug($text)
 {
   return sbtm::slugify($this->$text);
 }
+
+
 }

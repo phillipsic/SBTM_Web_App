@@ -36,6 +36,7 @@ foreach ($this->project_id as $projectid):
 endforeach;
     $this->form->setDefault('status_id',1);
      $this->form->setDefault('project_id',$dbprojectID);
+     $this->form->setDefault('todochage_at',date('Y-m-d H:i:s'));
 
   }
 
@@ -53,6 +54,7 @@ foreach ($this->project_id as $projectid):
 endforeach;
     $this->form->setDefault('status_id',1);
      $this->form->setDefault('project_id',$dbprojectID);
+     $this->form->setDefault('todochage_at',date('Y-m-d H:i:s'));
     $this->processForm($request, $this->form);
 
     $this->setTemplate('new');
@@ -370,7 +372,7 @@ $sessioninsert->setTester('');
 $sessioninsert->setStatusId(1);
 $sessioninsert->setProjectId($dbprojectID);
 $sessioninsert->setStrategyId($statID);
-
+$sessioninsert->setTodochageAt(date('Y-m-d H:i:s'));
 $sessioninsert->save();
   }
 fclose($fh);

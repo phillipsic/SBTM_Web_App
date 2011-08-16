@@ -15,4 +15,8 @@ class SessionsForm extends BaseSessionsForm
      
         //$this->useFields(array('sessionname', 'charter', 'areas', 'testnotes', 'ready', 'tester', 'strategy_id'));  
   }
+  
+  
+
+
 }

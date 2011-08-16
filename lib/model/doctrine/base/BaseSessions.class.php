@@ -94,6 +94,10 @@ abstract class BaseSessions extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
+        $this->hasColumn('todochage_at', 'date', null, array(
+             'type' => 'date',
+             ));
+        
     }
 
     public function setUp()
@@ -112,6 +116,11 @@ abstract class BaseSessions extends sfDoctrineRecord
         $this->hasOne('Strategy', array(
              'local' => 'strategy_id',
              'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+        
+        $this->hasOne('Logins', array(
+             'local' => 'tester',
+             'foreign' => 'username',
              'onDelete' => 'CASCADE'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();

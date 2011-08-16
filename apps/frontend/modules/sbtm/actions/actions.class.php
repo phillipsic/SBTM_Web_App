@@ -234,7 +234,15 @@ $this->setTemplate('login');
         $executequery = $q->fetchArray();
         $workday=$executequery[0]['workdays']+1;
 
-        $this->logMessage($workday."sithik"); 
+        $q1 = Doctrine_Query::create()
+        ->select('(COUNT(1)) AS target')  
+        ->from('sessions Ses')
+        ->where('Ses.project_id = ?',$dbprojectID )
+        ->groupBy('DATE_FORMAT(created_at,"%M %D %Y")')
+        ->orderBy('count(1) DESC');
+        $executequery1 = $q1->fetchArray();
+        $maxTarget=$executequery1[0]['target'];
+        $this->logMessage($maxTarget.'MaxTarget'); 
  
         $sessions = Doctrine_Core::getTable('Sessions')
         ->createQuery('a')
@@ -254,26 +262,37 @@ $this->setTemplate('login');
         while($start<=$now)
         {
         $inside=$start;
-        //$this->logMessage(date("Y-m-d",$firstday).'sithik'.date("Y-m-d",$inside));
-        $start=$start+(60*60*24*1);
-        if(date("Y-m-d H:i:s",$start)<=date("Y-m-d H:i:s",$sysdate)|| (date("Y-m-d",$firstday)==date("Y-m-d",$inside)) ){
-        //    $this->logMessage(date("Y-m-d H:i:s",$start).'date'.date("Y-m-d H:i:s",$sysdate));
+        
+        
+        $this->logMessage(date("Y-m-d",$firstday).'sithik'.date("Y-m-d",$inside).'sithik'.date("Y-m-d H:i:s",$start).'sithik'.date("Y-m-d H:i:s",$sysdate));
+        if((date("Y-m-d",$start) <= date("Y-m-d",$sysdate)) || (date("Y-m-d",$firstday)==date("Y-m-d",$inside)) ){
+        $this->logMessage(date("Y-m-d H:i:s",$start).'date'.date("Y-m-d H:i:s",$sysdate));
         //todo check
         $todosessions = Doctrine_Core::getTable('Sessions')
         ->createQuery('a')
         ->where('a.project_id = ?',$dbprojectID)
-        ->andWhere('a.status_id = 1')
-        ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+        ->andWhere('a.todochage_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
         ->execute();
+       /* $othersessions = Doctrine_Core::getTable('Sessions')
+        ->createQuery('a')
+        ->where('a.project_id = ?',$dbprojectID)
+        ->andWhere('a.status_id != 1')
+        ->andWhere('a.updated_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+        ->execute();*/
+        //$todoses=$todosessions->count()-$othersessions->count();
         $totalsessions = Doctrine_Core::getTable('Sessions')
         ->createQuery('a')
         ->where('a.project_id = ?',$dbprojectID)
         ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
         ->execute();
-    
-        if($todosessions->count()>0){
+
+        /*if($todoses>0){
         if($flag){
-        $first_target=$todosessions->count()-($todosessions->count()/$workday);
+        $first_target=$todoses-($todoses/$workday);
+        }*/
+    if($maxTarget>0){
+        if($flag){
+        $first_target=$maxTarget-($maxTarget/$workday);
         }
         $data_1[$i]= $todosessions->count();
         if($flag)
@@ -306,7 +325,7 @@ $this->setTemplate('login');
               $data_3[$i] = $target_;
               $this->logMessage($data_3[$i].'i'.$i);
             }
-            
+            $start=$start+(60*60*24*1);
             $this->logMessage($data_3[$i].'i1'.$i);
             $moth[$i] =date('d-M',$inside);
             $i++;
@@ -324,7 +343,9 @@ endforeach;
 $g->set_data( $data_1 );
 $g->set_data( $data_2 );
 $g->set_data( $data_3 );
-
+foreach($data_2 as $totalM):
+$totalmax=$totalM;
+endforeach;
 // we add the 3 line types and key labels
 $g->line( 3, '0x9933CC', 'Todo', 10 );
 $g->line_dot( 3, 4, '0xCC3399', 'Total', 10);    // <-- 3px thick + dots
@@ -334,8 +355,8 @@ $g->set_x_labels( $moth );
 $g->set_x_label_style( 10, '0x000000', 0, 10 );
 $g->set_x_legend(date("Y",$start));
 $g->set_tool_tip( '#key#: #val# (#x_label#, #x_legend#)<br>' );
-$g->set_y_max( 80 );
-$g->y_label_steps( 10 );
+$g->set_y_max( $totalmax );
+$g->y_label_steps( $totalmax/10 );
 $g->set_y_legend( 'Sessions', 12, '#736AFF' );
 echo $g->render();
 
@@ -655,6 +676,11 @@ if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
       $sessionupdate->setStatusId('5');
       $sessionupdate->setTester($usertest);
       $sessionupdate->save();
+      $q = Doctrine_Query::create()
+        ->update('Sessions')  
+        ->set('todochage_at','now()')
+        ->where('id = ?',$this->getUser()->getAttribute('id') );
+    $executequery = $q->fetchArray();
       $urlRefresh = "sessions";
       header("Refresh: 1; URL=\"" . $urlRefresh . "\"");
     $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
@@ -859,220 +885,7 @@ $subject=        '
                                                                 To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
                                                                 
 ';}
-$transport = Swift_SmtpTransport::newInstance('10.165.133.27', 25)
-  ;
-$mailer = Swift_Mailer::newInstance($transport);
-$message = Swift_Message::newInstance($sub)
-  ->setFrom(array('Ian.Phillips@comverse.com' => 'SBTM ADMIN'));
-   if($flag==1){
-  $message->setTo($admin_mail);}
-   else{
-       $message->setTo($user_mail);
-    
-       }
-  $message->setBody('<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- 
 
-<style type="text/css">
-/* Client-specific Styles */
-#outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
-body{width:100% !important;} .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
-body{-webkit-text-size-adjust:none;} /* Prevent Webkit platforms from changing default text sizes. */
-
-body{margin:0; padding:0;}
-img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
-table td{border-collapse:collapse;}
-#backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
-
-
-body, #backgroundTable{
-/*@editable*/ background-color:#FAFAFA;
-}
-
-/**
-* @tab Page
-* @section email border
-* @tip Set the border for your email.
-*/
-#templateContainer{
-/*@editable*/ border: 1px solid #DDDDDD;
-}
-
-/**
-* @tab Page
-* @section heading 1
-* @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
-* @style heading 1
-*/
-h1, .h1{
-/*@editable*/ color:#202020;
-display:block;
-/*@editable*/ font-family:Arial;
-/*@editable*/ font-size:34px;
-/*@editable*/ font-weight:bold;
-/*@editable*/ line-height:100%;
-margin-top:0;
-margin-right:0;
-margin-bottom:10px;
-margin-left:0;
-/*@editable*/ text-align:left;
-}
-
-/**
-* @tab Page
-* @section heading 2
-* @tip Set the styling for all second-level headings in your emails.
-* @style heading 2
-*/
-h2, .h2{
-/*@editable*/ color:#202020;
-display:block;
-/*@editable*/ font-family:Arial;
-/*@editable*/ font-size:30px;
-/*@editable*/ font-weight:bold;
-/*@editable*/ line-height:100%;
-margin-top:0;
-margin-right:0;
-margin-bottom:10px;
-margin-left:0;
-/*@editable*/ text-align:left;
-}
-
-/**
-* @tab Page
-* @section heading 3
-* @tip Set the styling for all third-level headings in your emails.
-* @style heading 3
-*/
-h3, .h3{
-/*@editable*/ color:#202020;
-display:block;
-/*@editable*/ font-family:Arial;
-/*@editable*/ font-size:26px;
-/*@editable*/ font-weight:bold;
-/*@editable*/ line-height:100%;
-margin-top:0;
-margin-right:0;
-margin-bottom:10px;
-margin-left:0;
-/*@editable*/ text-align:left;
-}
-
-
-h4, .h4{
-/*@editable*/ color:#202020;
-display:block;
-/*@editable*/ font-family:Arial;
-/*@editable*/ font-size:22px;
-/*@editable*/ font-weight:bold;
-/*@editable*/ line-height:100%;
-margin-top:0;
-margin-right:0;
-margin-bottom:10px;
-margin-left:0;
-/*@editable*/ text-align:left;
-}
-
-
-#templateHeader{
-/*@editable*/ background-color:#FFFFFF;
-/*@editable*/ border-bottom:0;
-}
-
-.headerContent{
-/*@editable*/ color:#202020;
-/*@editable*/ font-family:Arial;
-/*@editable*/ font-size:34px;
-/*@editable*/ font-weight:bold;
-/*@editable*/ line-height:100%;
-/*@editable*/ padding:0;
-/*@editable*/ text-align:center;
-/*@editable*/ vertical-align:middle;
-}
-
-.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
-/*@editable*/ color:#336699;
-/*@editable*/ font-weight:normal;
-/*@editable*/ text-decoration:underline;
-}
-
-#headerImage{
-height:auto;
-max-width:600px !important;
-}
-
-
-#templateContainer, .bodyContent{
-/*@editable*/ background-color:#FFFFFF;
-}
-
-
-.bodyContent div{
-/*@editable*/ color:#505050;
-/*@editable*/ font-family:Arial;
-/*@editable*/ font-size:14px;
-/*@editable*/ line-height:150%;
-/*@editable*/ text-align:left;
-}
-
-
-.bodyContent div a:link, .bodyContent div a:visited, /* Yahoo! Mail Override */ .bodyContent div a .yshortcuts /* Yahoo! Mail Override */{
-/*@editable*/ color:#336699;
-/*@editable*/ font-weight:normal;
-/*@editable*/ text-decoration:underline;
-}
-
-.bodyContent img{
-display:inline;
-height:auto;
-}
-
-
-</style>
-</head>
-<center>
-         
-                        <!-- // End Template Preheader \\ -->
-                     <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
-                         
-                         <tr>
-                             <td align="center" valign="top">
-                                    <!-- // Begin Template Body \\ -->
-                                 <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
-                                     <tr>
-                                            <td valign="top" class="bodyContent">
-                                
-                                                <!-- // Begin Module: Standard Content \\ -->
-                                                <table border="0" cellpadding="20" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td valign="top">
-                                                            <div mc:edit="std_content00">
-                                                            '.$subject.'
-                                                            
-</div>
-</td>
-                                                    </tr>
-                                                </table>
-                                                <!-- // End Module: Standard Content \\ -->
-                                                
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // End Template Body \\ -->
-                                </td>
-                            </tr>
-                         <tr>
-                             
-                            </tr>
-                        </table>
-                        <br />
-                    </td>
-                </tr>
-            </table>
-        </center>','text/html')
-  ;
-$result = $mailer->send($message);
 $this->logMessage($usre_mail.'sithik');
 $this->logMessage($request->getparameter('status_action').'sithik'.$dbstatID);
     $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));

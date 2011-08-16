@@ -12,5 +12,7 @@
  */
 class Logins extends BaseLogins
 {
-
+public function getValue() {
+    return "{$this->getUsername()}";
+}
 }
