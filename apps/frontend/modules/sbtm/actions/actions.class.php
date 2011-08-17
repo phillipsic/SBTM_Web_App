@@ -258,6 +258,9 @@ $this->setTemplate('login');
         $data_2 = array();
         $data_3 = array();
         $firstday=$start;
+        $Burntotal=0;
+        $Burncompleted=0;
+        $Burntodo=0;
         $this->logMessage($workday.'work');
         while($start<=$now)
         {
@@ -271,8 +274,34 @@ $this->setTemplate('login');
         $todosessions = Doctrine_Core::getTable('Sessions')
         ->createQuery('a')
         ->where('a.project_id = ?',$dbprojectID)
-        ->andWhere('a.todochage_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+        ->andWhere('a.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
         ->execute();
+        
+        
+        $q2 = Doctrine_Query::create()
+        ->select('(COUNT(1)) AS total')  
+        ->from('sessions Ses')
+        ->where('Ses.project_id = ?',$dbprojectID )
+        ->andWhere('Ses.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start));
+        $executequery2 = $q2->fetchArray();
+        $tota=$executequery2[0]['total'];
+        
+        $q2 = Doctrine_Query::create()
+        ->select('(COUNT(1)) AS total1')  
+        ->from('sessions Ses')
+        ->where('Ses.project_id = ?',$dbprojectID )
+        ->andWhere('Ses.status_id not in (1,3)')
+        ->andWhere('Ses.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+        ->andWhere('Ses.todochage_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+        ->andWhere('Ses.todochage_at>Ses.created_at');
+        $executequery2 = $q2->fetchArray();
+        $tota1=$executequery2[0]['total1'];
+        
+        $todoSession=$tota-$tota1;
+        $Burntodo=$todoSession;
+        $Burntotal=$tota;
+        $Burncompleted=$tota1;
+        $this->logMessage($todoSession.' : '.$Burntotal.' : '.$Burncompleted.' : '.$Burntodo);
        /* $othersessions = Doctrine_Core::getTable('Sessions')
         ->createQuery('a')
         ->where('a.project_id = ?',$dbprojectID)
@@ -294,7 +323,7 @@ $this->setTemplate('login');
         if($flag){
         $first_target=$maxTarget-($maxTarget/$workday);
         }
-        $data_1[$i]= $todosessions->count();
+        $data_1[$i]= $todoSession;//$todosessions->count();
         if($flag)
         {
             $target_=$first_target;
