@@ -96,7 +96,11 @@ endforeach;
     $sessions->setStatusId('1');
       $sessions->setTester('');
       $sessions->save();
-
+$q = Doctrine_Query::create()
+        ->update('Sessions')  
+        ->set('todochage_at','created_at')
+        ->where('id = ?',$request->getParameter('id'));
+    $executequery = $q->fetchArray();
     $this->redirect('sbtm/sessions');
   }
   
