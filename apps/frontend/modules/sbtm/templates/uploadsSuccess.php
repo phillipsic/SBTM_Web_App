@@ -1,7 +1,8 @@
 <?php if ($sf_user->hasAttribute('error')): ?> 
           <div class="flash_error">
             <?php //$sf_user->getAttributeHolder()->clear();
-            echo $sf_user->getAttribute('error'); ?>
+            echo $sf_user->getAttribute('error');
+            $sf_user->getAttributeHolder()->remove('error');?>
           </div>
         <?php endif ?>
 <div id="sf_admin_container"> 

@@ -53,4 +53,4 @@ storage:
 user:
   class: myUser
   param:
-    timeout: 1800
+    timeout: 10800

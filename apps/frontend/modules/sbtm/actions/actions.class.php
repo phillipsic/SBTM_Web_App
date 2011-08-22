@@ -26,7 +26,7 @@ class sbtmActions extends sfActions
    $this->logMessage($dirname.'directory name');
     $filename = "uploads/{$dirname}/coverage"; 
     if (!file_exists($filename)) { 
-       mkdir("uploads/{$dirname}/coverage/", 0777); 
+       mkdir("uploads/{$dirname}/coverage/", 0777,true); 
         } 
     $filenames=array();
 $source_path = "uploads/{$dirname}/coverage";
@@ -50,7 +50,7 @@ $i++;
    $this->logMessage($dirname.'directory name');
     $filename = "uploads/{$dirname}/template"; 
     if (!file_exists($filename)) { 
-       mkdir("uploads/{$dirname}/template/", 0777); 
+       mkdir("uploads/{$dirname}/template/", 0777,true); 
         } 
     $filenames=array();
 $source_path = "uploads/{$dirname}/template";
@@ -81,7 +81,7 @@ public function executeUploadcoverage(sfWebRequest $request)
     $filename = "uploads/{$dirname}/coverage/"; 
     
     if (!file_exists($filename)) { 
-       mkdir("uploads/{$dirname}/coverage/", 0777); 
+       mkdir("uploads/{$dirname}/coverage/", 0777,true); 
 
     } 
 $target_path = "uploads/{$dirname}/coverage/";
@@ -102,7 +102,7 @@ public function executeUploadtemplate(sfWebRequest $request)
     $filename = "uploads/{$dirname}/template/"; 
     
     if (!file_exists($filename)) { 
-       mkdir("uploads/{$dirname}/template/", 0777); 
+       mkdir("uploads/{$dirname}/template/", 0777,true); 
 
     } 
 $target_path = "uploads/{$dirname}/template/";
@@ -690,7 +690,7 @@ $this->getUser()->setAttribute('projectid', $dbprojectID);
        mkdir("uploads/{$dirname}", 0777); 
         echo "The directory {$dirname} was successfully created."; 
     } 
-      
+    $this->getUser()->getAttributeHolder()->clear();  
 $target_path = "uploads/{$dirname}/";
 $target_path = $target_path . basename( $_FILES['uploadedfile']['name']);
 $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));
@@ -698,7 +698,29 @@ $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser(
 $name=sbtm::slugify($sessionupdate->getSessionname());
 if($name==basename( $_FILES['uploadedfile']['name'])){
 $this->getUser()->getAttributeHolder()->remove('error');
-
+$file=$_FILES['uploadedfile']['tmp_name'];
+$fh = fopen($file, 'r') or die("can't open file");
+$testdesign="/TEST DESIGN AND EXECUTION/i";
+$buginvesti="/BUG INVESTIGATION AND REPORTING/i";
+$sessionsetup="/SESSION SETUP/i";
+$value=0;
+while(!feof($fh))
+  {
+$line=fgets($fh);
+if (preg_match($testdesign,$line)) {
+                 $value+=fgets($fh);
+            } 
+            else if (preg_match($buginvesti,$line)) {
+                $value+=fgets($fh);
+            } 
+            else if (preg_match($sessionsetup, $line)) {
+              $value+=fgets($fh);
+            } 
+      
+}
+fclose($fh);
+$this->logMessage("upload".$file);
+if($value==100){
 if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
      
       $usertest=$this->getUser()->getAttribute('username');
@@ -717,7 +739,11 @@ if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 } else{
     $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
 }
-$this->redirect('sbtm/usermysession');
+$this->redirect('sbtm/usermysession');}
+else{
+   $this->getUser()->setAttribute('error', 'Please check the TASK BREAKDOWN'); 
+   $this->redirect('sbtm/uploads?id='.$this->getUser()->getAttribute('id')); 
+}
 }
 else{
     $this->getUser()->setAttribute('error', 'File name '.basename( $_FILES['uploadedfile']['name']).' not matched with the session');
