@@ -690,7 +690,7 @@ $this->getUser()->setAttribute('projectid', $dbprojectID);
        mkdir("uploads/{$dirname}", 0777); 
         echo "The directory {$dirname} was successfully created."; 
     } 
-    $this->getUser()->getAttributeHolder()->clear();  
+  
 $target_path = "uploads/{$dirname}/";
 $target_path = $target_path . basename( $_FILES['uploadedfile']['name']);
 $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));
@@ -882,6 +882,39 @@ endforeach;
       $target_path = "uploads/{$dirname}/";
 $target_path = $target_path . $this->getUser()->getAttribute('filename');
 
+if($request->getparameter('status_action')=='Submitted'){
+   
+ if(file_put_contents($target_path, $request->getParameter('quote'))){
+$fh = fopen($target_path, 'r') or die("can't open file");
+$testdesign="/TEST DESIGN AND EXECUTION/i";
+$buginvesti="/BUG INVESTIGATION AND REPORTING/i";
+$sessionsetup="/SESSION SETUP/i";
+$value=0;
+while(!feof($fh))
+  {
+$line=fgets($fh);
+if (preg_match($testdesign,$line)) {
+                 $value+=fgets($fh);
+            } 
+            else if (preg_match($buginvesti,$line)) {
+                $value+=fgets($fh);
+            } 
+            else if (preg_match($sessionsetup, $line)) {
+              $value+=fgets($fh);
+            } 
+      
+}
+fclose($fh);
+if($value==100){
+    $status=true;
+}  else{
+   $this->getUser()->setAttribute('error', 'Please check the TASK BREAKDOWN'); 
+   $this->redirect($this->getUser()->getAttribute('url')); 
+} 
+}
+}
+else{$status=true;}
+if($status){
 if(file_put_contents($target_path, $request->getParameter('quote'))) {
     $stat_id=Doctrine_Core::getTable('Status')
     ->createQuery('a')
@@ -959,7 +992,7 @@ $this->logMessage($request->getparameter('status_action').'sithik'.$dbstatID);
 if($this->getUser()->getAttribute('final')=='yes')
 $this->redirect('sbtm/usermysession');
 else
-   $this->redirect('sbtm/adminmysession'); 
+   $this->redirect('sbtm/adminmysession'); }
 }
 
 
