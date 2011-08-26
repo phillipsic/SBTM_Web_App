@@ -30,12 +30,14 @@ function madeSelection(elem, helperMsg){
 </script>
 <div id="sf_admin_container">
 <form action="" method="post" onsubmit='return formValidator()'>
+
 <titles>view coverage</titles>
     <table>
 <thead>
 <tr> 
     <th> 
-<textarea rows="20" cols="100" name="quote" wrap="physical" readonly="readonly"><?php echo $sf_user->getAttribute('theData') ?></textarea>
+<textarea rows="20" cols="100" name="quote" wrap="physical" readonly="readonly"><?php echo file_get_contents($sf_user->getAttribute('theData'));
+?></textarea>
     </th>
     <th>
 <ul class="sf_admin_actions">

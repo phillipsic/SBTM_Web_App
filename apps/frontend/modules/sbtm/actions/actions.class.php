@@ -86,7 +86,8 @@ public function executeUploadcoverage(sfWebRequest $request)
     } 
 $target_path = "uploads/{$dirname}/coverage/";
 $target_path = $target_path .basename( $_FILES['uploadedfile']['name']);
-$this->logMessage("sithik".$target_path);
+//$_FILES['uploadedfile']['type']='text/plain';
+$this->logMessage("type".$_FILES['uploadedfile']['type']);
 if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
     $this->getUser()->setAttribute('uploadmessage', 'The file '.  basename( $_FILES['uploadedfile']['name']).'has been uploaded');
 } else{
@@ -135,7 +136,7 @@ public function executeViewcoverage(sfWebRequest $request)
 $dirname = $this->getUser()->getAttribute('project'); 
 $myFile = "uploads/{$dirname}/coverage/".$request->getParameter('name');
 $theData = file_get_contents($myFile);
-$this->getUser()->setAttribute('theData',$theData);
+$this->getUser()->setAttribute('theData',$myFile);
 }
 public function executeViewtemplate(sfWebRequest $request)
 {
@@ -889,11 +890,18 @@ $fh = fopen($target_path, 'r') or die("can't open file");
 $testdesign="/TEST DESIGN AND EXECUTION/i";
 $buginvesti="/BUG INVESTIGATION AND REPORTING/i";
 $sessionsetup="/SESSION SETUP/i";
-$value=0;
+$start="/START/i";
+$tester="/TESTER/i";
+$datafile="/DATA FILES/i";
+$testnotes="/TEST NOTES/i";
+$dafilematch="/N\/A/i";
+$areas="/AREAS/i";
+
+$value=0;$errorflag=false;$error1=array();$z=0;
 while(!feof($fh))
   {
-$line=fgets($fh);
-if (preg_match($testdesign,$line)) {
+            $line=fgets($fh);
+            if (preg_match($testdesign,$line)) {
                  $value+=fgets($fh);
             } 
             else if (preg_match($buginvesti,$line)) {
@@ -901,16 +909,388 @@ if (preg_match($testdesign,$line)) {
             } 
             else if (preg_match($sessionsetup, $line)) {
               $value+=fgets($fh);
-            } 
+            }
+            /*else if (preg_match($start, $line)) {
+              fgets($fh);
+              $startdate=fgets($fh);
+              if(strlen($startdate)<3){$errorflag=true;
+              $error1[$z]="Start Date is empty .";
+              $z++;
+            }
+            }*/
+            else if (preg_match($tester, $line)) {
+              fgets($fh);
+              $testername=fgets($fh);
+              if(strlen($testername)<3){$errorflag=true;
+              $error1[$z]="Tester name is empty .";
+              $z++;
+              }
+            }
+           else if (preg_match($datafile, $line)) {
+              fgets($fh);
+              $dataname=fgets($fh);
+              $filefound=true;$q=0;
+              if (!preg_match($dafilematch, $dataname))
+              {
+              $filenames=array();
+              $datafilearray=array();
+              $dirname = $this->getUser()->getAttribute('project');
+              $filename = "uploads/{$dirname}/datafiles";
+              if (!file_exists($filename)) {
+              mkdir("uploads/{$dirname}/datafiles/", 0777,true);
+              }
+              $filenames=array();
+              $source_path = "uploads/{$dirname}/datafiles";
+              $dir = realpath($source_path);
+              $files = scandir($dir);
+              $i=0;
+              foreach ($files as $file) {
+              if (substr($file, 0, 1) != '.') {
+              $filenames[$i]=$file;
+              $i++;
+                  /*if($file==trim($dataname)){
+                      $filefound=false;
+                  }*/
+              }
+               }
+              while(!preg_match($testnotes, $dataname)){
+                   $datafilearray[$q]=$dataname;
+                    $dataname=fgets($fh);                    
+                    $q++;
+               }
+               foreach($datafilearray as $fil){
+                   $found=true;
+                   foreach($filenames as $fil1){
+                      if(trim($fil)==trim($fil1)){
+                          $found=false;
+                      }
+                   }
+                   if($found && strlen($fil)>2){
+                     $error1[$z]="Datafie is not found,Please upload datafile ".$fil.".";
+                       $z++;
+                       $errorflag=true;
+                   }
+               }
+              }
+            }
+            
+            else if (preg_match($areas, $line)) {
+              $areasection=fgets($fh);
+              $filefound=true;$q=0;
+              $filenames=array();
+              $areaarray=array();
+              $dirname = $this->getUser()->getAttribute('project');
+              $filename = "uploads/{$dirname}/coverage";
+              if (!file_exists($filename)) {
+              mkdir("uploads/{$dirname}/coverage/", 0777,true);
+              }
+              $filenames=array();
+              $source_path = "uploads/{$dirname}/coverage";
+              $dir = realpath($source_path);
+              $files = scandir($dir);
+              $i=0;
+              foreach ($files as $file) {
+              if (substr($file, 0, 1) != '.') {
+              $filenames[$i]=$file;
+              $i++;
+              }
+               }
+              while(!preg_match($start, $areasection)){
+                   $areaarray[$q]=$areasection;
+                    $areasection=fgets($fh);                    
+                    $q++;
+               }
+               
+              if (preg_match($start, $areasection)) {
+              fgets($fh);
+              $startdate=fgets($fh);
+              if(strlen($startdate)<3){$errorflag=true;
+              $error1[$z]="Start Date is empty .";
+              $z++;
+            }
+            }
+               if(count($filenames)>0){
+                   $target_path=$filename.'/'.$filenames[0];
+                   $fh_area = fopen($target_path, 'r') or die("can't open file");
+                $areasdata=array();$r=0;
+                while(!feof($fh_area))
+                  {
+                    $areasdata[$r]=fgets($fh_area);
+                    $r++;
+                  }
+                  fclose($fh_area);
+               foreach($areaarray as $fil){
+                   $found=true;
+                   foreach($areasdata as $fil1){
+                       $this->logMessage($fil1);
+                      if(trim($fil)==trim($fil1)){
+                          $found=false;
+                      }
+                   }
+                   if($found && strlen($fil)>2){
+                     $error1[$z]="Unexpected #AREAS label ".$fil.".";
+                       $z++;
+                       $errorflag=true;
+                   }
+               }}
+               else{
+                   
+                    $this->admin = Doctrine_Core::getTable('Logins')
+                    ->createQuery('a')
+                    ->where('a.role_id = ?',1)
+                    ->execute();
+     
+                foreach ($this->admin as $adm):
+                $admin_mail[$adi] =$adm->getEmail();
+                $adi++;
+                endforeach;
+                $sub="Coverage.ini not found for the Project: ".$this->getUser()->getAttribute('project');
+                $subject= '<h1 class="h1">Coverage.ini not found</h1>
+                <strong>Dear Admin/Reviewer:</strong> <br />Project : '.$this->getUser()->getAttribute('project').'<br />
+                    Session '.$this->getUser()->getAttribute('filename').' submitted without coverage.ini scanning, kindly take a look at the session by logging in to SBTM web application!
+                <br />
+                <br />
+                To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
+                ';
+                $transport = Swift_SmtpTransport::newInstance('10.165.133.27', 25)
+  ;
+$mailer = Swift_Mailer::newInstance($transport);
+$message = Swift_Message::newInstance($sub)
+  //->setFrom(array('MohamedSithik.Wahithali@comverse.com' => 'Sithik Comverse'))
+ // ->setTo(array('MohamedSithik.Wahithali@comverse.com' => 'sithik', 'Siva.Kumar@comverse.com' => 'sivaji'))
+->setFrom(array('Ian.Phillips@comverse.com' => 'SBTM ADMIN'));
+ // ->setTo($user_mail) 
+ //->setBody('<head>
+
+  $message->setTo($admin_mail);
+
+  $message->setBody('<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ 
+
+<style type="text/css">
+/* Client-specific Styles */
+#outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
+body{width:100% !important;} .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+body{-webkit-text-size-adjust:none;} /* Prevent Webkit platforms from changing default text sizes. */
+
+body{margin:0; padding:0;}
+img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+table td{border-collapse:collapse;}
+#backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
+
+
+body, #backgroundTable{
+/*@editable*/ background-color:#FAFAFA;
+}
+
+/**
+* @tab Page
+* @section email border
+* @tip Set the border for your email.
+*/
+#templateContainer{
+/*@editable*/ border: 1px solid #DDDDDD;
+}
+
+/**
+* @tab Page
+* @section heading 1
+* @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+* @style heading 1
+*/
+h1, .h1{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:34px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+/**
+* @tab Page
+* @section heading 2
+* @tip Set the styling for all second-level headings in your emails.
+* @style heading 2
+*/
+h2, .h2{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:30px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+/**
+* @tab Page
+* @section heading 3
+* @tip Set the styling for all third-level headings in your emails.
+* @style heading 3
+*/
+h3, .h3{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:26px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+
+h4, .h4{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:22px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+
+#templateHeader{
+/*@editable*/ background-color:#FFFFFF;
+/*@editable*/ border-bottom:0;
+}
+
+.headerContent{
+/*@editable*/ color:#202020;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:34px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+/*@editable*/ padding:0;
+/*@editable*/ text-align:center;
+/*@editable*/ vertical-align:middle;
+}
+
+.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
+/*@editable*/ color:#336699;
+/*@editable*/ font-weight:normal;
+/*@editable*/ text-decoration:underline;
+}
+
+#headerImage{
+height:auto;
+max-width:600px !important;
+}
+
+
+#templateContainer, .bodyContent{
+/*@editable*/ background-color:#FFFFFF;
+}
+
+
+.bodyContent div{
+/*@editable*/ color:#505050;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:14px;
+/*@editable*/ line-height:150%;
+/*@editable*/ text-align:left;
+}
+
+
+.bodyContent div a:link, .bodyContent div a:visited, /* Yahoo! Mail Override */ .bodyContent div a .yshortcuts /* Yahoo! Mail Override */{
+/*@editable*/ color:#336699;
+/*@editable*/ font-weight:normal;
+/*@editable*/ text-decoration:underline;
+}
+
+.bodyContent img{
+display:inline;
+height:auto;
+}
+
+
+</style>
+</head>
+<center>
+         
+                        <!-- // End Template Preheader \\ -->
+                     <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
+                         
+                         <tr>
+                             <td align="center" valign="top">
+                                    <!-- // Begin Template Body \\ -->
+                                 <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+                                     <tr>
+                                            <td valign="top" class="bodyContent">
+                                
+                                                <!-- // Begin Module: Standard Content \\ -->
+                                                <table border="0" cellpadding="20" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td valign="top">
+                                                            <div mc:edit="std_content00">
+                                                            '.$subject.'
+                                                            
+</div>
+</td>
+                                                    </tr>
+                                                </table>
+                                                <!-- // End Module: Standard Content \\ -->
+                                                
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- // End Template Body \\ -->
+                                </td>
+                            </tr>
+                         <tr>
+                             
+                            </tr>
+                        </table>
+                        <br />
+                    </td>
+                </tr>
+            </table>
+        </center>','text/html')
+  ;
+$result = $mailer->send($message);
+                   /*$error1[$z]="Coverage.ini not found for this project .";
+                   $z++;
+                   $errorflag=true;*/
+               }
+              
+            }
+
       
 }
 fclose($fh);
 if($value==100){
     $status=true;
 }  else{
-   $this->getUser()->setAttribute('error', 'Please check the TASK BREAKDOWN'); 
-   $this->redirect($this->getUser()->getAttribute('url')); 
+    $error1[$z]="Please check the TASK BREAKDOWN .";
+     $z++;
+     $errorflag=true;
+  // $this->getUser()->setAttribute('error', 'Please check the TASK BREAKDOWN'); 
+   //$this->redirect($this->getUser()->getAttribute('url')); 
 } 
+if($errorflag){
+   $this->getUser()->setAttribute('errorarr', $error1); 
+   $this->redirect($this->getUser()->getAttribute('url')); 
+}
+
 }
 }
 else{$status=true;}

@@ -62,11 +62,13 @@ $admin=$sf_user->getAttribute('adminrole');?>
             <?php echo link_to('Cancel', 'sessions/cancel?id='.$session->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
             </li> 
               
-                <?php  if ($session->getStatus()=="Finalize"){  ?> 
+                <?php  if ($session->getStatus()=="Finalize"){
+                     ?> 
             <li class="sf_admin_action_edit">
             <a href="<?php echo url_for('sessions/review?name='.$session->getSessionname().'&id='.$session->getId().'&final=yes') ?>">Edit</a>
             </li>  
-              <?php } else{ ?>      
+              <?php } else{
+                  $sf_user->setAttribute('url','sbtm/uploads?id='.$session->getId());?>      
 
             <li class="sf_admin_action_upload">
             <a href="<?php echo url_for('sbtm/uploads?id='.$session->getId()) ?>">Upload</a>

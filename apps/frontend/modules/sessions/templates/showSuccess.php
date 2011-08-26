@@ -33,7 +33,7 @@
     </tr>
     <tr>
     <th class="sf_admin_text sf_admin_list_th_name">Status:</th>
-      <td class="sf_admin_text sf_admin_list_td_name"><?php echo $sessions->getStatusId() ?></td>
+      <td class="sf_admin_text sf_admin_list_td_name"><?php echo $sessions->getStatus() ?></td>
     </tr>
     <th class="sf_admin_text sf_admin_list_th_name">Strategy:</th>
       <td class="sf_admin_text sf_admin_list_td_name"><?php echo $sessions->getStrategyId() ?></td>

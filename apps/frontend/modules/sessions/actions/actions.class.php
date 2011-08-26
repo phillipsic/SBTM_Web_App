@@ -173,7 +173,7 @@ $this->redirect('Projectcategory/show?id='.$this->getUser()->getAttribute('proje
     }
   }
 
-  public function executeDownload(sfWebRequest $request) {
+  /*public function executeDownload(sfWebRequest $request) {
       
       $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id')));
       $usertest=$this->getUser()->getAttribute('username');
@@ -249,8 +249,8 @@ $this->redirect('Projectcategory/show?id='.$this->getUser()->getAttribute('proje
 	    return sfView::NONE;
             
             
-	}
-   /*public function executeDownload(sfWebRequest $request) {
+	}*/
+   public function executeDownload(sfWebRequest $request) {
       
       $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id')));
       $usertest=$this->getUser()->getAttribute('username');
@@ -262,9 +262,10 @@ $this->redirect('Projectcategory/show?id='.$this->getUser()->getAttribute('proje
       $dirname = $this->getUser()->getAttribute('project');
       $filename = "uploads/{$dirname}/template"; 
        if (!file_exists($filename)) { 
-       mkdir("uploads/{$dirname}/template/", 0777); 
+       mkdir("uploads/{$dirname}/template/", 0777,true); 
         } 
       $filenames=array();
+      $filenames[0]=null;
       $source_path = "uploads/{$dirname}/template";
      $dir = realpath($source_path);
      $files = scandir($dir);
@@ -275,47 +276,64 @@ $this->redirect('Projectcategory/show?id='.$this->getUser()->getAttribute('proje
      $i++;
      }
      } 
-
+     if($filenames[0]==null){
+    $source_path = "uploads/template";
+     $dir1 = realpath($source_path);
+     $fil = scandir($dir1);
+      $i1=0;
+      foreach ($fil as $fi) {
+     if (substr($fi, 0, 1) != '.') {
+     $filenames[$i1]=$fi;
+     $i1++;
+     }
+     }
+}
+$this->logMessage( $filenames[0].'filename');
       $linebreaker="\n";
       
 	    $this->sessions = Doctrine::getTable('Sessions')->find($request->getParameter('id'));
             $filename=$this->sessions->getSessionname();
             $myFile = $this->sessions->getFileSlug();
-            copy($source_path.'/'.$filenames[0],$myFile);
-            $fh = fopen($myFile, 'w') or die("can't open file");
+            $templateFile=$source_path.'/'.$filenames[0];
+            copy($templateFile,$myFile);
+            $this->logMessage($templateFile.$myFile);
+            $fh = fopen($myFile, 'r') or die("can't open file");
             
-            $char="/CHARTERS/i";
+            $char="/^CHARTER/i";
             $area="/AREAS/i";
             $testnotes="/TEST NOTES/i";
-            $line=fgets($file);
-            $stringData=null;
-            while(!feof($file))
+            
+            $stringData="";
+            while(!feof($fh))
   {
+                $line=fgets($fh);
             if (preg_match($char,$line)) {
-                $stringData+=$line.$linebreaker;
-                 $stringData+=fgets($file).$linebreaker;
-                $stringData+=$this->sessions->getCharter().$linebreaker;
+                $stringData.=$line;
+                 $stringData.=fgets($fh);
+                $stringData.=$this->sessions->getCharter().$linebreaker;
             } 
             else if (preg_match($area,$line)) {
-                $stringData+=$line.$linebreaker;
-                $stringData+=fgets($file).$linebreaker;
-                $stringData+=$this->sessions->getAreas().$linebreaker;
+                $stringData.=$line;
+                $stringData.=fgets($fh);
+                $stringData.=str_replace(";", $linebreaker, $this->sessions->getAreas()).$linebreaker;
             } 
             else if (preg_match($testnotes, $line)) {
-                $stringData+=$line.$linebreaker;
-                $stringData+=fgets($file).$linebreaker;
-                $stringData+=$this->sessions->getTestnotes().$linebreaker;
+                $stringData.=$line;
+                $stringData.=fgets($fh);
+                $stringData.=$this->sessions->getTestnotes().$linebreaker;
             } 
             else
-               $stringData+=$line.$linebreaker;
+               $stringData.=$line;
   }
-           $this->logMessage( $stringData);
-            fwrite($fh, $stringData);
+           //$this->logMessage( $stringData.'sithik');
+           $fh1 = fopen($myFile, 'w') or die("can't open file");
+            fwrite($fh1, $stringData);
             //$count = $this->sessions->columnCount()."\n";
             //for ( $column = 0; $counter <= $count; $column++) {
            // fwrite($fh, $this->sessions->get($column+1));
            // }
             fclose($fh);
+            fclose($fh1);
 	    $response = $this->getContext()->getResponse();
 	    $response->clearHttpHeaders();
 	    $response->addCacheControlHttpHeader('Cache-control', 'must-revalidate, post-check=0, pre-check=0');
@@ -331,7 +349,7 @@ $this->redirect('Projectcategory/show?id='.$this->getUser()->getAttribute('proje
 	    return sfView::NONE;
             
             
-	}    */ 
+	}    
         
 public function executeUpload(sfWebRequest $request)
 {
@@ -405,14 +423,16 @@ $this->getUser()->setAttribute('final',$final);
 $this->status = Doctrine_Core::getTable('Status')
       ->createQuery('a')
       ->execute();
+
  $name=sbtm::slugify($request->getParameter('name'));
  $this->getUser()->setAttribute('filename',$name);
  $this->getUser()->setAttribute('filename1',$request->getParameter('name'));
  $this->getUser()->setAttribute('id',$request->getParameter('id'));
+ $this->getUser()->setAttribute('url','sessions/review?name='.$request->getParameter('name').'&id='.$request->getParameter('id').'&final=yes');
 $myFile = "uploads/{$dirname}/".$name;
 $this->logMessage($myFile, 'err');
 $theData = file_get_contents($myFile);
-$this->getUser()->setAttribute('theData',$theData);
+$this->getUser()->setAttribute('theData',$myFile);
 $this->logMessage($theData, 'err');
 
 }
@@ -429,7 +449,7 @@ $this->status = Doctrine_Core::getTable('Status')
 $myFile = "uploads/{$dirname}/".$name;
 $this->logMessage($myFile, 'err');
 $theData = file_get_contents($myFile);
-$this->getUser()->setAttribute('theData',$theData);
+$this->getUser()->setAttribute('theData',$myFile);
 $this->logMessage($theData, 'err');
 
 }

@@ -28,11 +28,26 @@ function madeSelection(elem, helperMsg){
 }
 
 </script>
-<?php if ($sf_user->hasAttribute('error')): ?> 
-          <div class="flash_error">
+<?php if ($sf_user->hasAttribute('errorarr')): ?> 
+          <div id="err" class="flash_error">
+              <table>
+<thead>
+
             <?php //$sf_user->getAttributeHolder()->clear();
-            echo $sf_user->getAttribute('error');
-            $sf_user->getAttributeHolder()->remove('error');?>
+            $errors=array();
+            $errors=$sf_user->getAttribute('errorarr');
+          if (count($errors)>0){
+            foreach ($errors as $r=>$err):?>
+    <tr><th>
+                <?php echo ($r+1).". ".$err;?></th>
+    </tr>
+                <?php
+            endforeach; 
+          }
+          
+          $sf_user->getAttributeHolder()->remove('errorarr');?>
+              </table>
+          </thead>
           </div>
         <?php endif ?>
 <form action="<?php echo url_for('sbtm/reviewsubmit') ?>" method="post" onsubmit='return formValidator()'>
@@ -40,7 +55,7 @@ function madeSelection(elem, helperMsg){
 <thead>
 <tr> 
     <th> 
-<textarea rows="20" cols="100" name="quote" wrap="physical"><?php echo $sf_user->getAttribute('theData') ?></textarea>
+<textarea rows="20" cols="100" name="quote" wrap="physical"><?php echo file_get_contents($sf_user->getAttribute('theData')) ?></textarea>
     </th>
       
     <th class="sf_admin_batch_actions_choice">
