@@ -1,0 +1,91 @@
+CHARTER
+-----------------------------------------------
+<A few sentences about the mission of this session>
+
+#AREAS
+<area1 from coverage.ini>
+<area2 from coverage.ini>
+<...etc>
+<...etc>
+
+START
+-----------------------------------------------
+<start date and time.  Syntax is 00/00/00 0:00pm  i.e. "5/30/00 3:20pm">
+
+TESTER
+-----------------------------------------------
+<tester name>
+
+TASK BREAKDOWN
+-----------------------------------------------
+
+#DURATION
+<values are "short", "normal", or "long" (either can have multipliers) i.e. "long * 2">
+
+#SESSION SETUP
+<percent of session duration spent on setup.  Syntax: integer between 0-100>
+
+#TEST DESIGN AND EXECUTION
+<percent of session duration spent looking for problems -- breadth.  Syntax: integer between 0-100>
+
+#BUG INVESTIGATION AND REPORTING
+<percent of session duration spent investigating problems once they were found -- depth.  Syntax: integer between 0-100>
+
+#CHARTER VS. OPPORTUNITY
+<syntax is a ratio of session duration they spent on mission (charter) vs investigating something else that was not part of the charter    i.e.  85/15>
+
+DATA FILES
+-----------------------------------------------
+<syntax is 8.3 file format   i.e. "foo.bat"> (If there are no datafiles, use #N/A)
+
+TEST NOTES
+-----------------------------------------------
+<free-form text field... anything goes>
+
+BUGS
+-----------------------------------------------
+<syntax is to list every bug with a #BUG tag.  The text written between these tags can be free-form.   (If there are no bugs, use #N/A)
+
+#BUG
+This is the problem title
+
+Repro:
+1 -- 
+2 -- 
+3 -- 
+
+Result:
+Expected:
+
+#BUG
+This is the problem title
+
+Repro:
+1 -- 
+2 -- 
+3 -- 
+
+Result:
+Expected:
+
+#BUG
+This is the problem title
+
+Repro:
+1 -- 
+2 -- 
+3 -- 
+
+Result:
+Expected:
+
+
+ISSUES
+-----------------------------------------------
+<same as BUG section above.>  (If there are no ISSUES, use #N/A)
+
+#ISSUE
+Found this weirdness.  Is this a bug?
+
+#ISSUE
+I need more PCs to do this testing.
