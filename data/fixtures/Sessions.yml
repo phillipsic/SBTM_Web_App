@@ -1,8 +1,8 @@
 Sessions:
   session1:
-    sessionname: et-todo-yymmdd-4-SUM Final Validation of SUM0200-A.ses
-    charter: Final Validation of Configure Usage Thresholds
-    areas: DR-2-012-229 - Usage threshold Alerting,Usage threshold Alerting | SUM0200 – Configure Usage Thresholds 
+    sessionname: et-todo-yymmdd-4-Acceptance of New Feature-XYZ.ses
+    charter: Acceptance of New Feature-XYZ
+    areas: Usage threshold Alerting,Configure Usage Thresholds
     testnotes: Build Number -
     ready: Yes
     tester:
@@ -11,9 +11,9 @@ Sessions:
     Strategy: acceptance
     
   session2:
-    sessionname: et-todo-yymmdd-4-SUM Final Validation of SUM0200-B.ses
-    charter: Final Validation of Configure Usage Thresholds
-    areas: DR-2-012-229 - Usage threshold Alerting,Usage threshold Alerting | SUM0200 – Configure Usage Thresholds 
+    sessionname: et-todo-yymmdd-4-Final Validation of New Feature-XYZ.ses
+    charter: Final Validation of New Feature-XYZ
+    areas: Usage threshold Alerting,Configure Usage Thresholds
     testnotes: Build Number -
     ready: Yes
     tester:

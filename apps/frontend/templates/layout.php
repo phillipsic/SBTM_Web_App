@@ -5,7 +5,7 @@
   <head>
    <title>
   <?php if (!include_slot('title')): ?>
-    PQA SBTM - Web based
+    QA SBTM - Web based
   <?php endif ?>
 </title>
       

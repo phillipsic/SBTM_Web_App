@@ -3,7 +3,7 @@
 /**
  * Status filter form base class.
  *
- * @package    PQASBTM
+ * @package    QASBTM
  * @subpackage filter
  * @author     Mohamed Sithik
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $

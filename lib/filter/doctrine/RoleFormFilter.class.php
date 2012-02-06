@@ -3,9 +3,9 @@
 /**
  * Role filter form.
  *
- * @package    PQASBTM
+ * @package    QASBTM
  * @subpackage filter
- * @author     PQASBTM
+ * @author     QASBTM
  * @version    SVN: $Id: sfDoctrineFormFilterTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class RoleFormFilter extends BaseRoleFormFilter
