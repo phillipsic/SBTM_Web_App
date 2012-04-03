@@ -291,9 +291,11 @@ class sessionsActions extends sfActions {
                         $statID = $strategyid->getId();
                     }
                 endforeach;
+                
+                $newsessionname = str_replace(array("&", "*"," ","?"),"_",$sessionname);
 
                 $sessioninsert = new Sessions();
-                $sessioninsert->setSessionname($sessionname . '.ses');
+                $sessioninsert->setSessionname($newsessionname . '.ses');
                 $sessioninsert->setCharter($charter);
                 $sessioninsert->setAreas($areas);
 //$sessioninsert->setTestnotes($testnotes);
