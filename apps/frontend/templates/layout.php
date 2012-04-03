@@ -89,13 +89,20 @@ while(! feof($fh))
 </ul>
 </div>
     <div id="dropmenu1" class="dropmenudiv">
-<?php    
+<?php
+
+   
+
     $this->project_category = Doctrine_Core::getTable('ProjectCategory')
       ->createQuery('a')
       ->execute();
      for($i=0 ; $i<$this->project_category->count() ; $i++){?>
         
 <a href="<?php echo url_for('sbtm/changesessions?id='.$this->project_category[$i]) ?>"><?php echo $this->project_category[$i]?></a>
+
+
+
+
 
     <?php }
     
@@ -149,10 +156,25 @@ cssdropdown.startchrome("chromemenu")
               <?php endif ?>
        <li><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></li>
         </ul>
+
+     <?php  $this->progress_sessions = Doctrine_Core::getTable('Sessions')
+      ->createQuery('a')
+            ->where('a.status_id!=?','1')
+            ->andWhere('a.tester = ?',$sf_user->getAttribute('username'))
+     ->execute();
+
+    if ($this->progress_sessions->count() > 0){
+        echo "<center><font color=\"red\">you have unsubmitted sessions.  Please deal with those first</font></center>";
+    }
+
+    ?>
 </div>
        <?php endif ?>     
             
           <?php echo $sf_content ?>
+
+
+           
         </div>
       </div>
  
