@@ -32,3 +32,4 @@ cache/*
 nbproject/private/private.xml
 cache/frontend/dev/config/*.php
 cache/frontend/dev/config/*.php
+log/frontend_dev.log
