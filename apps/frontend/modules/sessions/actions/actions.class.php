@@ -34,7 +34,7 @@ class sessionsActions extends sfActions
 foreach ($this->project_id as $projectid):
    $dbprojectID =$projectid->getId();
 endforeach;
-    $this->form->setDefault('status_id',1);
+     $this->form->setDefault('status_id',1);
      $this->form->setDefault('project_id',$dbprojectID);
      $this->form->setDefault('todochage_at',date('Y-m-d H:i:s'));
 
@@ -49,12 +49,12 @@ endforeach;
       ->createQuery('a')
               ->where('a.name = ?',$this->getUser()->getAttribute('project') )
      ->execute();
-foreach ($this->project_id as $projectid):
-   $dbprojectID =$projectid->getId();
-endforeach;
+    foreach ($this->project_id as $projectid):
+        $dbprojectID =$projectid->getId();
+    endforeach;
     $this->form->setDefault('status_id',1);
-     $this->form->setDefault('project_id',$dbprojectID);
-     $this->form->setDefault('todochage_at',date('Y-m-d H:i:s'));
+    $this->form->setDefault('project_id',$dbprojectID);
+    $this->form->setDefault('todochage_at',date('Y-m-d H:i:s'));
     $this->processForm($request, $this->form);
 
     $this->setTemplate('new');
@@ -380,12 +380,15 @@ $this->logMessage('abcde');
 foreach ($this->strategy_id as $strategyid):
    // $this->logMessage('abcd'.$strategyid->getId());
     if($strategyid->getName()== trim($startegy)){
-        $this->logMessage($strategyid->getId().'sithik12'.$startegy);
+        $this->logMessage($strategyid->getId().'SBTM'.$startegy);
    $statID =$strategyid->getId();}
 endforeach;
 
+$newsessionname = str_replace(array("&", "*"," ","?"),"_",$sessionname);
 $sessioninsert = new Sessions();
-$sessioninsert->setSessionname($sessionname.'.ses');
+
+$sessioninsert->setSessionname($newsessionname.'.ses');
+
 $sessioninsert->setCharter($charter);
 $sessioninsert->setAreas($areas);
 //$sessioninsert->setTestnotes($testnotes);
@@ -394,7 +397,7 @@ $sessioninsert->setTester('');
 $sessioninsert->setStatusId(1);
 $sessioninsert->setProjectId($dbprojectID);
 $sessioninsert->setStrategyId($statID);
-$sessioninsert->setTodochageAt(date('Y-m-d H:i:s'));
+//$sessioninsert->setTodochageAt(date('Y-m-d H:i:s'));
 $sessioninsert->save();
   }
 fclose($fh);
@@ -449,7 +452,7 @@ $this->status = Doctrine_Core::getTable('Status')
 $myFile = "uploads/{$dirname}/".$name;
 $this->logMessage($myFile, 'err');
 $theData = file_get_contents($myFile);
-$this->getUser()->setAttribute('theData',$myFile);
+$this->getUser()->setAttribute('theData',$theData);
 $this->logMessage($theData, 'err');
 
 }
