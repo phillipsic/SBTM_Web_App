@@ -317,7 +317,7 @@ class sessionsActions extends sfActions {
 
 
 
-        $this->redirect('sbtm/sessions');
+        $this->redirect('sbtm/managesession');
     }
 
     public function executeUploads() {
