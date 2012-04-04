@@ -1,23 +1,6 @@
 
 #ignore thumbnails created by windows
 Thumbs.db
-#Ignore files build by Visual Studio
-*.obj
-*.exe
-*.pdb
-*.user
-*.aps
-*.pch
-*.vspscc
-*_i.c
-*_p.c
-*.ncb
-*.suo
-*.tlb
-*.tlh
-*.bak
-*.cache
-*.ilk
 *.log
 [Bb]in
 [Dd]ebug*/
@@ -28,5 +11,18 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 cache/
-
 nbproject/private/private.xml
+
+cache/frontend/dev/config/config_autoload.yml.php
+cache/frontend/dev/config/config_config_handlers.yml.php
+cache/frontend/dev/config/modules_sbtm_config_view.yml.php
+cache\frontend\dev\config\config_autoload.yml.php
+cache\frontend\dev\config\config_config_handlers.yml.php
+cache\frontend\dev\config\config_databases.yml.php
+cache\frontend\dev\config\config_factories.yml.php
+cache\frontend\dev\config\config_routing.yml.php
+cache\frontend\dev\config\config_settings.yml.php
+cache\frontend\dev\config\modules_sbtm_config_filters.yml.php
+cache\frontend\dev\config\modules_sbtm_config_module.yml.php
+cache\frontend\dev\config\modules_sbtm_config_security.yml.php
+cache\frontend\dev\config\modules_sbtm_config_view.yml.php
