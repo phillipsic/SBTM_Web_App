@@ -171,7 +171,7 @@ if(file_put_contents($target_path, $request->getParameter('quote'))) {
 } else{
     $this->getUser()->setAttribute('uploadmessage', 'There was an error uploading the file, please try again! ');
 }
-   $this->redirect('sbtm/managetemplate'); 
+   $this->redirect('sbtm/managecoverage');
 }
 public function executeTemplatesubmit(sfWebRequest $request)
 {
