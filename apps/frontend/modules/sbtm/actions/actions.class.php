@@ -293,8 +293,8 @@ $this->setTemplate('login');
         ->where('Ses.project_id = ?',$dbprojectID )
         ->andWhere('Ses.status_id not in (1,3)')
         ->andWhere('Ses.created_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
-        ->andWhere('Ses.todochage_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
-        ->andWhere('Ses.todochage_at>Ses.created_at');
+        ->andWhere('Ses.todochange_at < DATE_ADD( ? , INTERVAL 1 DAY)',date("Y-m-d H:i:s",$start))
+        ->andWhere('Ses.todochange_at>Ses.created_at');
         $executequery2 = $q2->fetchArray();
         $tota1=$executequery2[0]['total1'];
         
@@ -730,7 +730,7 @@ if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
       $sessionupdate->save();
       $q = Doctrine_Query::create()
         ->update('Sessions')  
-        ->set('todochage_at','now()')
+        ->set('todochange_at','now()')
         ->where('id = ?',$this->getUser()->getAttribute('id') );
     $executequery = $q->fetchArray();
       $urlRefresh = "sessions";

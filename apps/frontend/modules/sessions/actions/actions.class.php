@@ -33,7 +33,7 @@ class sessionsActions extends sfActions {
         endforeach;
         $this->form->setDefault('status_id', 1);
         $this->form->setDefault('project_id', $dbprojectID);
-        $this->form->setDefault('todochage_at', date('Y-m-d H:i:s'));
+        $this->form->setDefault('todochange_at', date('Y-m-d H:i:s'));
     }
 
     public function executeCreate(sfWebRequest $request) {
@@ -49,7 +49,7 @@ class sessionsActions extends sfActions {
         endforeach;
         $this->form->setDefault('status_id', 1);
         $this->form->setDefault('project_id', $dbprojectID);
-        $this->form->setDefault('todochage_at', date('Y-m-d H:i:s'));
+        $this->form->setDefault('todochange_at', date('Y-m-d H:i:s'));
         $this->processForm($request, $this->form);
 
         $this->setTemplate('new');
@@ -88,7 +88,7 @@ class sessionsActions extends sfActions {
         $sessions->save();
         $q = Doctrine_Query::create()
                         ->update('Sessions')
-                        ->set('todochage_at', 'created_at')
+                        ->set('todochange_at', 'created_at')
                         ->where('id = ?', $request->getParameter('id'));
         $executequery = $q->fetchArray();
         $this->redirect('sbtm/sessions');
@@ -304,7 +304,7 @@ class sessionsActions extends sfActions {
                 $sessioninsert->setStatusId(1);
                 $sessioninsert->setProjectId($dbprojectID);
                 $sessioninsert->setStrategyId($statID);
-                $sessioninsert->setTodochageAt(date('Y-m-d H:i:s'));
+                $sessioninsert->setTodochangeAt(date('Y-m-d H:i:s'));
                 $sessioninsert->save();
             }
             fclose($fh);
