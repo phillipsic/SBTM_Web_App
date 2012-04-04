@@ -41,6 +41,8 @@ Sessions:
     status_id:  { type: integer, notnull: true }
     project_id:  { type: integer, notnull: true }
     strategy_id:  { type: integer, notnull: true }
+    todochange_at:  { type: datetime, notnull: false }
+
    relations:
     Status: { onDelete: CASCADE, local: status_id, foreign: id, foreignAlias: Sessionstatus } 
     ProjectCategory: { onDelete: CASCADE, local: project_id, foreign: id, foreignAlias: Projectlink } 
