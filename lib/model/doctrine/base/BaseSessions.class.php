@@ -94,7 +94,7 @@ abstract class BaseSessions extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('todochage_at', 'date', null, array(
+        $this->hasColumn('todochange_at', 'date', null, array(
              'type' => 'date',
              ));
         
