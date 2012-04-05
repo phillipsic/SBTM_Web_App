@@ -1,0 +1,3 @@
+# apps/frontend/modules/job/config/view.yml
+alldropdashboardSuccess:
+  stylesheets: [sbtm.css]
