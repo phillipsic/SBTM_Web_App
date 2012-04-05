@@ -91,6 +91,7 @@
 <?php
                                     $this->project_category = Doctrine_Core::getTable('ProjectCategory')
                                                     ->createQuery('a')
+                                                    ->andWhere('a.completetag!=1')
                                                     ->execute();
                                     for ($i = 0; $i < $this->project_category->count(); $i++) {
  ?>
