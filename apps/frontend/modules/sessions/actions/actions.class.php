@@ -83,7 +83,7 @@ class sessionsActions extends sfActions {
         $request->checkCSRFProtection();
 
         $this->forward404Unless($sessions = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id'))), sprintf('Object sessions does not exist (%s).', $request->getParameter('id')));
-        $sessions->setStatusId('1');
+        $sessions->setStatusId(1);
         $sessions->setTester('');
         $sessions->save();
         $q = Doctrine_Query::create()
@@ -168,13 +168,16 @@ class sessionsActions extends sfActions {
 
         $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id')));
         $usertest = $this->getUser()->getAttribute('username');
-        $sessionupdate->setStatusId('3');
+        $sessionupdate->setStatusId(3);
         $sessionupdate->setTester($usertest);
         $sessionupdate->save();
         $urlRefresh = "sessions";
         header("Refresh: 1; URL=\"" . $urlRefresh . "\"");
         $dirname = $this->getUser()->getAttribute('project');
         $filename = "uploads/{$dirname}/template";
+
+
+ 
         if (!file_exists($filename)) {
             mkdir("uploads/{$dirname}/template/", 0777, true);
         }

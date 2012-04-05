@@ -725,7 +725,7 @@ if($value==100){
 if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
      
       $usertest=$this->getUser()->getAttribute('username');
-      $sessionupdate->setStatusId('5');
+      $sessionupdate->setStatusId(5);
       $sessionupdate->setTester($usertest);
       $sessionupdate->save();
       $q = Doctrine_Query::create()
