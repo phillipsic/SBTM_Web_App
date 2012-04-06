@@ -3,34 +3,36 @@
 /**
  * Search actions.
  *
- * @package    PQASBTM
+ * @package    QASBTM
  * @subpackage Search
- * @author     Mohamed Sithik
- * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ * @author     Gunjan
  */
-class SearchActions extends sfActions
-{
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->form = new SearchForm();
-  }
-  public function executeSubmit(sfWebRequest $request)
-{
-  $this->forward404Unless($request->isMethod('post'));
+class SearchActions extends sfActions {
 
-  $params = array(
-    'SearchString'    => $request->getParameter('SearchString'),
-  );
-  $this->session_result = Doctrine_Core::getTable('Sessions')
-      ->createQuery('a')
-            ->where('a.sessionname like ?', $dbSearchString)
-      ->execute();
-    
-  $this->redirect('Search/SessionList');
-}
+    /**
+     * Executes index action
+     *
+     * @param sfRequest $request A request object
+     */
+    public function executeIndex(sfWebRequest $request) {
+        $this->form = new SearchForm();
+    }
+
+    public function executeSubmit(sfWebRequest $request) {
+        $this->forward404Unless($request->isMethod('post'));
+
+        $params =  $request->getParameter('SearchString');
+      
+        $this->session_result = Doctrine_Core::getTable('Sessions')
+                        ->createQuery('a')
+                            -> where('a.sessionname like ?',$params )
+                        ->execute();
+
+    //    $this->redirect('Search/sessionlist');
+    }
+
+    public function executeSearch(sfWebRequest $request) {
+        
+    }
+
 }

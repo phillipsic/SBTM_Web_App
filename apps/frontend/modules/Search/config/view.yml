@@ -3,3 +3,5 @@ indexSuccess:
   stylesheets: [sbtm.css]
 sessionlistSuccess:
   stylesheets: [sbtm.css]
+SubmitSuccess:
+  stylesheets: [sbtm.css]

@@ -1,4 +1,4 @@
-<form action="<?php echo url_for('Search/submit') ?>" method="POST">
+<form action="<?php echo url_for('Search/Submit') ?>" method="POST">
   <table>
     <?php echo $form ?>
     <tr>
