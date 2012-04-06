@@ -853,7 +853,7 @@ endforeach;
    $this->sessions = Doctrine_Core::getTable('Sessions')
       ->createQuery('a')
            ->where('a.tester = ?',$this->getUser()->getAttribute('username'))
-                   ->andWhere('a.project_id = ?',$dbprojectID)
+                 //  ->andWhere('a.project_id = ?',$dbprojectID)
            ->andWhereIn('a.status_id',array(3,5))
            //->where('a.ready=?','yes')
      ->execute();
