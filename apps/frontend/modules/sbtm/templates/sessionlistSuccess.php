@@ -1,6 +1,6 @@
 <div id="sf_admin_container">
     <form method="post" action="<?php echo url_for('sessions/copysessions') ?>">
-        <titles>Sessions List Report</titles>
+        <title>Sessions List Report</title>
     <div class="sf_admin_list" style="overflow:auto; width:770px; height: 300px;">
       <table  border="5">
           <?php if ($approved_sessions->count()>0){ ?>
@@ -71,14 +71,19 @@
           <?php foreach ($progress_sessions as $prog): ?>
             <tr class="sf_admin_row odd">
             <td class="sf_admin_text sf_admin_list_td_id">
-            <?php echo $prog->getSessionname() ?></td>
+            
+              <?php if ($prog->getstatusId()==5 ) { ?>
+                    <a href="<?php echo url_for('sessions/sessionreadonly?name='.$prog->getSessionname().'&id='.$prog->getId()) ?>"><?php echo $prog->getSessionname() ?></a></td>
+                <?php } else { ?>
+                    <?php echo $prog->getSessionname() ?>
+                <?php } ?>
             <td class="sf_admin_text sf_admin_list_td_id">
             <?php echo $prog->getStatus() ?></td>
             <td class="sf_admin_text sf_admin_list_td_name">
             <?php echo $prog->getTester() ?></td>
             <td class="sf_admin_text sf_admin_list_td_name">
             <?php echo $prog->getUpdatedAt() ?></td>
-                        </td>
+
           </tr>
           <?php endforeach; ?> 
           
