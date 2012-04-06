@@ -1,0 +1,5 @@
+# apps/frontend/modules/job/config/view.yml
+indexSuccess:
+  stylesheets: [sbtms.css]
+sessionlistSuccess:
+  stylesheets: [sbtms.css]
