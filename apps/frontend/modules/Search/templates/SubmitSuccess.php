@@ -20,7 +20,7 @@
                 </thead>
                 <?php } else{ ?>
                 <div class="record_error">
-                    echo 'No record Found'; ?>
+                   <?php echo 'No record Found'; ?>
                 </div>
                 <?php } ?>
                 <tbody>
