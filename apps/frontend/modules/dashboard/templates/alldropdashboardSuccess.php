@@ -3,7 +3,7 @@
         <titles>All Drop Dashboard</titles>
         <div class="sf_admin_list" style="overflow:auto; width:770px; height: 300px;">
 
-
+            <center>
             <table  border="5">
                 <?php if ($sessions->count() > 0) {
                 ?>
@@ -116,6 +116,7 @@
 
                 </tbody>
             </table>
+        </center>
         </div>
 
 
