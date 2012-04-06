@@ -16,6 +16,7 @@ class sbtmActions extends sfActions
      
      $this->project_category = Doctrine_Core::getTable('ProjectCategory')
       ->createQuery('a')
+      ->andWhere('a.completetag!=1')
       ->execute();
   }
   
