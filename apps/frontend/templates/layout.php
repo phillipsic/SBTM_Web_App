@@ -156,6 +156,9 @@
                                                 <li><a href="<?php echo url_for('dashboard/alldropdashboard') ?>"><?php echo "Dashboard" ?></a></li>
                                                 <li> | </li>
 <?php endif ?>
+                                                <li><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></li>
+                                                <li> | </li>
+
                                                     <li><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></li>
                                                 </ul>
 
