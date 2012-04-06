@@ -5,7 +5,7 @@
  *
  * @method Strategy getObject() Returns the current form's model object
  *
- * @package    PQASBTM
+ * @package    QASBTM
  * @subpackage form
  * @author     Mohamed Sithik
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
