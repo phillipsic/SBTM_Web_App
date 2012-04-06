@@ -22,21 +22,22 @@ class dashboardActions extends sfActions {
     public function executeAlldropdashboard(sfWebRequest $request) {
 
 
-        $this->project_id = Doctrine_Core::getTable('ProjectCategory')
+        $this->projects = Doctrine_Core::getTable('ProjectCategory')
                         ->createQuery('a')
-                        ->where('a.name = ?', $this->getUser()->getAttribute('project'))
+                        ->andWhere('a.completetag!=1')
                         ->execute();
 
+        $this->logMessage(">>> LOG Number of projects = " . $this->projects->count());
 
-        foreach ($this->project_id as $projectid):
-            $dbprojectID = $projectid->getId();
 
-        endforeach;
-
-        $this->sessions = Doctrine_Core::getTable('Sessions')
-                        ->createQuery('a')
-                        ->where('a.project_id = ?', $dbprojectID)
-                        ->execute();
+       
+        $q = Doctrine_Query::create()
+                        ->select('project_id as projectid, status_id as statusid, count(*) as totalcount, name as projectname')
+                        ->from('Sessions s, ProjectCategory p')
+                        ->where('p.completetag <> 1')
+                        ->andWhere(' p.id = s.project_id')
+                        ->groupBy('project_id, status_id');
+        $this->sessions = $q->execute();
     }
 
 }
