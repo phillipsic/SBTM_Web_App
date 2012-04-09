@@ -25,7 +25,7 @@ class SearchActions extends sfActions {
       
         $this->session_result = Doctrine_Core::getTable('Sessions')
                         ->createQuery('a')
-                            -> where('a.sessionname like ?',$params )
+                            -> where('a.sessionname like ?','%'.$params .'%')
                         ->execute();
 
     //    $this->redirect('Search/sessionlist');
