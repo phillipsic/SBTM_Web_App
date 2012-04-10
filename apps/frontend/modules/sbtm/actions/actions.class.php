@@ -1035,7 +1035,7 @@ while(!feof($fh))
                    }
                }}
                else{
-                   
+                   $adi = 0;
                     $this->admin = Doctrine_Core::getTable('Logins')
                     ->createQuery('a')
                     ->where('a.role_id = ?',1)
@@ -1043,6 +1043,7 @@ while(!feof($fh))
      
                 foreach ($this->admin as $adm):
                 $admin_mail[$adi] =$adm->getEmail();
+                 $this->logMessage(">>> admin user = " . $admin_mail[$adi]);
                 $adi++;
                 endforeach;
                 $sub="Coverage.ini not found for the Project: ".$this->getUser()->getAttribute('project');
