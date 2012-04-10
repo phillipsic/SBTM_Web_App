@@ -14,7 +14,10 @@
                             Project
                         </th>
                         <th class="sf_admin_text sf_admin_list_th_name">
-                            Completed Date
+                            Status
+                        </th>
+                        <th class="sf_admin_text sf_admin_list_th_name">
+                            Last Updated At
                         </th>
                     </tr>
                 </thead>
@@ -28,10 +31,17 @@
                         <tr class="sf_admin_row odd">
 
                             <td class="sf_admin_text sf_admin_list_td_id">
-                                <a href="<?php echo url_for('sessions/sessionreadonly?name=' . $ses->getSessionname() . '&id=' . $ses->getId()) ?>"><?php echo $ses->getSessionname() ?></a></td>
+                                <?php if ($ses->getstatusId()==4) { ?>
+                                      <a href="<?php echo url_for('sessions/sessionreadonly?name='.$ses->getSessionname().'&id='.$ses->getId()) ?>"><?php echo $ses->getSessionname() ?></a>
+                                <?php } else { ?>
+                                      <?php echo $ses->getSessionname() ?>
+                                 <?php } ?>
+                            </td>
+                            <td class="sf_admin_text sf_admin_list_td_name">
+                            <?php echo $ses->getProjectCategory() ?></td>
 
                             <td class="sf_admin_text sf_admin_list_td_name">
-                            <?php echo $ses->getproject_id() ?></td>
+                            <?php echo $ses->getStatus() ?></td>
 
                         <td class="sf_admin_text sf_admin_list_td_name">
                             <?php echo $ses->getUpdatedAt() ?></td>
