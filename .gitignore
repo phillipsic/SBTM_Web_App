@@ -10,7 +10,8 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-cache/
+/cache/**/*
+/cache/*
 nbproject/private/private.xml
 
 cache/frontend/dev/config/config_autoload.yml.php
