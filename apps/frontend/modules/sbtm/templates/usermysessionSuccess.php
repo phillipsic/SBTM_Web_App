@@ -30,7 +30,7 @@ $admin = $sf_user->getAttribute('adminrole'); ?>
                                 Session Name
                             </th>
                             <th class="sf_admin_text sf_admin_list_th_name">
-                                Drop
+                                Project
                             </th>
                             <th class="sf_admin_text sf_admin_list_th_name">
                                 Status
