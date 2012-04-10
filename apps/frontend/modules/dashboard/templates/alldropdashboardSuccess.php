@@ -45,8 +45,8 @@
                     $Totals_Array[1] = 0;
                     $Totals_Array[3] = 0;
                     $Totals_Array[5] = 0;
-                    $Totals_Array[7] = 0;
-                    $Totals_Array[9] = 0;
+                    $Totals_Array[2] = 0;
+                    $Totals_Array[4] = 0;
                     foreach ($sessions as $session):
 
 
@@ -65,9 +65,9 @@
                             <?php echo $Totals_Array[5] ?></td>
 
                         <td class="sf_admin_date sf_admin_list_td_created_at">
-                            <?php echo $Totals_Array[7] ?></td>
+                            <?php echo $Totals_Array[2] ?></td>
                         <td class="sf_admin_date sf_admin_list_td_created_at">
-                            <?php echo $Totals_Array[9] ?></td>
+                            <?php echo $Totals_Array[4] ?></td>
 
                     </tr>
                     <?php
@@ -78,8 +78,8 @@
                             $Totals_Array[1] = 0;
                             $Totals_Array[3] = 0;
                             $Totals_Array[5] = 0;
-                            $Totals_Array[7] = 0;
-                            $Totals_Array[9] = 0;
+                            $Totals_Array[2] = 0;
+                            $Totals_Array[4] = 0;
 
                             $Totals_Array[$session->getStatusid()] = $session->getTotalcount();
                         } else {
@@ -106,9 +106,9 @@
                             <?php echo $Totals_Array[5] ?></td>
 
                         <td class="sf_admin_date sf_admin_list_td_created_at">
-                            <?php echo $Totals_Array[7] ?></td>
+                            <?php echo $Totals_Array[2] ?></td>
                         <td class="sf_admin_date sf_admin_list_td_created_at">
-                            <?php echo $Totals_Array[9] ?></td>
+                            <?php echo $Totals_Array[4] ?></td>
 
                     </tr>
 
