@@ -165,7 +165,7 @@
 <?php
                                                     $this->progress_sessions = Doctrine_Core::getTable('Sessions')
                                                                     ->createQuery('a')
-                                                                    ->where('a.status_id!=?', '1')
+                                                                    ->whereIn('a.status_id', array('3','5'))
                                                                     ->andWhere('a.tester = ?', $sf_user->getAttribute('username'))
                                                                     ->execute();
 
