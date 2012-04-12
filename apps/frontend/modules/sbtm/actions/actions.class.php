@@ -994,6 +994,9 @@ class sbtmActions extends sfActions {
                                 $this->logMessage(">>> admin user = " . $admin_mail[$adi]);
                                 $adi++;
                             endforeach;
+
+                         
+                             $this->logMessage(">>> SERVER IP = " . $_SERVER['SERVER_ADDR']);
                             $sub = "Coverage.ini not found for the Project: " . $this->getUser()->getAttribute('project');
                             $subject = '<h1 class="h1">Coverage.ini not found</h1>
                 <strong>Dear Admin/Reviewer:</strong> <br />Project : ' . $this->getUser()->getAttribute('project') . '<br />
