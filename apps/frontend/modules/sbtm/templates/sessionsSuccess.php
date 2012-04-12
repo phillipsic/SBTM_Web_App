@@ -96,7 +96,8 @@ $admin = $sf_user->getAttribute('adminrole'); ?>
                                 <?php } else {
  ?>
                                     <li class="sf_admin_action_download">
-                                    <?php echo $session->getTester() ?></li>
+                                    <a href="<?php echo url_for('sessions/download?id=' . $session->getId()) ?>"><?php echo $session->getTester() ?></a>
+                                    </li>
                                 <?php } ?>
 
                                 <!--li class="sf_admin_action_upload">
