@@ -17,7 +17,7 @@ function checkAll()
 <?php $admin=$sf_user->getAttribute('adminrole');
 $admin=$sf_user->getAttribute('adminrole');?> 
 <div id="sf_admin_container">
-     <titles>Manage Sessions of <?php echo $sf_user->getAttribute('projectname') ?></titles>
+     <title>Manage Sessions of <?php echo $sf_user->getAttribute('projectname') ?></title>
     <form method="post" action="<?php echo url_for('sessions/statusready') ?>">
     <div class="sf_admin_list" style="overflow:auto; width:900px; height: 350px;">
       <table  border="5">
@@ -66,7 +66,7 @@ $admin=$sf_user->getAttribute('adminrole');?>
             <a href="<?php echo url_for('sessions/edit?id='.$session->getId()) ?>">Edit</a>
             </li>  
             <li class="sf_admin_action_delete">
-            <?php echo link_to('Delete', 'sessions/delete?id='.$session->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
+            <?php echo link_to('Delete', 'sessions/delete?id='.$session->get('id').'&title=ManageSessions', array('post' => true, 'confirm' => 'Are you sure?')) ?>
             </li> 
               <?php endif ?>
              
