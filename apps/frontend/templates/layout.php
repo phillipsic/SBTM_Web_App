@@ -121,46 +121,46 @@
                         <div id="job">
                             <h2>Logged In : <?php echo $sf_user->getAttribute('username') ?></h2>
                         </div>
-                        <div class="nav" id="nav">
-                            <ul>
+                        <div  id="menu">
+                           
 <?php $admin = $sf_user->getAttribute('adminrole');
                                     if ($admin == "Admin"): ?>
 
-                                    <li><a href="<?php echo url_for('sbtm/useradmin') ?>"><?php echo "User Admin" ?></a></li>
-                                    <li> | </li>
-                                     <li><!--a href="<?php echo url_for('sbtm/projectadmin') ?>"><?php echo "Project Admin" ?></a-->
+                                    <td><a href="<?php echo url_for('sbtm/useradmin') ?>"><?php echo "User Admin" ?></a></td>
+                                    <td> | </td>
+                                     <td><!--a href="<?php echo url_for('sbtm/projectadmin') ?>"><?php echo "Project Admin" ?></a-->
                                             <a href="<?php echo url_for('ProjectCategory/show?id=' . $sf_user->getAttribute('projectid')) ?>"><?php echo "Project Admin" ?></a>
-                                        </li>
-                                        <li> | </li>
+                                        </td>
+                                        <td> | </td>
 <?php endif ?>
 <?php if ($admin != "Reviewer"): ?>
-                                            <li><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></li>
-                                            <li> | </li>
+                                            <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
+                                            <td> | </td>
 <?php endif ?>
-                                            <li><a href="<?php echo url_for('sbtm/usermysession') ?>"><?php echo "My Session" ?></a></li>
-                                            <li> | </li>
+                                            <td><a href="<?php echo url_for('sbtm/usermysession') ?>"><?php echo "My Session" ?></a></td>
+                                            <td> | </td>
 <?php $admin = $sf_user->getAttribute('adminrole');
                                             if ($admin == "Admin" || $admin == "Reviewer"): ?>
-                                                <li><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></li>
-                                                <li> | </li>
+                                                <td><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></td>
+                                                <td> | </td>
 <?php endif ?>
 
                             <?php if ($admin != "Reviewer"): ?>
-                                                    <li><a href="<?php echo url_for('sbtm/datafiles') ?>"><?php echo "Data Files" ?></a></li>
-                                                    <li> | </li>
-                                                    <li><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></li>
-                                                    <li> | </li>
+                                                    <td><a href="<?php echo url_for('sbtm/datafiles') ?>"><?php echo "Data Files" ?></a></td>
+                                                    <td> | </td>
+                                                    <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
+                                                    <td> | </td>
                             <?php endif ?>
 
                                                      <?php if ($admin == "Admin" ): ?>
-                                                <li><a href="<?php echo url_for('dashboard/alldropdashboard') ?>"><?php echo "Dashboard" ?></a></li>
-                                                <li> | </li>
+                                                <td><a href="<?php echo url_for('dashboard/alldropdashboard') ?>"><?php echo "Dashboard" ?></a></td>
+                                                <td> | </td>
 <?php endif ?>
-                                                <li><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></li>
-                                                <li> | </li>
+                                                <td><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></td>
+                                                <td> | </td>
 
-                                                    <li><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></li>
-                                                </ul>
+                                                    <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
+                                            
 
 <?php
                                                     $this->progress_sessions = Doctrine_Core::getTable('Sessions')
