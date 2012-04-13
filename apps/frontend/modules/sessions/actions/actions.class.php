@@ -74,9 +74,22 @@ class sessionsActions extends sfActions {
         $request->checkCSRFProtection();
 
         $this->forward404Unless($sessions = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id'))), sprintf('Object sessions does not exist (%s).', $request->getParameter('id')));
+      //  $this->logMessage('Page requesting Delete action '.$request ->getParameter('title')));
         $sessions->delete();
 
-        $this->redirect('sbtm/sessions');
+       
+        if ($request ->getParameter('title')== 'ManageSessions'){
+                $proj_id = Doctrine_Core::getTable('ProjectCategory')
+                        ->createQuery('a')
+                        ->where('a.name = ?', $this->getUser()->getAttribute('project'))
+                        ->execute();
+                foreach ($proj_id as $projectid):
+                    $dbprojectID = $projectid->getId();
+                endforeach;
+                $this->redirect('sbtm/managesession?id='.$dbprojectID);
+        }
+        else
+                $this->redirect('sbtm/sessions');
     }
 
     public function executeCancel(sfWebRequest $request) {

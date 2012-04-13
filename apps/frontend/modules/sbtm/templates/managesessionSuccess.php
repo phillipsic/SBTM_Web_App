@@ -66,7 +66,7 @@ $admin=$sf_user->getAttribute('adminrole');?>
             <a href="<?php echo url_for('sessions/edit?id='.$session->getId()) ?>">Edit</a>
             </li>  
             <li class="sf_admin_action_delete">
-            <?php echo link_to('Delete', 'sessions/delete?id='.$session->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
+            <?php echo link_to('Delete', 'sessions/delete?id='.$session->get('id').'&title=ManageSessions', array('post' => true, 'confirm' => 'Are you sure?')) ?>
             </li> 
               <?php endif ?>
              
