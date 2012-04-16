@@ -21,7 +21,7 @@ class sbtmActions extends sfActions {
     public function executeManagecoverage(sfWebRequest $request) {
 
         $dirname = $this->getUser()->getAttribute('project');
-        $this->logMessage($dirname . 'directory name');
+       // $this->logMessage($dirname . 'directory name');
         $filename = "uploads/{$dirname}/coverage";
         if (!file_exists($filename)) {
             mkdir("uploads/{$dirname}/coverage/", 0777, true);
@@ -44,7 +44,7 @@ class sbtmActions extends sfActions {
     public function executeManagetemplate(sfWebRequest $request) {
 
         $dirname = $this->getUser()->getAttribute('project');
-        $this->logMessage($dirname . 'directory name');
+      //  $this->logMessage($dirname . 'directory name');
         $filename = "uploads/{$dirname}/template";
         if (!file_exists($filename)) {
             mkdir("uploads/{$dirname}/template/", 0777, true);
@@ -82,7 +82,7 @@ class sbtmActions extends sfActions {
         $target_path = "uploads/{$dirname}/coverage/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
 //$_FILES['uploadedfile']['type']='text/plain';
-        $this->logMessage("type" . $_FILES['uploadedfile']['type']);
+    //    $this->logMessage("type" . $_FILES['uploadedfile']['type']);
         if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
             $this->getUser()->setAttribute('uploadmessage', 'The file ' . basename($_FILES['uploadedfile']['name']) . 'has been uploaded');
         } else {
@@ -100,7 +100,7 @@ class sbtmActions extends sfActions {
         }
         $target_path = "uploads/{$dirname}/template/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
-        $this->logMessage("sithik" . $target_path);
+    //    $this->logMessage("sithik" . $target_path);
         if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
             $this->getUser()->setAttribute('uploadmessage', 'The file ' . basename($_FILES['uploadedfile']['name']) . 'has been uploaded');
         } else {
@@ -228,7 +228,7 @@ class sbtmActions extends sfActions {
                         ->orderBy('count(1) DESC');
         $executequery1 = $q1->fetchArray();
         $maxTarget = $executequery1[0]['target'];
-        $this->logMessage($maxTarget . 'MaxTarget');
+      //  $this->logMessage($maxTarget . 'MaxTarget');
 
         $sessions = Doctrine_Core::getTable('Sessions')
                         ->createQuery('a')
@@ -247,14 +247,14 @@ class sbtmActions extends sfActions {
         $Burntotal = 0;
         $Burncompleted = 0;
         $Burntodo = 0;
-        $this->logMessage($workday . 'work');
+     //   $this->logMessage($workday . 'work');
         while ($start <= $now) {
             $inside = $start;
 
 
-            $this->logMessage(date("Y-m-d", $firstday) . 'sithik' . date("Y-m-d", $inside) . 'sithik' . date("Y-m-d H:i:s", $start) . 'sithik' . date("Y-m-d H:i:s", $sysdate));
+        //    $this->logMessage(date("Y-m-d", $firstday) . 'sithik' . date("Y-m-d", $inside) . 'sithik' . date("Y-m-d H:i:s", $start) . 'sithik' . date("Y-m-d H:i:s", $sysdate));
             if ((date("Y-m-d", $start) <= date("Y-m-d", $sysdate)) || (date("Y-m-d", $firstday) == date("Y-m-d", $inside))) {
-                $this->logMessage(date("Y-m-d H:i:s", $start) . 'date' . date("Y-m-d H:i:s", $sysdate));
+           //     $this->logMessage(date("Y-m-d H:i:s", $start) . 'date' . date("Y-m-d H:i:s", $sysdate));
                 //todo check
                 $todosessions = Doctrine_Core::getTable('Sessions')
                                 ->createQuery('a')
@@ -286,7 +286,7 @@ class sbtmActions extends sfActions {
                 $Burntodo = $todoSession;
                 $Burntotal = $tota;
                 $Burncompleted = $tota1;
-                $this->logMessage($todoSession . ' : ' . $Burntotal . ' : ' . $Burncompleted . ' : ' . $Burntodo);
+           //     $this->logMessage($todoSession . ' : ' . $Burntotal . ' : ' . $Burncompleted . ' : ' . $Burntodo);
                 /* $othersessions = Doctrine_Core::getTable('Sessions')
                   ->createQuery('a')
                   ->where('a.project_id = ?',$dbprojectID)
@@ -313,12 +313,12 @@ class sbtmActions extends sfActions {
                         $target_ = $first_target;
                         $flag = false;
                     } else {
-                        $this->logMessage($target_ . 'target1' . $workday);
+                     //   $this->logMessage($target_ . 'target1' . $workday);
                         $target_ = $target_ - ($target_ / $workday);
                     }
-                    $this->logMessage($target_ . 'target2' . $workday);
+                  //  $this->logMessage($target_ . 'target2' . $workday);
                     $data_3[$i] = $target_;
-                    $this->logMessage($data_3[$i] . 'i1' . $i);
+                 //   $this->logMessage($data_3[$i] . 'i1' . $i);
                     //$workday--;
                 } else {
                     $data_1[$i] = 'null';
@@ -334,10 +334,10 @@ class sbtmActions extends sfActions {
                 $i++;
                 $target_ = $target_ - ($target_ / $workday);
                 $data_3[$i] = $target_;
-                $this->logMessage($data_3[$i] . 'i' . $i);
+           //     $this->logMessage($data_3[$i] . 'i' . $i);
             }
             $start = $start + (60 * 60 * 24 * 1);
-            $this->logMessage($data_3[$i] . 'i1' . $i);
+         //   $this->logMessage($data_3[$i] . 'i1' . $i);
             $moth[$i] = date('d-M', $inside);
             $i++;
             $workday--;
@@ -347,9 +347,9 @@ class sbtmActions extends sfActions {
 
         $g = new stGraph();
         $g->title($this->getUser()->getAttribute('project'), '{font-size: 20px; color: #736AFF}');
-        foreach ($data_3 as $dat):
-            $this->logMessage($dat + 'value');
-        endforeach;
+     //   foreach ($data_3 as $dat):
+         //   $this->logMessage($dat + 'value');
+     //   endforeach;
 // we add 3 sets of data:
         $g->set_data($data_1);
         $g->set_data($data_2);
@@ -406,7 +406,7 @@ class sbtmActions extends sfActions {
         foreach ($executequery as $exe) {
             switch ($exe['name']) {
                 case 'Todo':
-                    $this->logMessage($exe['name'] . 'todo');
+                  //  $this->logMessage($exe['name'] . 'todo');
                     if ($exe['count'] > 0) {
                         $data[0] = $exe['count'];
                         $sessionname[0] = 'Todo Sessions';
@@ -415,7 +415,7 @@ class sbtmActions extends sfActions {
                         $data[0] = 0;
                     break;
                 case 'Submitted':
-                    $this->logMessage($exe['name'] . 'sub');
+                  //  $this->logMessage($exe['name'] . 'sub');
                     if ($exe['count'] > 0) {
                         $data[1] = $exe['count'];
                         $sessionname[1] = 'Submitted sessions';
@@ -424,7 +424,7 @@ class sbtmActions extends sfActions {
                         $data[1] = 0;
                     break;
                 case 'Running':
-                    $this->logMessage($exe['name'] . 'running');
+                 //   $this->logMessage($exe['name'] . 'running');
                     if ($exe['count'] > 0) {
                         $data[2] = $exe['count'];
                         $sessionname[2] = 'Running Sessions';
@@ -433,7 +433,7 @@ class sbtmActions extends sfActions {
                         $data[2] = 0;
                     break;
                 case 'Approved':
-                    $this->logMessage($exe['name'] . 'approved');
+                 //   $this->logMessage($exe['name'] . 'approved');
                     if ($exe['count'] > 0) {
                         $data[3] = $exe['count'];
                         $sessionname[3] = 'Approved Sessions';
@@ -442,7 +442,7 @@ class sbtmActions extends sfActions {
                         $data[3] = 0;
                     break;
                 case 'Finalize':
-                    $this->logMessage($exe['name'] . 'final');
+                 //   $this->logMessage($exe['name'] . 'final');
                     if ($exe['count'] > 0) {
                         $data[4] = $exe['count'];
                         $sessionname[4] = 'Finalize Sessions';
@@ -677,7 +677,7 @@ class sbtmActions extends sfActions {
                 }
             }
             fclose($fh);
-            $this->logMessage("upload" . $file);
+       //     $this->logMessage("upload" . $file);
             if ($value == 100) {
                 if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 
@@ -746,7 +746,7 @@ class sbtmActions extends sfActions {
         }
         $target_path = "uploads/{$dirname}/datafiles/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
-        $this->logMessage("sithik" . $target_path);
+    //    $this->logMessage("sithik" . $target_path);
         if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
             $this->getUser()->setAttribute('uploadmessage', 'The file ' . basename($_FILES['uploadedfile']['name']) . 'has been uploaded');
         } else {
@@ -825,6 +825,9 @@ class sbtmActions extends sfActions {
         $dirname = $this->getUser()->getAttribute('project');
         $target_path = "uploads/{$dirname}/";
         $target_path = $target_path . $this->getUser()->getAttribute('filename');
+        $smtp_ipaddress = sfConfig::get('app_smtp_ipaddress');
+        $smtp_portnumber = sfConfig::get('app_smtp_portnumber');
+        $From_EmailAddress = sfConfig::get('app_smtp_fromemailaddress');
 
         if ($request->getparameter('status_action') == 'Submitted') {
 
@@ -840,9 +843,9 @@ class sbtmActions extends sfActions {
                 $dafilematch = "/N\/A/i";
                 $areas = "/AREAS/i";
 
-                $smtp_ipaddress = sfConfig::get('app_smtp_ipaddress');
-                $smtp_portnumber = sfConfig::get('app_smtp_portnumber');
-                $From_EmailAddress = sfConfig::get('app_smtp_fromemailaddress');
+                //  $smtp_ipaddress = sfConfig::get('app_smtp_ipaddress');
+                //   $smtp_portnumber = sfConfig::get('app_smtp_portnumber');
+                //   $From_EmailAddress = sfConfig::get('app_smtp_fromemailaddress');
 
                 $this->logMessage(">>> SMTP IP = " . $smtp_ipaddress);
                 $this->logMessage(">>> SMTP IP = " . $smtp_portnumber);
@@ -971,7 +974,7 @@ class sbtmActions extends sfActions {
                             foreach ($areaarray as $fil) {
                                 $found = true;
                                 foreach ($areasdata as $fil1) {
-                                    $this->logMessage($fil1);
+                                  //  $this->logMessage($fil1);
                                     if (trim($fil) == trim($fil1)) {
                                         $found = false;
                                     }
@@ -995,8 +998,8 @@ class sbtmActions extends sfActions {
                                 $adi++;
                             endforeach;
 
-                         
-                             $this->logMessage(">>> SERVER IP = " . $_SERVER['SERVER_ADDR']);
+                            $this->logMessage(">>> SMTP IP = " . $smtp_ipaddress);
+                            $this->logMessage(">>> SERVER IP = " . $_SERVER['SERVER_ADDR']);
                             $sub = "Coverage.ini not found for the Project: " . $this->getUser()->getAttribute('project');
                             $subject = '<h1 class="h1">Coverage.ini not found</h1>
                 <strong>Dear Admin/Reviewer:</strong> <br />Project : ' . $this->getUser()->getAttribute('project') . '<br />
@@ -1219,6 +1222,8 @@ height:auto;
             </table>
         </center>', 'text/html')
                             ;
+
+                            $this->logMessage(">>> Sending Email <<<" . $smtp_ipaddress);
                             $result = $mailer->send($message);
                             /* $error1[$z]="Coverage.ini not found for this project .";
                               $z++;
@@ -1306,7 +1311,7 @@ height:auto;
 ';
                 }
 
-                $this->logMessage($usre_mail . 'sithik');
+              //  $this->logMessage($user_mail . 'sithik');
                 $this->logMessage($request->getparameter('status_action') . 'sithik' . $dbstatID);
                 $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));
                 $usertest = $this->getUser()->getAttribute('username');
