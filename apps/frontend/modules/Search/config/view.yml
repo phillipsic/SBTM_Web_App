@@ -5,3 +5,6 @@ sessionlistSuccess:
   stylesheets: [sbtm.css]
 SubmitSuccess:
   stylesheets: [sbtm.css]
+ReadSearchedSessionSuccess:
+  stylesheets: [sbtm.css]
+

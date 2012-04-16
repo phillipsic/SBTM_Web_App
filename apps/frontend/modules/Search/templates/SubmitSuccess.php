@@ -32,7 +32,7 @@
 
                             <td class="sf_admin_text sf_admin_list_td_id">
                                 <?php if ($ses->getstatusId()==4) { ?>
-                                      <a href="<?php echo url_for('sessions/sessionreadonly?name='.$ses->getSessionname().'&id='.$ses->getId()) ?>"><?php echo $ses->getSessionname() ?></a>
+                                      <a href="<?php echo url_for('Search/ReadSearchedSession?name='.$ses->getSessionname().'&id='.$ses->getId().'&proj='.$ses->getProjectCategory()) ?>"><?php echo $ses->getSessionname() ?></a>
                                 <?php } else { ?>
                                       <?php echo $ses->getSessionname() ?>
                                  <?php } ?>
