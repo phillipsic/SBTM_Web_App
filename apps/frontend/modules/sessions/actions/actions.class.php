@@ -74,7 +74,7 @@ class sessionsActions extends sfActions {
         $request->checkCSRFProtection();
 
         $this->forward404Unless($sessions = Doctrine_Core::getTable('Sessions')->find(array($request->getParameter('id'))), sprintf('Object sessions does not exist (%s).', $request->getParameter('id')));
-      //  $this->logMessage('Page requesting Delete action '.$request ->getParameter('title')));
+      //  $this->logMessage('Page requesting Delete action '.$this->getUser()->getAttribute('project'));
         $sessions->delete();
 
        
@@ -371,7 +371,7 @@ class sessionsActions extends sfActions {
         $myFile = "uploads/{$dirname}/" . $name;
         $this->logMessage($myFile, 'err');
         $theData = file_get_contents($myFile);
-        $this->getUser()->setAttribute('theData', $myFile);
+        $this->getUser()->setAttribute('theData', $theData);
         $this->logMessage($theData, 'err');
     }
 
