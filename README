@@ -2,7 +2,17 @@ Aim of this project is to produce a web application to manage SBTM.
 
 The first release will be a combination of the Web application and the ruby framework.
 
-In Release 1
+Release 0.2
+-----------
+Issues in this release:
+ #51 Add functionality to copy unfinished sessions from one release to another
+ #71 Users need to be reminded that they still have un-submitted sessions
+ #57 Manually created session generates a file starting with a - (BUG)
+ #82 My Sessions page should show sessions from all projects/releases.
+ #77 Ability to search all Drops by text string
+
+
+In Release 0.1
 -------------
  * Project/Release management
  * User/access management
