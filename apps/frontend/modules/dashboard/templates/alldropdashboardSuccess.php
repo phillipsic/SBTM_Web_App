@@ -13,19 +13,19 @@
                                 Drop Name
                             </th>
                             <th class="sf_admin_text sf_admin_list_th_name">
-                                ToDo
+                                <?php echo $status[0] ?>
                             </th>
                             <th class="sf_admin_text sf_admin_list_th_name">
-                                Running
+                                <?php echo $status[2] ?>
                             </th>
                             <th class="sf_admin_text sf_admin_list_th_name">
-                                Finalise
+                                <?php echo $status[4] ?>
                             </th>
                             <th class="sf_admin_text sf_admin_list_th_name">
-                                Submitted
+                                <?php echo $status[1] ?>
                             </th>
                             <th class="sf_admin_text sf_admin_list_th_name">
-                                Approved
+                                <?php echo $status[3] ?>
                             </th>
                         </tr>
                     </thead>

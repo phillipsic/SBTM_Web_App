@@ -27,6 +27,10 @@ class dashboardActions extends sfActions {
                         ->andWhere('a.completetag!=1')
                         ->execute();
 
+        $this->status = Doctrine_Core::getTable('Status')
+                        ->createQuery('a')
+                        ->execute();
+
         $this->logMessage(">>> LOG Number of projects = " . $this->projects->count());
 
 
