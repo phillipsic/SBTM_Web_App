@@ -287,9 +287,9 @@ class sessionsActions extends sfActions {
         endforeach;
         $target_path = "uploads/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
-
+        
         if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
-            $myFile = "uploads/todo.csv";
+            $myFile = "uploads/".$_FILES['uploadedfile']['name'];
             $fh = fopen($myFile, 'r');
             $this->strategy_id = Doctrine_Core::getTable('Strategy')
                             ->createQuery('a')
@@ -375,4 +375,5 @@ class sessionsActions extends sfActions {
         $this->logMessage($theData, 'err');
     }
 
+ 
 }
