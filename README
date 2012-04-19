@@ -1,6 +1,15 @@
 Aim of this project is to produce a web application to manage SBTM.
 
 
+Release 0.2.1
+-------------
+
+This is a bug fix only release.
+
+Issues in this release:
+ #85 the todo file containing sessions will now take other file names besides 'todo.cvs'.  Application was throwing an error if other file was something different.
+ #59 When a session is in the finalise state you now have a link to be able to view the file.  Previously there was no link
+
 Release 0.2
 -----------
 Issues in this release:
