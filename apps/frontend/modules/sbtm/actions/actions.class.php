@@ -21,7 +21,7 @@ class sbtmActions extends sfActions {
     public function executeManagecoverage(sfWebRequest $request) {
 
         $dirname = $this->getUser()->getAttribute('project');
-       // $this->logMessage($dirname . 'directory name');
+        // $this->logMessage($dirname . 'directory name');
         $filename = "uploads/{$dirname}/coverage";
         if (!file_exists($filename)) {
             mkdir("uploads/{$dirname}/coverage/", 0777, true);
@@ -44,7 +44,7 @@ class sbtmActions extends sfActions {
     public function executeManagetemplate(sfWebRequest $request) {
 
         $dirname = $this->getUser()->getAttribute('project');
-      //  $this->logMessage($dirname . 'directory name');
+        //  $this->logMessage($dirname . 'directory name');
         $filename = "uploads/{$dirname}/template";
         if (!file_exists($filename)) {
             mkdir("uploads/{$dirname}/template/", 0777, true);
@@ -82,7 +82,7 @@ class sbtmActions extends sfActions {
         $target_path = "uploads/{$dirname}/coverage/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
 //$_FILES['uploadedfile']['type']='text/plain';
-    //    $this->logMessage("type" . $_FILES['uploadedfile']['type']);
+        //    $this->logMessage("type" . $_FILES['uploadedfile']['type']);
         if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
             $this->getUser()->setAttribute('uploadmessage', 'The file ' . basename($_FILES['uploadedfile']['name']) . 'has been uploaded');
         } else {
@@ -100,7 +100,7 @@ class sbtmActions extends sfActions {
         }
         $target_path = "uploads/{$dirname}/template/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
-    //    $this->logMessage("sithik" . $target_path);
+        //    $this->logMessage("sithik" . $target_path);
         if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
             $this->getUser()->setAttribute('uploadmessage', 'The file ' . basename($_FILES['uploadedfile']['name']) . 'has been uploaded');
         } else {
@@ -228,7 +228,7 @@ class sbtmActions extends sfActions {
                         ->orderBy('count(1) DESC');
         $executequery1 = $q1->fetchArray();
         $maxTarget = $executequery1[0]['target'];
-      //  $this->logMessage($maxTarget . 'MaxTarget');
+        //  $this->logMessage($maxTarget . 'MaxTarget');
 
         $sessions = Doctrine_Core::getTable('Sessions')
                         ->createQuery('a')
@@ -247,14 +247,14 @@ class sbtmActions extends sfActions {
         $Burntotal = 0;
         $Burncompleted = 0;
         $Burntodo = 0;
-     //   $this->logMessage($workday . 'work');
+        //   $this->logMessage($workday . 'work');
         while ($start <= $now) {
             $inside = $start;
 
 
-        //    $this->logMessage(date("Y-m-d", $firstday) . 'sithik' . date("Y-m-d", $inside) . 'sithik' . date("Y-m-d H:i:s", $start) . 'sithik' . date("Y-m-d H:i:s", $sysdate));
+            //    $this->logMessage(date("Y-m-d", $firstday) . 'sithik' . date("Y-m-d", $inside) . 'sithik' . date("Y-m-d H:i:s", $start) . 'sithik' . date("Y-m-d H:i:s", $sysdate));
             if ((date("Y-m-d", $start) <= date("Y-m-d", $sysdate)) || (date("Y-m-d", $firstday) == date("Y-m-d", $inside))) {
-           //     $this->logMessage(date("Y-m-d H:i:s", $start) . 'date' . date("Y-m-d H:i:s", $sysdate));
+                //     $this->logMessage(date("Y-m-d H:i:s", $start) . 'date' . date("Y-m-d H:i:s", $sysdate));
                 //todo check
                 $todosessions = Doctrine_Core::getTable('Sessions')
                                 ->createQuery('a')
@@ -286,7 +286,7 @@ class sbtmActions extends sfActions {
                 $Burntodo = $todoSession;
                 $Burntotal = $tota;
                 $Burncompleted = $tota1;
-           //     $this->logMessage($todoSession . ' : ' . $Burntotal . ' : ' . $Burncompleted . ' : ' . $Burntodo);
+                //     $this->logMessage($todoSession . ' : ' . $Burntotal . ' : ' . $Burncompleted . ' : ' . $Burntodo);
                 /* $othersessions = Doctrine_Core::getTable('Sessions')
                   ->createQuery('a')
                   ->where('a.project_id = ?',$dbprojectID)
@@ -313,12 +313,12 @@ class sbtmActions extends sfActions {
                         $target_ = $first_target;
                         $flag = false;
                     } else {
-                     //   $this->logMessage($target_ . 'target1' . $workday);
+                        //   $this->logMessage($target_ . 'target1' . $workday);
                         $target_ = $target_ - ($target_ / $workday);
                     }
-                  //  $this->logMessage($target_ . 'target2' . $workday);
+                    //  $this->logMessage($target_ . 'target2' . $workday);
                     $data_3[$i] = $target_;
-                 //   $this->logMessage($data_3[$i] . 'i1' . $i);
+                    //   $this->logMessage($data_3[$i] . 'i1' . $i);
                     //$workday--;
                 } else {
                     $data_1[$i] = 'null';
@@ -334,10 +334,10 @@ class sbtmActions extends sfActions {
                 $i++;
                 $target_ = $target_ - ($target_ / $workday);
                 $data_3[$i] = $target_;
-           //     $this->logMessage($data_3[$i] . 'i' . $i);
+                //     $this->logMessage($data_3[$i] . 'i' . $i);
             }
             $start = $start + (60 * 60 * 24 * 1);
-         //   $this->logMessage($data_3[$i] . 'i1' . $i);
+            //   $this->logMessage($data_3[$i] . 'i1' . $i);
             $moth[$i] = date('d-M', $inside);
             $i++;
             $workday--;
@@ -347,9 +347,9 @@ class sbtmActions extends sfActions {
 
         $g = new stGraph();
         $g->title($this->getUser()->getAttribute('project'), '{font-size: 20px; color: #736AFF}');
-     //   foreach ($data_3 as $dat):
-         //   $this->logMessage($dat + 'value');
-     //   endforeach;
+        //   foreach ($data_3 as $dat):
+        //   $this->logMessage($dat + 'value');
+        //   endforeach;
 // we add 3 sets of data:
         $g->set_data($data_1);
         $g->set_data($data_2);
@@ -406,7 +406,7 @@ class sbtmActions extends sfActions {
         foreach ($executequery as $exe) {
             switch ($exe['name']) {
                 case 'Todo':
-                  //  $this->logMessage($exe['name'] . 'todo');
+                    //  $this->logMessage($exe['name'] . 'todo');
                     if ($exe['count'] > 0) {
                         $data[0] = $exe['count'];
                         $sessionname[0] = 'Todo Sessions';
@@ -415,7 +415,7 @@ class sbtmActions extends sfActions {
                         $data[0] = 0;
                     break;
                 case 'Submitted':
-                  //  $this->logMessage($exe['name'] . 'sub');
+                    //  $this->logMessage($exe['name'] . 'sub');
                     if ($exe['count'] > 0) {
                         $data[1] = $exe['count'];
                         $sessionname[1] = 'Submitted sessions';
@@ -424,7 +424,7 @@ class sbtmActions extends sfActions {
                         $data[1] = 0;
                     break;
                 case 'Running':
-                 //   $this->logMessage($exe['name'] . 'running');
+                    //   $this->logMessage($exe['name'] . 'running');
                     if ($exe['count'] > 0) {
                         $data[2] = $exe['count'];
                         $sessionname[2] = 'Running Sessions';
@@ -433,7 +433,7 @@ class sbtmActions extends sfActions {
                         $data[2] = 0;
                     break;
                 case 'Approved':
-                 //   $this->logMessage($exe['name'] . 'approved');
+                    //   $this->logMessage($exe['name'] . 'approved');
                     if ($exe['count'] > 0) {
                         $data[3] = $exe['count'];
                         $sessionname[3] = 'Approved Sessions';
@@ -442,7 +442,7 @@ class sbtmActions extends sfActions {
                         $data[3] = 0;
                     break;
                 case 'Finalize':
-                 //   $this->logMessage($exe['name'] . 'final');
+                    //   $this->logMessage($exe['name'] . 'final');
                     if ($exe['count'] > 0) {
                         $data[4] = $exe['count'];
                         $sessionname[4] = 'Finalize Sessions';
@@ -677,7 +677,7 @@ class sbtmActions extends sfActions {
                 }
             }
             fclose($fh);
-       //     $this->logMessage("upload" . $file);
+            //     $this->logMessage("upload" . $file);
             if ($value == 100) {
                 if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 
@@ -746,7 +746,7 @@ class sbtmActions extends sfActions {
         }
         $target_path = "uploads/{$dirname}/datafiles/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
-    //    $this->logMessage("sithik" . $target_path);
+        //    $this->logMessage("sithik" . $target_path);
         if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
             $this->getUser()->setAttribute('uploadmessage', 'The file ' . basename($_FILES['uploadedfile']['name']) . 'has been uploaded');
         } else {
@@ -822,17 +822,28 @@ class sbtmActions extends sfActions {
     }
 
     public function executeReviewsubmit(sfWebRequest $request) {
-        $dirname = $this->getUser()->getAttribute('project');
-        $target_path = "uploads/{$dirname}/";
+        $projectDirectory = $this->getUser()->getAttribute('project');
+        $target_path = "uploads/{$projectDirectory}/";
         $target_path = $target_path . $this->getUser()->getAttribute('filename');
         $smtp_ipaddress = sfConfig::get('app_smtp_ipaddress');
         $smtp_portnumber = sfConfig::get('app_smtp_portnumber');
         $From_EmailAddress = sfConfig::get('app_smtp_fromemailaddress');
 
+
+
+
+        $this->sendSubmitEmail("Test Email", "Test Email", $From_EmailAddress);
+
         if ($request->getparameter('status_action') == 'Submitted') {
 
+
+            $this->logMessage(">>>                     <<<");
+            $this->logMessage(">>> Session being submitted");
+            $this->logMessage(">>>                     <<<");
+
+
             if (file_put_contents($target_path, $request->getParameter('quote'))) {
-                $fh = fopen($target_path, 'r') or die("can't open file");
+                $fileBeingSubmitted = fopen($target_path, 'r') or die("can't open file");
                 $testdesign = "/TEST DESIGN AND EXECUTION/i";
                 $buginvesti = "/BUG INVESTIGATION AND REPORTING/i";
                 $sessionsetup = "/SESSION SETUP/i";
@@ -848,39 +859,31 @@ class sbtmActions extends sfActions {
                 //   $From_EmailAddress = sfConfig::get('app_smtp_fromemailaddress');
 
                 $this->logMessage(">>> SMTP IP = " . $smtp_ipaddress);
-                $this->logMessage(">>> SMTP IP = " . $smtp_portnumber);
+                $this->logMessage(">>> SMTP PORT = " . $smtp_portnumber);
 
                 $value = 0;
                 $errorflag = false;
                 $error1 = array();
                 $z = 0;
-                while (!feof($fh)) {
-                    $line = fgets($fh);
+                while (!feof($fileBeingSubmitted)) {
+                    $line = fgets($fileBeingSubmitted);
                     if (preg_match($testdesign, $line)) {
-                        $value+=fgets($fh);
+                        $value+=fgets($fileBeingSubmitted);
                     } else if (preg_match($buginvesti, $line)) {
-                        $value+=fgets($fh);
+                        $value+=fgets($fileBeingSubmitted);
                     } else if (preg_match($sessionsetup, $line)) {
-                        $value+=fgets($fh);
-                    }
-                    /* else if (preg_match($start, $line)) {
-                      fgets($fh);
-                      $startdate=fgets($fh);
-                      if(strlen($startdate)<3){$errorflag=true;
-                      $error1[$z]="Start Date is empty .";
-                      $z++;
-                      }
-                      } */ else if (preg_match($tester, $line)) {
-                        fgets($fh);
-                        $testername = fgets($fh);
+                        $value+=fgets($fileBeingSubmitted);
+                    } else if (preg_match($tester, $line)) {
+                        fgets($fileBeingSubmitted);
+                        $testername = fgets($fileBeingSubmitted);
                         if (strlen($testername) < 3) {
                             $errorflag = true;
                             $error1[$z] = "Tester name is empty .";
                             $z++;
                         }
                     } else if (preg_match($datafile, $line)) {
-                        fgets($fh);
-                        $dataname = fgets($fh);
+                        fgets($fileBeingSubmitted);
+                        $dataname = fgets($fileBeingSubmitted);
                         $filefound = true;
                         $q = 0;
                         if (!preg_match($dafilematch, $dataname)) {
@@ -907,7 +910,7 @@ class sbtmActions extends sfActions {
                             }
                             while (!preg_match($testnotes, $dataname)) {
                                 $datafilearray[$q] = $dataname;
-                                $dataname = fgets($fh);
+                                $dataname = fgets($fileBeingSubmitted);
                                 $q++;
                             }
                             foreach ($datafilearray as $fil) {
@@ -925,7 +928,7 @@ class sbtmActions extends sfActions {
                             }
                         }
                     } else if (preg_match($areas, $line)) {
-                        $areasection = fgets($fh);
+                        $areasection = fgets($fileBeingSubmitted);
                         $filefound = true;
                         $q = 0;
                         $filenames = array();
@@ -948,33 +951,35 @@ class sbtmActions extends sfActions {
                         }
                         while (!preg_match($start, $areasection)) {
                             $areaarray[$q] = $areasection;
-                            $areasection = fgets($fh);
+                            $areasection = fgets($fileBeingSubmitted);
                             $q++;
                         }
 
                         if (preg_match($start, $areasection)) {
-                            fgets($fh);
-                            $startdate = fgets($fh);
+                            fgets($fileBeingSubmitted);
+                            $startdate = fgets($fileBeingSubmitted);
                             if (strlen($startdate) < 3) {
                                 $errorflag = true;
                                 $error1[$z] = "Start Date is empty .";
                                 $z++;
                             }
                         }
+
+
                         if (count($filenames) > 0) {
                             $target_path = $filename . '/' . $filenames[0];
-                            $fh_area = fopen($target_path, 'r') or die("can't open file");
+                            $fileBeingSubmitted_area = fopen($target_path, 'r') or die("can't open file");
                             $areasdata = array();
                             $r = 0;
-                            while (!feof($fh_area)) {
-                                $areasdata[$r] = fgets($fh_area);
+                            while (!feof($fileBeingSubmitted_area)) {
+                                $areasdata[$r] = fgets($fileBeingSubmitted_area);
                                 $r++;
                             }
-                            fclose($fh_area);
+                            fclose($fileBeingSubmitted_area);
                             foreach ($areaarray as $fil) {
                                 $found = true;
                                 foreach ($areasdata as $fil1) {
-                                  //  $this->logMessage($fil1);
+                                    //  $this->logMessage($fil1);
                                     if (trim($fil) == trim($fil1)) {
                                         $found = false;
                                     }
@@ -986,6 +991,9 @@ class sbtmActions extends sfActions {
                                 }
                             }
                         } else {
+
+
+                            // Send email if there is no INI file found.
                             $adi = 0;
                             $this->admin = Doctrine_Core::getTable('Logins')
                                             ->createQuery('a')
@@ -994,9 +1002,15 @@ class sbtmActions extends sfActions {
 
                             foreach ($this->admin as $adm):
                                 $admin_mail[$adi] = $adm->getEmail();
-                                $this->logMessage(">>> admin user = " . $admin_mail[$adi]);
+
                                 $adi++;
                             endforeach;
+                            $emailSubjectLine = "Session has been submitted, please review";
+                            $emailBody = '<strong>Dear Admin/Reviewer:</strong> <br />Project : ' . $this->getUser()->getAttribute('project') . '<br />
+                    Session ' . $this->getUser()->getAttribute('filename') . 'Please review the file';
+
+
+                            $this->sendSubmitEmail($emailSubjectLine, "Test Email", $admin_mail);
 
                             $this->logMessage(">>> SMTP IP = " . $smtp_ipaddress);
                             $this->logMessage(">>> SERVER IP = " . $_SERVER['SERVER_ADDR']);
@@ -1231,7 +1245,7 @@ height:auto;
                         }
                     }
                 }
-                fclose($fh);
+                fclose($fileBeingSubmitted);
                 if ($value == 100) {
                     $status = true;
                 } else {
@@ -1248,6 +1262,7 @@ height:auto;
             }
         } else {
             $status = true;
+            $this->logMessage(">>>      Status set to TRUE               <<<");
         }
         if ($status) {
             if (file_put_contents($target_path, $request->getParameter('quote'))) {
@@ -1275,15 +1290,14 @@ height:auto;
                         $admin_mail[$adi] = $adm->getEmail();
                         $adi++;
                     endforeach;
-                    $sub = "Session Submitted for Review";
-                    $subject = '<h1 class="h1">Session Submitted for Review</h1>
-                                                                <strong>Dear Admin/Reviewer:</strong> <br />Project : ' . $this->getUser()->getAttribute('project') . '<br />Session ' . $this->getUser()->getAttribute('filename1') . ' submitted for Reviewing kindly take a look at the session by logging in to SBTM web application!
-                                                                <br />
-                                                                <br />
-                                                                To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
-                                                                ';
+
+                    $emailSubjectLine = "Session has been submitted, please review";
+                    $emailBody = 'Session Submitted for Review';
+                    $this->sendSubmitEmail($emailSubjectLine, $emailBody, $admin_mail);
                 }
                 else if ($request->getparameter('status_action') == 'Finalize') {
+
+                    $this->logMessage(">>>   Finalise             <<<");
                     $this->sessu = Doctrine_Core::getTable('Sessions')
                                     ->createQuery('a')
                                     ->where('a.sessionname = ?', $this->getUser()->getAttribute('filename1'))
@@ -1300,19 +1314,16 @@ height:auto;
                         $usi++;
                     endforeach;
 
-                    $sub = "Session in Finalize State";
-                    $subject = '
-                                                                     <h1 class="h1">Session in Finalize State</h1>
-                                                                <strong>Dear User:</strong> <br />Project : ' . $this->getUser()->getAttribute('project') . '<br />Session ' . $this->getUser()->getAttribute('filename1') . ' in Finalize Status kindly take a look at the session by logging in to SBTM web application!
-                                                                <br />
-                                                                <br />
-                                                                To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
-                                                                
-';
+
+                    $emailSubjectLine = "Session has been submitted, please review";
+
+                    $emailBody = "Session in Finalize State";
+                    $emailSubjectLine = "Session has been submitted, please review";
+                    $this->sendSubmitEmail($emailSubjectLine, $emailBody, $user_mail);
                 }
 
-              //  $this->logMessage($user_mail . 'sithik');
-                $this->logMessage($request->getparameter('status_action') . 'sithik' . $dbstatID);
+                //  $this->logMessage($user_mail . 'sithik');
+                //  $this->logMessage($request->getparameter('status_action') . 'sithik' . $dbstatID);
                 $sessionupdate = Doctrine_Core::getTable('Sessions')->find(array($this->getUser()->getAttribute('id')));
                 $usertest = $this->getUser()->getAttribute('username');
                 $sessionupdate->setStatusId($dbstatID);
@@ -1375,6 +1386,199 @@ height:auto;
                         ->createQuery('a')
                         ->where('a.project_id = ?', $request->getparameter('id'))
                         ->execute();
+    }
+
+    public function sendSubmitEmail($emailSubjectLine, $emailType, $emailToList) {
+
+        $smtp_ipaddress = sfConfig::get('app_smtp_ipaddress');
+        $smtp_portnumber = sfConfig::get('app_smtp_portnumber');
+        $testEmailAddress = sfConfig::get('app_smtp_fromemailaddress');
+
+        $currentServerIPAddress = $_SERVER['SERVER_ADDR'];
+        $this->logMessage(">>> SERVER IP = " . $_SERVER['SERVER_ADDR']);
+
+        // $emailSubjectLine = "Test Email";
+
+        $emailBody = '<h1 class="h1">' . $emailType . '</h1>
+                                                                <strong>Dear User:</strong> <br />Project : ' . $this->getUser()->getAttribute('project') . '<br />Session ' . $this->getUser()->getAttribute('filename1') . ' submitted, kindly take a look at the session by logging in to SBTM web application!
+                                                                <br />
+                                                                <br />
+                                                                To Login to the SBTM web application  <a href="http://' . $currentServerIPAddress . '/frontend_dev.php/sbtm" target="_blank">click here</a>
+                                                                ';
+
+        $emailFormatting = '<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+<style type="text/css">
+/* Client-specific Styles */
+#outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
+body{width:100% !important;} .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+body{-webkit-text-size-adjust:none;} /* Prevent Webkit platforms from changing default text sizes. */
+
+body{margin:0; padding:0;}
+img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+table td{border-collapse:collapse;}
+#backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
+
+
+body, #backgroundTable{
+/*@editable*/ background-color:#FAFAFA;
+}
+
+/**
+* @tab Page
+* @section email border
+* @tip Set the border for your email.
+*/
+#templateContainer{
+/*@editable*/ border: 1px solid #DDDDDD;
+}
+
+/**
+* @tab Page
+* @section heading 1
+* @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+* @style heading 1
+*/
+h1, .h1{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:34px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+/**
+* @tab Page
+* @section heading 2
+* @tip Set the styling for all second-level headings in your emails.
+* @style heading 2
+*/
+h2, .h2{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:30px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+/**
+* @tab Page
+* @section heading 3
+* @tip Set the styling for all third-level headings in your emails.
+* @style heading 3
+*/
+h3, .h3{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:26px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+
+h4, .h4{
+/*@editable*/ color:#202020;
+display:block;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:22px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+margin-top:0;
+margin-right:0;
+margin-bottom:10px;
+margin-left:0;
+/*@editable*/ text-align:left;
+}
+
+
+#templateHeader{
+/*@editable*/ background-color:#FFFFFF;
+/*@editable*/ border-bottom:0;
+}
+
+.headerContent{
+/*@editable*/ color:#202020;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:34px;
+/*@editable*/ font-weight:bold;
+/*@editable*/ line-height:100%;
+/*@editable*/ padding:0;
+/*@editable*/ text-align:center;
+/*@editable*/ vertical-align:middle;
+}
+
+.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
+/*@editable*/ color:#336699;
+/*@editable*/ font-weight:normal;
+/*@editable*/ text-decoration:underline;
+}
+
+#headerImage{
+height:auto;
+max-width:600px !important;
+}
+
+
+#templateContainer, .bodyContent{
+/*@editable*/ background-color:#FFFFFF;
+}
+
+
+.bodyContent div{
+/*@editable*/ color:#505050;
+/*@editable*/ font-family:Arial;
+/*@editable*/ font-size:14px;
+/*@editable*/ line-height:150%;
+/*@editable*/ text-align:left;
+}
+
+
+.bodyContent div a:link, .bodyContent div a:visited, /* Yahoo! Mail Override */ .bodyContent div a .yshortcuts /* Yahoo! Mail Override */{
+/*@editable*/ color:#336699;
+/*@editable*/ font-weight:normal;
+/*@editable*/ text-decoration:underline;
+}
+
+.bodyContent img{
+display:inline;
+height:auto;
+}
+
+
+</style>
+</head>';
+
+        $transport = Swift_SmtpTransport::newInstance($smtp_ipaddress, $smtp_portnumber);
+        $mailer = Swift_Mailer::newInstance($transport);
+        $message = Swift_Message::newInstance($emailSubjectLine)
+                        ->setFrom($testEmailAddress);
+
+
+        $message->setTo($emailToList);
+        $message->setBody($emailFormatting . $emailBody, 'text/html');
+
+        $sendEmailResult = $mailer->send($message);
+        $this->logMessage(">>> Send Email Result<<<" . $sendEmailResult);
     }
 
 }
