@@ -822,7 +822,8 @@ class sbtmActions extends sfActions {
     }
 
     public function executeReviewsubmit(sfWebRequest $request) {
-        $projectDirectory = $this->getUser()->getAttribute('project');
+     //   $projectDirectory = $this->getUser()->getAttribute('project');
+        $projectDirectory = $request->getParameter('proj');
         $target_path = "uploads/{$projectDirectory}/";
         $target_path = $target_path . $this->getUser()->getAttribute('filename');
         $smtp_ipaddress = sfConfig::get('app_smtp_ipaddress');

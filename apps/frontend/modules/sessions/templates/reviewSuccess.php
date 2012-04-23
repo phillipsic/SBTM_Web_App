@@ -1,4 +1,5 @@
 <?php $final=$sf_user->getAttribute('final');
+      $dirname=$sf_user->getAttribute('dirname');
 ?> 
 
 <script type='text/javascript'>
@@ -50,7 +51,7 @@ function madeSelection(elem, helperMsg){
           </thead>
           </div>
         <?php endif ?>
-<form action="<?php echo url_for('sbtm/reviewsubmit') ?>" method="post" onsubmit='return formValidator()'>
+<form action="<?php echo url_for('sbtm/reviewsubmit?proj='.$dirname) ?>" method="post" onsubmit='return formValidator()'>
 <table>
 <thead>
 <tr> 

@@ -341,9 +341,11 @@ class sessionsActions extends sfActions {
     }
 
     public function executeReview(sfWebRequest $request) {
-        $dirname = $this->getUser()->getAttribute('project');
+      //  $dirname = $this->getUser()->getAttribute('project');
+        $dirname = $request->getParameter('proj');
         $final = $request->getParameter('final');
         $this->getUser()->setAttribute('final', $final);
+        $this->getUser()->setAttribute('proj', $dirname);
         $this->status = Doctrine_Core::getTable('Status')
                         ->createQuery('a')
                         ->execute();
@@ -352,7 +354,7 @@ class sessionsActions extends sfActions {
         $this->getUser()->setAttribute('filename', $name);
         $this->getUser()->setAttribute('filename1', $request->getParameter('name'));
         $this->getUser()->setAttribute('id', $request->getParameter('id'));
-        $this->getUser()->setAttribute('url', 'sessions/review?name=' . $request->getParameter('name') . '&id=' . $request->getParameter('id') . '&final=yes');
+        $this->getUser()->setAttribute('url', 'sessions/review?name=' . $request->getParameter('name') . '&id=' . $request->getParameter('id') . '&final=yes' . '&proj='. $dirname);
         $myFile = "uploads/{$dirname}/" . $name;
         $this->logMessage($myFile, 'err');
         $theData = file_get_contents($myFile);
