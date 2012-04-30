@@ -1010,7 +1010,7 @@ class sbtmActions extends sfActions {
                     Session ' . $this->getUser()->getAttribute('filename') . 'Please review the file';
 
 
-                            $this->sendSubmitEmail($emailSubjectLine, "Test Email", $admin_mail);
+                            $this->sendSubmitEmail($emailSubjectLine, $emailBody, $admin_mail);
 
                             $this->logMessage(">>> SMTP IP = " . $smtp_ipaddress);
                             $this->logMessage(">>> SERVER IP = " . $_SERVER['SERVER_ADDR']);
