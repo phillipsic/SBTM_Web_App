@@ -81,7 +81,7 @@ $admin = $sf_user->getAttribute('adminrole'); ?>
 
 <?php if ($session->getStatus() == "Finalize") { ?>
                                 <li class="sf_admin_action_edit">
-                                    <a href="<?php echo url_for('sessions/review?name=' . $session->getSessionname() . '&id=' . $session->getId() . '&final=yes') ?>">Edit</a>
+                                    <a href="<?php echo url_for('sessions/review?name=' . $session->getSessionname() . '&id=' . $session->getId() . '&final=yes' . '&proj=' .$session->getProjectCategory()) ?>">Edit</a>
                                 </li>
                                 <?php } else {
                                 $sf_user->setAttribute('url', 'sbtm/uploads?id=' . $session->getId()); ?>
