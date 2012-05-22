@@ -9,7 +9,12 @@ This is a bug fix only release.
 Issues in this release:
  #85 the todo file containing sessions will now take other file names besides 'todo.cvs'.  Application was throwing an error if other file was something different.
  #59 When a session is in the finalise state you now have a link to be able to view the file.  Previously there was no link
-
+ #95 Space not allowed in the session name when adding a new session
+ #97 When editing a sesion in the  My Sessions page which does not belong to the current project gives an error.
+ #86 Dashboard - labels are now taken from the DB instead of being hardcoded in the page.
+ #84 Removed hardcoded IP's from code. 
+ 
+ 
 Release 0.2
 -----------
 Issues in this release:
