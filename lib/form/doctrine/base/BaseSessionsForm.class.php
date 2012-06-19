@@ -19,7 +19,7 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
       'sessionname' => new sfWidgetFormInputText(),
       'charter'     => new sfWidgetFormInputText(),
       'areas'       => new sfWidgetFormTextarea(),
-      'testnotes'   => new sfWidgetFormInputText(),
+      'testnotes'   => new sfWidgetFormTextarea(),
       'ready'       => new sfWidgetFormInputText(),
   //    'tester'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Logins'), 'add_empty' => true)),
       'status_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Status'), 'add_empty' => false)),
@@ -52,7 +52,7 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
-    $this->setValidator('sessionname', new sfValidatorRegex(array('pattern' => '/^[\s-A-z0-9_.]*$/i'),
+    $this->setValidator('sessionname', new sfValidatorRegex(array('pattern' => '/^[-A-z0-9_. ]*$/i'),
         array('invalid' => 'Your Session Name can only have letters (A-Z),numbers (0-9) or an underscore(_) .'))
             );
 
