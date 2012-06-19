@@ -756,10 +756,10 @@ class sbtmActions extends sfActions {
     }
 
     public function executeDownloaddatafiles(sfWebRequest $request) {
-
+        $dirname = $this->getUser()->getAttribute('project');
         $myFile = $request->getParameter('name');
         //$path = "uploads/Drop 1/datafiles/".$myFile; // change the path to fit your websites document structure
-        $path = $_SERVER['DOCUMENT_ROOT'] . "/uploads/Drop 1/datafiles/"; // change the path to fit your websites document structure
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/uploads/{$dirname}/datafiles/"; // change the path to fit your websites document structure
         $fullPath = $path . $myFile;
 
         if ($fd = fopen($fullPath, "r")) {
