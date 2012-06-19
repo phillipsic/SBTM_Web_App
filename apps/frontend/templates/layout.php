@@ -31,7 +31,7 @@
                         $fh = fopen("config/version.txt", 'r');
                         $theData = null;
                         while (!feof($fh)) {
- ?>
+                        ?>
                             <tr><th><?php echo fgets($fh) . "\r\n"; ?></th></tr>
                         <?php
                             //$theData += fgets($fh)."\n";
@@ -59,42 +59,42 @@
             </div>
 
             <div id="content">
-<?php if ($sf_user->hasFlash('notice')): ?>
-                    <div class="flash_notice">
-<?php echo $sf_user->getFlash('notice') ?>
-                            </div>
-<?php endif ?>
+                <?php if ($sf_user->hasFlash('notice')): ?>
+                            <div class="flash_notice">
+                    <?php echo $sf_user->getFlash('notice') ?>
+                        </div>
+                <?php endif ?>
 
-<?php if ($sf_user->hasFlash('error')): ?>
+                <?php if ($sf_user->hasFlash('error')): ?>
                                 <div class="flash_error">
-<?php //$sf_user->getAttributeHolder()->clear();
+                    <?php //$sf_user->getAttributeHolder()->clear();
                                 echo $sf_user->getFlash('error'); ?>
                             </div>
-<?php endif ?>
+                <?php endif ?>
 
-                            <div class="content">
-
-
-<?php if ($sf_user->hasAttribute('logindone') && $sf_user->getAttribute('new') != 'yes'): ?>
-                                        <div id="sf_admin_container">
-                                            <table>
-                                                <thead>
+                                <div class="content">
 
 
-                                                <div class="chromestyle" id="chromemenu">
-                                                    <ul>
-                                                        <li>Project</li>
-                                                        <li><a href="#" rel="dropmenu1"><?php echo $sf_user->getAttribute('project') ?></a></li>
+                    <?php if ($sf_user->hasAttribute('logindone') && $sf_user->getAttribute('new') != 'yes'): ?>
+                                    <div id="sf_admin_container">
+                                        <table>
+                                            <thead>
+
+
+                                            <div class="chromestyle" id="chromemenu">
+                                                <ul>
+                                                    <li>Project</li>
+                                                    <li><a href="#" rel="dropmenu1"><?php echo $sf_user->getAttribute('project') ?></a></li>
                                                 </ul>
                                             </div>
                                             <div id="dropmenu1" class="dropmenudiv">
-<?php
+                                <?php
                                     $this->project_category = Doctrine_Core::getTable('ProjectCategory')
                                                     ->createQuery('a')
                                                     ->andWhere('a.completetag!=1')
                                                     ->execute();
                                     for ($i = 0; $i < $this->project_category->count(); $i++) {
- ?>
+                                ?>
 
                                         <a href="<?php echo url_for('sbtm/changesessions?id=' . $this->project_category[$i]) ?>"><?php echo $this->project_category[$i] ?></a>
 
@@ -102,7 +102,7 @@
 
 
 
-<?php } ?>
+                                <?php } ?>
                                 </div>
                                 <!--1st drop down menu -->
 
@@ -122,61 +122,89 @@
                             <h2>Logged In : <?php echo $sf_user->getAttribute('username') ?></h2>
                         </div>
                         <div  id="menu">
-                           
-<?php $admin = $sf_user->getAttribute('adminrole');
+
+                        <?php $admin = $sf_user->getAttribute('adminrole');
                                     if ($admin == "Admin"): ?>
 
-                                    <td><a href="<?php echo url_for('sbtm/useradmin') ?>"><?php echo "User Admin" ?></a></td>
-                                    <td> | </td>
-                                     <td><!--a href="<?php echo url_for('sbtm/projectadmin') ?>"><?php echo "Project Admin" ?></a-->
+                                        <td><a href="<?php echo url_for('sbtm/useradmin') ?>"><?php echo "User Admin" ?></a></td>
+                                        <td> | </td>
+                                         <td><!--a href="<?php echo url_for('sbtm/projectadmin') ?>"><?php echo "Project Admin" ?></a-->
                                             <a href="<?php echo url_for('ProjectCategory/show?id=' . $sf_user->getAttribute('projectid')) ?>"><?php echo "Project Admin" ?></a>
                                         </td>
                                         <td> | </td>
-<?php endif ?>
-<?php if ($admin != "Reviewer"): ?>
-                                            <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
-                                            <td> | </td>
-<?php endif ?>
-                                            <td><a href="<?php echo url_for('sbtm/usermysession') ?>"><?php echo "My Session" ?></a></td>
-                                            <td> | </td>
-<?php $admin = $sf_user->getAttribute('adminrole');
-                                            if ($admin == "Admin" || $admin == "Reviewer"): ?>
-                                                <td><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></td>
-                                                <td> | </td>
-<?php endif ?>
+                                        <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/usermysession') ?>"><?php echo "My Session" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/datafiles') ?>"><?php echo "Data Files" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('dashboard/alldropdashboard') ?>"><?php echo "Dashboard" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
 
-                            <?php if ($admin != "Reviewer"): ?>
-                                                    <td><a href="<?php echo url_for('sbtm/datafiles') ?>"><?php echo "Data Files" ?></a></td>
-                                                    <td> | </td>
-                                                    <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
-                                                    <td> | </td>
-                            <?php endif ?>
+                        <?php endif ?>
+                        <?php $admin = $sf_user->getAttribute('adminrole');
+                                    if ($admin == "Reviewer"): ?>
+                                        <td><a href="<?php echo url_for('sbtm/adminmysession') ?>"><?php echo "Review Session" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/datafiles') ?>"><?php echo "Data Files" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
 
-                                                     <?php if ($admin == "Admin" ): ?>
-                                                <td><a href="<?php echo url_for('dashboard/alldropdashboard') ?>"><?php echo "Dashboard" ?></a></td>
-                                                <td> | </td>
-<?php endif ?>
-                                                <td><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></td>
-                                                <td> | </td>
+                        <?php endif ?>
+                        <?php $admin = $sf_user->getAttribute('adminrole');
+                                    if ($admin == "User"): ?>
 
-                                                    <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
-                                            
+                                        <td><a href="<?php echo url_for('sbtm/sessions') ?>"><?php echo "Sessions" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/usermysession') ?>"><?php echo "My Session" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/datafiles') ?>"><?php echo "Data Files" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
 
-<?php
-                                                    $this->progress_sessions = Doctrine_Core::getTable('Sessions')
-                                                                    ->createQuery('a')
-                                                                    ->whereIn('a.status_id', array('3','5'))
-                                                                    ->andWhere('a.tester = ?', $sf_user->getAttribute('username'))
-                                                                    ->execute();
+                        <?php endif ?>
+                        <?php $admin = $sf_user->getAttribute('adminrole');
+                                    if ($admin == "Guest"): ?>
+                                        <td><a href="<?php echo url_for('sbtm/datafiles') ?>"><?php echo "Data Files" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/reporting') ?>"><?php echo "Reporting" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></td>
+                                        <td> | </td>
+                                        <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
 
-                                                    if ($this->progress_sessions->count() > 0) {
-                                                        echo "<center><font color=\"red\">you have unsubmitted sessions.  Please deal with those first</font></center>";
-                                                    }
-?>
-                                                </div>
                         <?php endif ?>
 
-                        <?php echo $sf_content ?>
+                        <?php
+                                                        $this->progress_sessions = Doctrine_Core::getTable('Sessions')
+                                                                        ->createQuery('a')
+                                                                        ->whereIn('a.status_id', array('3', '5'))
+                                                                        ->andWhere('a.tester = ?', $sf_user->getAttribute('username'))
+                                                                        ->execute();
+
+                                                        if ($this->progress_sessions->count() > 0) {
+                                                            echo "<center><font color=\"red\">you have unsubmitted sessions.  Please deal with those first</font></center>";
+                                                        }
+                        ?>
+                                                    </div>
+                    <?php endif ?>
+
+                    <?php echo $sf_content ?>
 
 
 
