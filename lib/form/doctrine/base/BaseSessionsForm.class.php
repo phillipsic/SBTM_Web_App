@@ -14,13 +14,14 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
 {
   public function setup()
   {
+    $Ready_Choice = array('yes' => 'Yes','no' => 'No');
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
       'sessionname' => new sfWidgetFormInputText(),
       'charter'     => new sfWidgetFormInputText(),
       'areas'       => new sfWidgetFormTextarea(),
-      'testnotes'   => new sfWidgetFormTextarea(),
-      'ready'       => new sfWidgetFormInputText(),
+      'testnotes'   => new sfWidgetFormInputText(),
+      'ready'       => new sfWidgetFormChoice(array('choices' => $Ready_Choice)),
   //    'tester'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Logins'), 'add_empty' => true)),
       'status_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Status'), 'add_empty' => false)),
       'project_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProjectCategory'), 'add_empty' => false)),
@@ -35,7 +36,7 @@ abstract class BaseSessionsForm extends BaseFormDoctrine
       'charter'     => new sfValidatorString(array('max_length' => 255)),
       'areas'       => new sfValidatorString(array('max_length' => 800)),
       'testnotes'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'ready'       => new sfValidatorString(array('max_length' => 255)),
+      'ready'       => new sfValidatorChoice(array('choices' => array_keys($Ready_Choice))),
     //  'tester'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Logins'),'required' => false)),
       'status_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Status'))),
       'project_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ProjectCategory'))),
