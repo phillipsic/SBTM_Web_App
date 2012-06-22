@@ -830,14 +830,9 @@ class sbtmActions extends sfActions {
         $smtp_portnumber = sfConfig::get('app_smtp_portnumber');
         $From_EmailAddress = sfConfig::get('app_smtp_fromemailaddress');
 
-
-
-
         $this->sendSubmitEmail("Test Email", "Test Email", $From_EmailAddress);
 
         if ($request->getparameter('status_action') == 'Submitted') {
-
-
             $this->logMessage(">>>                     <<<");
             $this->logMessage(">>> Session being submitted");
             $this->logMessage(">>>                     <<<");
@@ -935,13 +930,13 @@ class sbtmActions extends sfActions {
                         $filenames = array();
                         $areaarray = array();
                         $dirname = $this->getUser()->getAttribute('project');
-                        $filename = "uploads/{$dirname}/coverage";
-                        if (!file_exists($filename)) {
+                        $covfilename = "uploads/{$dirname}/coverage";
+                        if (!file_exists($covfilename)) {
                             mkdir("uploads/{$dirname}/coverage/", 0777, true);
                         }
                         $filenames = array();
-                        $source_path = "uploads/{$dirname}/coverage";
-                        $dir = realpath($source_path);
+                        $covsource_path = "uploads/{$dirname}/coverage";
+                        $dir = realpath($covsource_path);
                         $files = scandir($dir);
                         $i = 0;
                         foreach ($files as $file) {
@@ -968,8 +963,8 @@ class sbtmActions extends sfActions {
 
 
                         if (count($filenames) > 0) {
-                            $target_path = $filename . '/' . $filenames[0];
-                            $fileBeingSubmitted_area = fopen($target_path, 'r') or die("can't open file");
+                            $covtarget_path = $covfilename . '/' . $filenames[0];
+                            $fileBeingSubmitted_area = fopen($covtarget_path, 'r') or die("can't open file");
                             $areasdata = array();
                             $r = 0;
                             while (!feof($fileBeingSubmitted_area)) {
