@@ -13,6 +13,9 @@ Issues in this release:
  #97 When editing a sesion in the  My Sessions page which does not belong to the current project gives an error.
  #86 Dashboard - labels are now taken from the DB instead of being hardcoded in the page.
  #84 Removed hardcoded IP's from code. 
+ #98 After reviewing a session file and changing the status to 'Finalise' the coverage.ini file was overwritten
+ #88 Email notifications were not working
+ 
  
  
 Release 0.2
