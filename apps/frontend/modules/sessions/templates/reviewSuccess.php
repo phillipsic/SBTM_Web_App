@@ -75,3 +75,21 @@ function madeSelection(elem, helperMsg){
     </thead>
 </table>
 </form>
+
+                                    <table  border="5">
+       
+                                            <thead>
+                                                <tr>
+                                                    <th class="sf_admin_text sf_admin_list_th_name">
+                                                        Issue ID
+                                                    </th>
+                                                    <th class="sf_admin_text sf_admin_list_th_name">
+                                                        Description
+                                                    </th>
+                                                    <th class="sf_admin_text sf_admin_list_th_name">
+                                                        Create?
+                                                    </th>
+                                                </tr>
+                                            </thead>
+    
+    </table>
