@@ -341,11 +341,11 @@ class sessionsActions extends sfActions {
     }
 
     public function executeReview(sfWebRequest $request) {
-      //  $dirname = $this->getUser()->getAttribute('project');
-        $dirname = $request->getParameter('proj');
+        $dirname = $this->getUser()->getAttribute('project');
+      //  $dirname = $request->getParameter('proj');
         $final = $request->getParameter('final');
         $this->getUser()->setAttribute('final', $final);
-        $this->getUser()->setAttribute('proj', $dirname);
+        $this->getUser()->setAttribute('dirname', $dirname);
         $this->status = Doctrine_Core::getTable('Status')
                         ->createQuery('a')
                         ->execute();
@@ -360,6 +360,20 @@ class sessionsActions extends sfActions {
         $theData = file_get_contents($myFile);
         $this->getUser()->setAttribute('theData', $myFile);
         $this->logMessage($theData, 'err');
+        // ISSUE section changes
+        $fh = fopen($myFile, 'r') or die("can't open file");
+        $issues = "/#ISSUE/i";
+        $i=0;
+         while (!feof($fh)) {
+                $line = fgets($fh);
+                if (preg_match($issues, $line)) {
+                    $this->disp_issue=$line;
+                    $i++;
+                    $this->logMessage("No. of Issues " . $this->disp_issue[$i]);
+                }
+              }
+              
+        
     }
 
     public function executeSessionreadonly(sfWebRequest $request) {
