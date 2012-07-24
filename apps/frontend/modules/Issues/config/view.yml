@@ -1,0 +1,4 @@
+# apps/frontend/modules/job/config/view.yml
+CreateSuccess:
+  stylesheets: [sbtm.css]
+
