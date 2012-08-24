@@ -146,6 +146,8 @@
                                         <td> | </td>
                                         <td><a href="<?php echo url_for('Search/index') ?>"><?php echo "Search" ?></a></td>
                                         <td> | </td>
+                                        <td><a href="<?php echo url_for('Issues/New') ?>"><?php echo "Issues" ?></a></td>
+                                        <td> | </td>
                                         <td><a href="<?php echo url_for('sbtm/logout') ?>"><?php echo "Logout" ?></a></td>
 
                         <?php endif ?>

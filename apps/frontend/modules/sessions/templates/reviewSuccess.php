@@ -75,21 +75,49 @@ function madeSelection(elem, helperMsg){
     </thead>
 </table>
 </form>
+<div class="sf_admin_list" style="overflow:auto; width:770px; height: 200px;">
+    <table  border="5">
+    <?php if (count($disp_issue)>0){ ?>
+            <thead>
+        <tr>
+            <th class="sf_admin_text sf_admin_list_th_name">
+                Issue ID
+            </th>
+            <th class="sf_admin_text sf_admin_list_th_name">
+                Description
+            </th>
+            <th id="sf_admin_list_th_actions">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <?php } else{ ?>
+    <div class="record_error">
+         <?php
+        echo "ISSUES <br>\n";
+        echo 'No Issues Found'; ?>
+    </div>
+     <?php }  ?>
+    <tbody>
+        <?php foreach($disp_issue as $issue): ?>
+        <tr class="sf_admin_row odd">
+            <td class="sf_admin_text sf_admin_list_td_id">
+                 <?php echo $issue ?></td>
+            <td class="sf_admin_text sf_admin_list_td_name">
+                <?php echo $issue ?></td>
+            <td>
+                 <ul class="sf_admin_td_actions">
+                     <li class="sf_admin_action_create">
+                         <a href="<?php echo url_for('Issues/New') ?>">Create</a>
+                     </li>
+                     <li class="sf_admin_action_delete">
+                        <a href="<?php echo url_for('Issues/New') ?>">Ignore</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+         <?php endforeach; ?>
+    </tbody>
+</table>
 
-                                    <table  border="5">
-       
-                                            <thead>
-                                                <tr>
-                                                    <th class="sf_admin_text sf_admin_list_th_name">
-                                                        Issue ID
-                                                    </th>
-                                                    <th class="sf_admin_text sf_admin_list_th_name">
-                                                        Description
-                                                    </th>
-                                                    <th class="sf_admin_text sf_admin_list_th_name">
-                                                        Create?
-                                                    </th>
-                                                </tr>
-                                            </thead>
-    
-    </table>
+</div>

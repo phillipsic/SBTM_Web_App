@@ -364,15 +364,18 @@ class sessionsActions extends sfActions {
         $fh = fopen($myFile, 'r') or die("can't open file");
         $issues = "/#ISSUE/i";
         $i=0;
+        $this->disp_issue = array();
          while (!feof($fh)) {
                 $line = fgets($fh);
                 if (preg_match($issues, $line)) {
-                    $this->disp_issue=$line;
+                    $this->disp_issue[] = $line;
+                 //   $this->logMessage("No. of Issues " . $this->disp_issue);
                     $i++;
-                    $this->logMessage("No. of Issues " . $this->disp_issue[$i]);
                 }
-              }
-              
+
+
+               }
+        $this->logMessage("No. of Issues " . count($this->disp_issue));
         
     }
 

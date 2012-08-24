@@ -9,7 +9,7 @@ ALTER TABLE sessions ADD CONSTRAINT sessions_strategy_id_strategy_id FOREIGN KEY
 ALTER TABLE sessions ADD CONSTRAINT sessions_status_id_status_id FOREIGN KEY (status_id) REFERENCES status(id);
 ALTER TABLE sessions ADD CONSTRAINT sessions_project_id_project_category_id FOREIGN KEY (project_id) REFERENCES project_category(id);
 
-CREATE TABLE issues (id BIGINT AUTO_INCREMENT, description VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL,  tester VARCHAR(255), project_id BIGINT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX project_id_idx (project_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE issues (id BIGINT AUTO_INCREMENT,creator VARCHAR(255),title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL,  project_id BIGINT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX project_id_idx (project_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE datafiles (id BIGINT AUTO_INCREMENT, name VARCHAR(255) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE datafile_issue_link (datafile_id BIGINT NOT NULL, issue_id BIGINT NOT NULL,  PRIMARY KEY(datafile_id,issue_id));
 CREATE TABLE session_issue_link (session_id BIGINT NOT NULL, issue_id BIGINT NOT NULL,  PRIMARY KEY(session_id,issue_id));
