@@ -665,6 +665,7 @@ class sbtmActions extends sfActions {
             $testdesign = "/TEST DESIGN AND EXECUTION/i";
             $buginvesti = "/BUG INVESTIGATION AND REPORTING/i";
             $sessionsetup = "/SESSION SETUP/i";
+            $issues = "/ISSUES/i";
             $value = 0;
             while (!feof($fh)) {
                 $line = fgets($fh);
@@ -802,6 +803,10 @@ class sbtmActions extends sfActions {
                         //  ->andWhere('a.project_id = ?',$dbprojectID)
                         ->andWhereIn('a.status_id', array(3, 5))
                         //->where('a.ready=?','yes')
+                        ->execute();
+        $this->issues = Doctrine_Core::getTable('Issues')
+                        ->createQuery('a')
+                        ->where('a.creator = ?', $this->getUser()->getAttribute('username'))
                         ->execute();
     }
 
@@ -1006,80 +1011,68 @@ class sbtmActions extends sfActions {
                     Session ' . $this->getUser()->getAttribute('filename') . 'Please review the file';
 
 
-                            $this->sendSubmitEmail($emailSubjectLine, $emailBody, $admin_mail);
+                    //       $this->sendSubmitEmail($emailSubjectLine, $emailBody, $admin_mail);
 
                             $this->logMessage(">>> SMTP IP = " . $smtp_ipaddress);
                             $this->logMessage(">>> SERVER IP = " . $_SERVER['SERVER_ADDR']);
                             $sub = "Coverage.ini not found for the Project: " . $this->getUser()->getAttribute('project');
                             $subject = '<h1 class="h1">Coverage.ini not found</h1>
-                <strong>Dear Admin/Reviewer:</strong> <br />Project : ' . $this->getUser()->getAttribute('project') . '<br />
-                    Session ' . $this->getUser()->getAttribute('filename') . ' submitted without coverage.ini scanning, kindly take a look at the session by logging in to SBTM web application!
-                <br />
-                <br />
-                To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>
-                ';
-                            $transport = Swift_SmtpTransport::newInstance($smtp_ipaddress, $smtp_portnumber)
-                            ;
+                                          <strong>Dear Admin/Reviewer:</strong> <br />
+                                          Project : ' . $this->getUser()->getAttribute('project') .'<br />
+                                          Session ' . $this->getUser()->getAttribute('filename') . ' submitted without coverage.ini scanning, kindly take a look at the session by logging in to SBTM web application!
+                                          <br />
+                                          <br />
+                                          To Login to the SBTM web application  <a href="http://10.165.255.22/frontend_dev.php/sbtm" target="_blank">click here</a>';
+                            $transport = Swift_SmtpTransport::newInstance($smtp_ipaddress, $smtp_portnumber);
                             $mailer = Swift_Mailer::newInstance($transport);
                             $message = Swift_Message::newInstance($sub)
-                                            //->setFrom(array('MohamedSithik.Wahithali@comverse.com' => 'Sithik Comverse'))
                                             // ->setTo(array('MohamedSithik.Wahithali@comverse.com' => 'sithik', 'Siva.Kumar@comverse.com' => 'sivaji'))
                                             ->setFrom(array($From_EmailAddress => 'SBTM ADMIN'));
-                            // ->setTo($user_mail)
-                            //->setBody('<head>
+                                    $message->setTo($admin_mail);
 
-                            $message->setTo($admin_mail);
+                            $message->setBody('<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                                                <style type="text/css">
+                                                /* Client-specific Styles */
+                                                #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
+                                                body{width:100% !important;} .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+                                                body{-webkit-text-size-adjust:none;} /* Prevent Webkit platforms from changing default text sizes. */
+                                                body{margin:0; padding:0;}
+                                                img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+                                                table td{border-collapse:collapse;}
+                                                #backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
+                                                body, #backgroundTable{
+                                                /*@editable*/ background-color:#FAFAFA;
+                                                }
+                                                /**
+                                                * @tab Page
+                                                * @section email border
+                                                * @tip Set the border for your email.
+                                                */
+                                                #templateContainer{
+                                                /*@editable*/ border: 1px solid #DDDDDD;
+                                                }
 
-                            $message->setBody('<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- 
+                                                /**
+                                                * @tab Page
+                                                * @section heading 1
+                                                * @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+                                                * @style heading 1
+                                                */
+                                                h1, .h1{
+                                                /*@editable*/ color:#202020;
+                                                display:block;
+                                                /*@editable*/ font-family:Arial;
+                                                /*@editable*/ font-size:34px;
+                                                /*@editable*/ font-weight:bold;
+                                                /*@editable*/ line-height:100%;
+                                                margin-top:0;
+                                                margin-right:0;
+                                                margin-bottom:10px;
+                                                margin-left:0;
+                                                /*@editable*/ text-align:left;
+                                                }
 
-<style type="text/css">
-/* Client-specific Styles */
-#outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
-body{width:100% !important;} .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
-body{-webkit-text-size-adjust:none;} /* Prevent Webkit platforms from changing default text sizes. */
-
-body{margin:0; padding:0;}
-img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
-table td{border-collapse:collapse;}
-#backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
-
-
-body, #backgroundTable{
-/*@editable*/ background-color:#FAFAFA;
-}
-
-/**
-* @tab Page
-* @section email border
-* @tip Set the border for your email.
-*/
-#templateContainer{
-/*@editable*/ border: 1px solid #DDDDDD;
-}
-
-/**
-* @tab Page
-* @section heading 1
-* @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
-* @style heading 1
-*/
-h1, .h1{
-/*@editable*/ color:#202020;
-display:block;
-/*@editable*/ font-family:Arial;
-/*@editable*/ font-size:34px;
-/*@editable*/ font-weight:bold;
-/*@editable*/ line-height:100%;
-margin-top:0;
-margin-right:0;
-margin-bottom:10px;
-margin-left:0;
-/*@editable*/ text-align:left;
-}
-
-/**
+                                                    /**
 * @tab Page
 * @section heading 2
 * @tip Set the styling for all second-level headings in your emails.
@@ -1235,9 +1228,9 @@ height:auto;
 
                             $this->logMessage(">>> Sending Email <<<" . $smtp_ipaddress);
                             $result = $mailer->send($message);
-                            /* $error1[$z]="Coverage.ini not found for this project .";
+                             $error1[$z]="Coverage.ini not found for this project .";
                               $z++;
-                              $errorflag=true; */
+                              $errorflag=true; 
                         }
                     }
                 }
@@ -1288,8 +1281,9 @@ height:auto;
                     endforeach;
 
                     $emailSubjectLine = "Session has been submitted, please review";
-                    $emailBody = 'Session Submitted for Review';
-                    $this->sendSubmitEmail($emailSubjectLine, $emailBody, $admin_mail);
+                    $sub = 'Session Submitted for Review';
+                  //  $emailBody = 'Session Submitted for Review';
+                    $this->sendSubmitEmail($emailSubjectLine, $sub, $admin_mail);
                 }
                 else if ($request->getparameter('status_action') == 'Finalize') {
 

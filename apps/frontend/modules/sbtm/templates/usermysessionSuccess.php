@@ -108,3 +108,47 @@ $admin = $sf_user->getAttribute('adminrole'); ?>
     </form>
 </div>
 
+<h2> My Issues </h2>
+        <div class="sf_admin_list">
+            <table  border="5">
+                <?php if ($issues ->count() > 0) {
+ ?>
+                    <thead>
+                        <tr>
+
+                            <th class="sf_admin_text sf_admin_list_th_name">
+                                Issue Name
+                            </th>
+                            <th class="sf_admin_text sf_admin_list_th_name">
+                                Project
+                            </th>
+                            <th class="sf_admin_text sf_admin_list_th_name">
+                                Status
+                            </th>
+                            <th class="sf_admin_date sf_admin_list_th_created_at">
+                                Updated at
+                            </th>
+                        </tr>
+                    </thead>
+<?php } else { ?>
+                    <div class="record_error">
+                    <?php //$sf_user->getAttributeHolder()->clear();
+                    echo 'No record Found'; ?>
+                </div>
+<?php } ?>
+                    <tbody>
+          <?php foreach ($issues as $issue): ?>
+            <tr class="sf_admin_row odd">
+            <td class="sf_admin_text sf_admin_list_td_name">
+            <?php echo $issue->getTitle() ?></td>
+            <td class="sf_admin_text sf_admin_list_td_name">
+            <?php echo $issue->getProjectCategory() ?></td>
+            <td class="sf_admin_text sf_admin_list_td_name">
+            <?php echo $issue->getStatus() ?></td>
+            <td class="sf_admin_date sf_admin_list_td_created_at">
+            <?php echo $issue->getUpdatedAt() ?></td>
+            </tr>
+           <?php endforeach; ?>
+                    </tbody>
+</table>
+</div>
