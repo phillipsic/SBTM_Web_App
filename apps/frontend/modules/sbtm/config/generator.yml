@@ -1,0 +1,13 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:      Logins
+    theme:            default
+    fields:
+      title:            { name: Title }
+      body:             { name: Body }
+      created_at:       { name: Creation date }
+      updated_at:       { name: Last update date }
+    list:
+      title:            Stuff list
+      fields:           [=title, created_at]
